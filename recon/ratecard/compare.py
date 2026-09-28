@@ -35,6 +35,12 @@ def _key(value: Any) -> str:
 def canonical(card: dict) -> dict:
     c = _canon(card)
     for comp in c["freight"]["components"]:
+        for band in comp["bands"]:
+            # An open edge has nothing to include or exclude; its flag carries no meaning.
+            if band["min_kg"] is None:
+                band["min_inclusive"] = True
+            if band["max_kg"] is None:
+                band["max_inclusive"] = True
         comp["bands"] = sorted(comp["bands"], key=lambda b: (b["min_kg"] is not None,
                                                              Decimal(b["min_kg"] or 0), b["min_inclusive"]))
     c["accessorials"] = sorted(c["accessorials"], key=_key)

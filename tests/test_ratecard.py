@@ -90,6 +90,15 @@ class CompareTest(unittest.TestCase):
         b["non_pricing"] = []
         self.assertEqual(compare.diff(a, b), [])
 
+    def test_open_edge_inclusivity_is_ignored(self):
+        a, b = fixture_card("sagar"), fixture_card("sagar")
+        for comp in b["freight"]["components"]:
+            comp["bands"][0]["min_inclusive"] = comp["bands"][0]["max_inclusive"] = False
+        self.assertEqual(compare.diff(a, b), [])
+        c = fixture_card("alpine")
+        c["freight"]["components"][0]["bands"][0]["max_inclusive"] = True  # a real edge still counts
+        self.assertTrue(compare.diff(fixture_card("alpine"), c))
+
     def test_rate_difference_reported(self):
         a, b = fixture_card("falcon"), fixture_card("falcon")
         b["freight"]["components"][0]["bands"][1]["rate"] = "25.00"
