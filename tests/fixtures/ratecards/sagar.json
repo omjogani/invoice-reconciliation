@@ -1,0 +1,31 @@
+{
+  "contract_file": "sagar-roadlines.md",
+  "contract_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "carrier": "sagar",
+  "freight": {
+    "components": [
+      {"basis": "per_kg", "weight_basis": "billed",
+       "bands": [{"min_kg": null, "min_inclusive": true, "max_kg": null, "max_inclusive": true, "rate": "6.00"}],
+       "label": "weight component", "clause": "§1", "quote": "a weight component of ₹6.00 per kg of billed weight"},
+      {"basis": "per_km", "weight_basis": "billed",
+       "bands": [{"min_kg": null, "min_inclusive": true, "max_kg": null, "max_inclusive": true, "rate": "2.00"}],
+       "label": "distance component", "clause": "§1", "quote": "a distance component of ₹2.00 per km of the booked lane distance"}
+    ]
+  },
+  "chargeable_weight": null,
+  "service_levels": {"allowed": ["standard"], "clause": "§2", "quote": "Only standard service is offered under this agreement"},
+  "surcharges": [
+    {"pct": "20", "base": "freight", "when": {"special_handling": "cold_chain"}, "label": "cold chain premium",
+     "clause": "§3", "quote": "carry a premium of 20% on the freight charge (the sum of the weight and distance components)"}
+  ],
+  "accessorials": [],
+  "other_accessorials": {"allowed": false, "clause": "§1", "quote": "Freight per consignment is the sum of"},
+  "invoice_discounts": [],
+  "credit_notes": {"allowed": true, "must_cover_full": true, "clause": "§6",
+                   "quote": "The Carrier may issue credit notes correcting earlier invoices ... must cover the full corrected amount"},
+  "unmatched_lines": {"payable": false, "clause": "§5",
+                      "quote": "Lines that cannot be matched to a booking are not payable until reconciled"},
+  "dispute_window": null,
+  "non_pricing": [{"clause": "§4", "summary": "Invoicing as trips are pooled; payment due 21 days from invoice date"}],
+  "unsupported": []
+}

@@ -1,0 +1,163 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Rate card",
+  "description": "A contract expressed with a closed set of pricing building blocks. Every value-bearing rule cites its clause and quotes the contract. Cases the contract does not define are left out, never filled in.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["contract_file", "contract_sha256", "carrier", "freight", "chargeable_weight",
+               "service_levels", "surcharges", "accessorials", "other_accessorials",
+               "invoice_discounts", "credit_notes", "unmatched_lines", "dispute_window",
+               "non_pricing", "unsupported"],
+  "$defs": {
+    "decimal": {"type": "string", "pattern": "^[0-9]+(\\.[0-9]+)?$"},
+    "clause": {"type": "string", "pattern": "^§[0-9]+(, ?§[0-9]+)*$"},
+    "quote": {"type": "string", "minLength": 3},
+    "condition": {
+      "oneOf": [
+        {"type": "object", "additionalProperties": false, "required": ["always"],
+         "properties": {"always": {"const": true}}},
+        {"type": "object", "additionalProperties": false, "required": ["service_level"],
+         "properties": {"service_level": {"type": "string", "minLength": 1}}},
+        {"type": "object", "additionalProperties": false, "required": ["special_handling"],
+         "properties": {"special_handling": {"type": "string", "minLength": 1}}}
+      ]
+    },
+    "band": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["min_kg", "min_inclusive", "max_kg", "max_inclusive", "rate"],
+      "properties": {
+        "min_kg": {"oneOf": [{"$ref": "#/$defs/decimal"}, {"type": "null"}]},
+        "min_inclusive": {"type": "boolean"},
+        "max_kg": {"oneOf": [{"$ref": "#/$defs/decimal"}, {"type": "null"}]},
+        "max_inclusive": {"type": "boolean"},
+        "rate": {"$ref": "#/$defs/decimal"}
+      }
+    }
+  },
+  "properties": {
+    "contract_file": {"type": "string", "minLength": 1},
+    "contract_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "carrier": {"type": "string", "minLength": 1},
+    "freight": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["components"],
+      "properties": {
+        "components": {
+          "type": "array", "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["basis", "weight_basis", "bands", "clause", "quote"],
+            "properties": {
+              "basis": {"enum": ["per_km", "per_kg"]},
+              "weight_basis": {"enum": ["billed", "chargeable"]},
+              "bands": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/band"}},
+              "label": {"type": "string"},
+              "clause": {"$ref": "#/$defs/clause"},
+              "quote": {"$ref": "#/$defs/quote"}
+            }
+          }
+        }
+      }
+    },
+    "chargeable_weight": {
+      "oneOf": [
+        {"type": "null"},
+        {"type": "object", "additionalProperties": false, "required": ["minimum_kg", "clause", "quote"],
+         "properties": {"minimum_kg": {"$ref": "#/$defs/decimal"}, "clause": {"$ref": "#/$defs/clause"},
+                        "quote": {"$ref": "#/$defs/quote"}}}
+      ]
+    },
+    "service_levels": {
+      "type": "object", "additionalProperties": false, "required": ["allowed", "clause", "quote"],
+      "properties": {"allowed": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+                     "clause": {"$ref": "#/$defs/clause"}, "quote": {"$ref": "#/$defs/quote"}}
+    },
+    "surcharges": {
+      "type": "array",
+      "description": "Applied in order. base 'freight' = sum of freight components; 'freight_and_prior_surcharges' = freight plus every earlier surcharge in this list that applied.",
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["pct", "base", "when", "clause", "quote"],
+        "properties": {
+          "pct": {"$ref": "#/$defs/decimal"},
+          "base": {"enum": ["freight", "freight_and_prior_surcharges"]},
+          "when": {"$ref": "#/$defs/condition"},
+          "label": {"type": "string"},
+          "clause": {"$ref": "#/$defs/clause"}, "quote": {"$ref": "#/$defs/quote"}
+        }
+      }
+    },
+    "accessorials": {
+      "type": "array",
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["amount", "when", "clause", "quote"],
+        "properties": {
+          "amount": {"$ref": "#/$defs/decimal"},
+          "when": {"$ref": "#/$defs/condition"},
+          "label": {"type": "string"},
+          "clause": {"$ref": "#/$defs/clause"}, "quote": {"$ref": "#/$defs/quote"}
+        }
+      }
+    },
+    "other_accessorials": {
+      "type": "object", "additionalProperties": false, "required": ["allowed", "clause", "quote"],
+      "description": "Whether charges not listed in accessorials are payable. If the contract is silent, allowed=false citing the freight clause that defines what is charged.",
+      "properties": {"allowed": {"type": "boolean"}, "clause": {"$ref": "#/$defs/clause"},
+                     "quote": {"$ref": "#/$defs/quote"}}
+    },
+    "invoice_discounts": {
+      "type": "array",
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["kind", "period", "count_basis", "threshold_gt", "pct", "clause", "quote"],
+        "properties": {
+          "kind": {"const": "volume"},
+          "period": {"const": "calendar_month"},
+          "count_basis": {"enum": ["tendered", "invoiced"]},
+          "threshold_gt": {"type": "integer", "minimum": 0},
+          "pct": {"$ref": "#/$defs/decimal"},
+          "clause": {"$ref": "#/$defs/clause"}, "quote": {"$ref": "#/$defs/quote"}
+        }
+      }
+    },
+    "credit_notes": {
+      "oneOf": [
+        {"type": "null"},
+        {"type": "object", "additionalProperties": false, "required": ["allowed", "must_cover_full", "clause", "quote"],
+         "properties": {"allowed": {"type": "boolean"}, "must_cover_full": {"type": "boolean"},
+                        "clause": {"$ref": "#/$defs/clause"}, "quote": {"$ref": "#/$defs/quote"}}}
+      ]
+    },
+    "unmatched_lines": {
+      "oneOf": [
+        {"type": "null"},
+        {"type": "object", "additionalProperties": false, "required": ["payable", "clause", "quote"],
+         "properties": {"payable": {"type": "boolean"}, "clause": {"$ref": "#/$defs/clause"},
+                        "quote": {"$ref": "#/$defs/quote"}}}
+      ]
+    },
+    "dispute_window": {
+      "oneOf": [
+        {"type": "null"},
+        {"type": "object", "additionalProperties": false, "required": ["days", "from", "clause", "quote"],
+         "properties": {"days": {"type": "integer", "minimum": 1}, "from": {"const": "invoice_date"},
+                        "clause": {"$ref": "#/$defs/clause"}, "quote": {"$ref": "#/$defs/quote"}}}
+      ]
+    },
+    "non_pricing": {
+      "type": "array",
+      "items": {"type": "object", "additionalProperties": false, "required": ["clause", "summary"],
+                "properties": {"clause": {"$ref": "#/$defs/clause"}, "summary": {"type": "string", "minLength": 3}}}
+    },
+    "unsupported": {
+      "type": "array",
+      "items": {"type": "object", "additionalProperties": false, "required": ["clause", "quote", "why"],
+                "properties": {"clause": {"$ref": "#/$defs/clause"}, "quote": {"$ref": "#/$defs/quote"},
+                               "why": {"type": "string", "minLength": 3}}}
+    }
+  }
+}

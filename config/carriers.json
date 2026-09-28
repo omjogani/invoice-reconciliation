@@ -1,0 +1,8 @@
+{
+  "_comment": "Carrier registry. 'carrier' must match the carrier field in data/shipments.json and the id each parser assigns. Adding a carrier = one entry here, its contract, and a parser module.",
+  "carriers": [
+    {"carrier": "alpine", "name": "Alpine Express Logistics", "contract": "data/contracts/alpine-express.md"},
+    {"carrier": "falcon", "name": "Falcon Freight Pvt Ltd", "contract": "data/contracts/falcon-freight.md"},
+    {"carrier": "sagar", "name": "Sagar Roadlines", "contract": "data/contracts/sagar-roadlines.md"}
+  ]
+}
