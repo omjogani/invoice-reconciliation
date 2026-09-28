@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.pyc
+
+# Orchestrator venv (created by orchestrator/setup.sh)
+orchestrator/.venv/
+
+# Local runtime prefs (created from factory-prefs-example.yml on first run)
+factory/factory-prefs.yml
+
+# Demo-flow runs; real reconciliation runs are committed as evidence
+factory/graph_runs/smoke-test/
+factory/graph_runs/smoke-branch/
+factory/execution/temporary/smoke-test/
+factory/execution/temporary/smoke-branch/
