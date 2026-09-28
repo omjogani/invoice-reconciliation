@@ -1,0 +1,41 @@
+{
+  "contracts": [
+    {
+      "approve_command": "orchestrator/.venv/bin/python -m recon approve-rate-card --card /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/rates/candidate-alpine.json --contract data/contracts/alpine-express.md --carrier alpine --approved-by '<your name>' --source-run /Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-compile-rates/B1_1_om080jogani_20260928T183535232416Z_B1.1",
+      "candidate_path": "/Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/rates/candidate-alpine.json",
+      "carrier": "alpine",
+      "contract": "alpine-express.md",
+      "contract_sha256": "caa39649f701795356f6545c0a6c86ea12b2037dc96080027bdf8f17801e6001",
+      "differences": [],
+      "reasons": [
+        "no approved snapshot for alpine-express.md at caa39649f701…"
+      ],
+      "verdict": "needs_approval"
+    },
+    {
+      "approve_command": "orchestrator/.venv/bin/python -m recon approve-rate-card --card /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/rates/candidate-falcon.json --contract data/contracts/falcon-freight.md --carrier falcon --approved-by '<your name>' --source-run /Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-compile-rates/B1_2_om080jogani_20260928T183535557157Z_B1.2",
+      "candidate_path": "/Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/rates/candidate-falcon.json",
+      "carrier": "falcon",
+      "contract": "falcon-freight.md",
+      "contract_sha256": "6e37557aad7f22da8103e960de6807385088ff0f4bca6fe8da22726998233ca0",
+      "differences": [],
+      "reasons": [
+        "no approved snapshot for falcon-freight.md at 6e37557aad7f…"
+      ],
+      "verdict": "needs_approval"
+    },
+    {
+      "approve_command": "orchestrator/.venv/bin/python -m recon approve-rate-card --card /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/rates/candidate-sagar.json --contract data/contracts/sagar-roadlines.md --carrier sagar --approved-by '<your name>' --source-run /Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-compile-rates/B1_3_om080jogani_20260928T183535881364Z_B1.3",
+      "candidate_path": "/Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/rates/candidate-sagar.json",
+      "carrier": "sagar",
+      "contract": "sagar-roadlines.md",
+      "contract_sha256": "43c3f2dfc4e0eade16e79d4924f4b83c8748dc1a06dfaf3bc2694369aaa5ad95",
+      "differences": [],
+      "reasons": [
+        "no approved snapshot for sagar-roadlines.md at 43c3f2dfc4e0…"
+      ],
+      "verdict": "needs_approval"
+    }
+  ],
+  "verdict": "needs_approval"
+}

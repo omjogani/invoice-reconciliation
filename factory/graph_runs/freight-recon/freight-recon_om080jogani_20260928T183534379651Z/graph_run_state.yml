@@ -1,0 +1,1738 @@
+metadata:
+  run_id: bb43fe43-53a7-43a3-820f-02bd840ccc15
+  userid: om080jogani
+  orchestrator_session_id: bccaaf8c-3573-4954-88f4-ba820d8535ac
+  orchestrator_harness: null
+  orchestrator_identity_source: self_reported
+  flow: freight-recon
+  flow_dot: factory/flows/freight-recon/freight-recon.dot
+  flow_dir: factory/flows/freight-recon
+  repo_root: /Users/omjogani/Projects/stage2-kit
+  supervision: afk
+  run_descriptor: freight-recon
+  timestamp: 20260928T183534379651Z
+  started_at: '2026-09-28T18:35:34Z'
+  completed_at: '2026-09-28T18:59:38Z'
+  state: completed
+  parent_run: null
+current:
+  phase: done
+  phases:
+  - done
+  nodes:
+    start:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-28T18:35:34Z'
+      completed_at: '2026-09-28T18:35:34Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    ingest:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-28T18:35:34Z'
+      completed_at: '2026-09-28T18:35:34Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    plan_compile:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-28T18:35:34Z'
+      completed_at: '2026-09-28T18:35:34Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    compile_fan:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-28T18:35:34Z'
+      completed_at: '2026-09-28T18:51:52Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches:
+      - branch_id: B1.1
+        status: done
+        subflow_run_dir: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-compile-rates/B1_1_om080jogani_20260928T183535232416Z_B1.1
+        inline_root_node: null
+        failure_reason: null
+      - branch_id: B1.2
+        status: done
+        subflow_run_dir: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-compile-rates/B1_2_om080jogani_20260928T183535557157Z_B1.2
+        inline_root_node: null
+        failure_reason: null
+      - branch_id: B1.3
+        status: done
+        subflow_run_dir: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-compile-rates/B1_3_om080jogani_20260928T183535881364Z_B1.3
+        inline_root_node: null
+        failure_reason: null
+      join_history: []
+    compile_join:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: null
+      completed_at: '2026-09-28T18:51:52Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: null
+      branches: []
+      join_history:
+      - sequence: 1
+        triggered_by: B1.3
+        triggered_by_status: done
+        input_delta:
+          _outputs:
+          - compile_results
+        fired_at: '2026-09-28T18:46:11Z'
+        triggered_from_node: null
+      - sequence: 2
+        triggered_by: B1.2
+        triggered_by_status: done
+        input_delta:
+          _outputs:
+          - compile_results
+        fired_at: '2026-09-28T18:47:29Z'
+        triggered_from_node: null
+      - sequence: 3
+        triggered_by: B1.1
+        triggered_by_status: done
+        input_delta:
+          _outputs:
+          - compile_results
+        fired_at: '2026-09-28T18:51:43Z'
+        triggered_from_node: null
+    compile_t:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-28T18:51:52Z'
+      completed_at: '2026-09-28T18:51:52Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: null
+      branches: []
+      join_history: []
+    rates_check:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-28T18:51:52Z'
+      completed_at: '2026-09-28T18:51:52Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: null
+      branches: []
+      join_history: []
+    rates_hold:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-28T18:51:53Z'
+      completed_at: '2026-09-28T18:57:22Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    rates_recheck:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-28T18:57:29Z'
+      completed_at: '2026-09-28T18:57:29Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    reconcile:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-28T18:57:29Z'
+      completed_at: '2026-09-28T18:57:30Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    plan_review:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-28T18:57:30Z'
+      completed_at: '2026-09-28T18:57:31Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    review_fan:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-28T18:57:31Z'
+      completed_at: '2026-09-28T18:59:35Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches:
+      - branch_id: B1.4
+        status: done
+        subflow_run_dir: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-review/B1_4_om080jogani_20260928T185741849417Z_B1.4
+        inline_root_node: null
+        failure_reason: null
+      - branch_id: B1.5
+        status: done
+        subflow_run_dir: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-review/B1_5_om080jogani_20260928T185743196239Z_B1.5
+        inline_root_node: null
+        failure_reason: null
+      - branch_id: B1.6
+        status: done
+        subflow_run_dir: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-review/B1_6_om080jogani_20260928T185744668855Z_B1.6
+        inline_root_node: null
+        failure_reason: null
+      join_history: []
+    review_join:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: null
+      completed_at: '2026-09-28T18:59:35Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: null
+      branches: []
+      join_history:
+      - sequence: 1
+        triggered_by: B1.4
+        triggered_by_status: done
+        input_delta:
+          _outputs:
+          - review_outputs
+        fired_at: '2026-09-28T18:59:27Z'
+        triggered_from_node: null
+      - sequence: 2
+        triggered_by: B1.5
+        triggered_by_status: done
+        input_delta:
+          _outputs:
+          - review_outputs
+        fired_at: '2026-09-28T18:59:28Z'
+        triggered_from_node: null
+      - sequence: 3
+        triggered_by: B1.6
+        triggered_by_status: done
+        input_delta:
+          _outputs:
+          - review_outputs
+        fired_at: '2026-09-28T18:59:28Z'
+        triggered_from_node: null
+    review_t:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-28T18:59:35Z'
+      completed_at: '2026-09-28T18:59:35Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: null
+      branches: []
+      join_history: []
+    review_check:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-28T18:59:35Z'
+      completed_at: '2026-09-28T18:59:36Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: null
+      branches: []
+      join_history: []
+    assemble:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-28T18:59:36Z'
+      completed_at: '2026-09-28T18:59:37Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    validate_report:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-28T18:59:37Z'
+      completed_at: '2026-09-28T18:59:37Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    publish:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-28T18:59:38Z'
+      completed_at: '2026-09-28T18:59:38Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    done:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-28T18:59:38Z'
+      completed_at: '2026-09-28T18:59:38Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+orchestrator_usage: null
+branch_scopes:
+  B1:
+    branch_id: B1
+    variables:
+      _userid: om080jogani
+      _timestamp: 20260928T183534379651Z
+      _run_descriptor: freight-recon
+      _flow_stem: freight-recon
+      _run_artefact_dir: factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z
+      _supervision: afk
+      _supervision_instructions: ''
+      invoices_dir: data/invoices
+      shipments_path: data/shipments.json
+      carriers_config: config/carriers.json
+      approved_store: rate-cards/approved
+      as_of_date: '2026-09-29'
+      publish_dir: .
+      documents_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/work/documents.json
+      lines_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/work/lines.jsonl
+      inventory_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/work/inventory.json
+      unknown_state: none
+      fallback_path: null
+      fallback_merged_path: null
+      compile_plan_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/compile/compile-jobs.json
+      compile_jobs:
+      - card_schema_path: /Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json
+        carrier: alpine
+        carrier_name: Alpine Express Logistics
+        contract_file: alpine-express.md
+        contract_path: /Users/omjogani/Projects/stage2-kit/data/contracts/alpine-express.md
+        contract_sha256: caa39649f701795356f6545c0a6c86ea12b2037dc96080027bdf8f17801e6001
+        repo_root: /Users/omjogani/Projects/stage2-kit
+        vocabulary_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/compile/vocabulary.json
+      - card_schema_path: /Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json
+        carrier: falcon
+        carrier_name: Falcon Freight Pvt Ltd
+        contract_file: falcon-freight.md
+        contract_path: /Users/omjogani/Projects/stage2-kit/data/contracts/falcon-freight.md
+        contract_sha256: 6e37557aad7f22da8103e960de6807385088ff0f4bca6fe8da22726998233ca0
+        repo_root: /Users/omjogani/Projects/stage2-kit
+        vocabulary_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/compile/vocabulary.json
+      - card_schema_path: /Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json
+        carrier: sagar
+        carrier_name: Sagar Roadlines
+        contract_file: sagar-roadlines.md
+        contract_path: /Users/omjogani/Projects/stage2-kit/data/contracts/sagar-roadlines.md
+        contract_sha256: 43c3f2dfc4e0eade16e79d4924f4b83c8748dc1a06dfaf3bc2694369aaa5ad95
+        repo_root: /Users/omjogani/Projects/stage2-kit
+        vocabulary_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/compile/vocabulary.json
+      compile_result: null
+      compile_results:
+        B1.1: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-compile-rates/B1_1_om080jogani_20260928T183535232416Z_B1.1/compile-result.json
+        B1.2: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-compile-rates/B1_2_om080jogani_20260928T183535557157Z_B1.2/compile-result.json
+        B1.3: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-compile-rates/B1_3_om080jogani_20260928T183535881364Z_B1.3/compile-result.json
+      rates_report: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/rates/rates-report.json
+      rates_report_2: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/rates-recheck/rates-report.json
+      rates_verdict: ok
+      rates_decision: recheck
+      reconciled_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/reconciled.json
+      review_plan_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/batches/jobs.json
+      review_jobs:
+      - batch_id: B01
+        batch_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/batches/B01.json
+        repo_root: /Users/omjogani/Projects/stage2-kit
+      - batch_id: B02
+        batch_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/batches/B02.json
+        repo_root: /Users/omjogani/Projects/stage2-kit
+      - batch_id: B03
+        batch_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/batches/B03.json
+        repo_root: /Users/omjogani/Projects/stage2-kit
+      review_state: some
+      review_output: null
+      review_outputs:
+        B1.4: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-review/B1_4_om080jogani_20260928T185741849417Z_B1.4/review-final.json
+        B1.5: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-review/B1_5_om080jogani_20260928T185743196239Z_B1.5/review-final.json
+        B1.6: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-review/B1_6_om080jogani_20260928T185744668855Z_B1.6/review-final.json
+      reviews_map: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/reviews.json
+      report_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/out/reconciliation-report.json
+      validation_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/out/validation.json
+      manifest_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/run-manifest.json
+      _branches:
+      - branch_id: B1
+        source_node: review_t
+        status: done
+    parent_node: null
+    seed:
+      _userid: om080jogani
+      _timestamp: 20260928T183534379651Z
+      _run_descriptor: freight-recon
+      _flow_stem: freight-recon
+      _run_artefact_dir: factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z
+      _supervision: afk
+      _supervision_instructions: ''
+      invoices_dir: null
+      shipments_path: null
+      carriers_config: null
+      approved_store: null
+      as_of_date: null
+      publish_dir: null
+      documents_path: null
+      lines_path: null
+      inventory_path: null
+      unknown_state: null
+      fallback_path: null
+      fallback_merged_path: null
+      compile_plan_path: null
+      compile_jobs: null
+      compile_result: null
+      compile_results: null
+      rates_report: null
+      rates_report_2: null
+      rates_verdict: null
+      rates_decision: null
+      reconciled_path: null
+      review_plan_path: null
+      review_jobs: null
+      review_state: null
+      review_output: null
+      review_outputs: null
+      reviews_map: null
+      report_path: null
+      validation_path: null
+      manifest_path: null
+    next_child: 6
+  B1.1:
+    branch_id: B1.1
+    variables:
+      _userid: om080jogani
+      _timestamp: 20260928T183534379651Z
+      _run_descriptor: freight-recon
+      _flow_stem: freight-recon
+      _run_artefact_dir: factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z
+      _supervision: afk
+      _supervision_instructions: ''
+      invoices_dir: data/invoices
+      shipments_path: data/shipments.json
+      carriers_config: config/carriers.json
+      approved_store: rate-cards/approved
+      as_of_date: '2026-09-29'
+      publish_dir: .
+      documents_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/work/documents.json
+      lines_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/work/lines.jsonl
+      inventory_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/work/inventory.json
+      unknown_state: none
+      fallback_path: null
+      fallback_merged_path: null
+      compile_plan_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/compile/compile-jobs.json
+      compile_jobs:
+      - card_schema_path: /Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json
+        carrier: alpine
+        carrier_name: Alpine Express Logistics
+        contract_file: alpine-express.md
+        contract_path: /Users/omjogani/Projects/stage2-kit/data/contracts/alpine-express.md
+        contract_sha256: caa39649f701795356f6545c0a6c86ea12b2037dc96080027bdf8f17801e6001
+        repo_root: /Users/omjogani/Projects/stage2-kit
+        vocabulary_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/compile/vocabulary.json
+      - card_schema_path: /Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json
+        carrier: falcon
+        carrier_name: Falcon Freight Pvt Ltd
+        contract_file: falcon-freight.md
+        contract_path: /Users/omjogani/Projects/stage2-kit/data/contracts/falcon-freight.md
+        contract_sha256: 6e37557aad7f22da8103e960de6807385088ff0f4bca6fe8da22726998233ca0
+        repo_root: /Users/omjogani/Projects/stage2-kit
+        vocabulary_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/compile/vocabulary.json
+      - card_schema_path: /Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json
+        carrier: sagar
+        carrier_name: Sagar Roadlines
+        contract_file: sagar-roadlines.md
+        contract_path: /Users/omjogani/Projects/stage2-kit/data/contracts/sagar-roadlines.md
+        contract_sha256: 43c3f2dfc4e0eade16e79d4924f4b83c8748dc1a06dfaf3bc2694369aaa5ad95
+        repo_root: /Users/omjogani/Projects/stage2-kit
+        vocabulary_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/compile/vocabulary.json
+      compile_result: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-compile-rates/B1_1_om080jogani_20260928T183535232416Z_B1.1/compile-result.json
+      compile_results: null
+      rates_report: null
+      rates_report_2: null
+      rates_verdict: null
+      rates_decision: null
+      reconciled_path: null
+      review_plan_path: null
+      review_jobs: null
+      review_state: null
+      review_output: null
+      review_outputs: null
+      reviews_map: null
+      report_path: null
+      validation_path: null
+      manifest_path: null
+      item:
+        card_schema_path: /Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json
+        carrier: alpine
+        carrier_name: Alpine Express Logistics
+        contract_file: alpine-express.md
+        contract_path: /Users/omjogani/Projects/stage2-kit/data/contracts/alpine-express.md
+        contract_sha256: caa39649f701795356f6545c0a6c86ea12b2037dc96080027bdf8f17801e6001
+        repo_root: /Users/omjogani/Projects/stage2-kit
+        vocabulary_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/compile/vocabulary.json
+    parent_node: compile_fan
+    seed:
+      _userid: om080jogani
+      _timestamp: 20260928T183534379651Z
+      _run_descriptor: freight-recon
+      _flow_stem: freight-recon
+      _run_artefact_dir: factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z
+      _supervision: afk
+      _supervision_instructions: ''
+      invoices_dir: data/invoices
+      shipments_path: data/shipments.json
+      carriers_config: config/carriers.json
+      approved_store: rate-cards/approved
+      as_of_date: '2026-09-29'
+      publish_dir: .
+      documents_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/work/documents.json
+      lines_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/work/lines.jsonl
+      inventory_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/work/inventory.json
+      unknown_state: none
+      fallback_path: null
+      fallback_merged_path: null
+      compile_plan_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/compile/compile-jobs.json
+      compile_jobs:
+      - card_schema_path: /Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json
+        carrier: alpine
+        carrier_name: Alpine Express Logistics
+        contract_file: alpine-express.md
+        contract_path: /Users/omjogani/Projects/stage2-kit/data/contracts/alpine-express.md
+        contract_sha256: caa39649f701795356f6545c0a6c86ea12b2037dc96080027bdf8f17801e6001
+        repo_root: /Users/omjogani/Projects/stage2-kit
+        vocabulary_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/compile/vocabulary.json
+      - card_schema_path: /Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json
+        carrier: falcon
+        carrier_name: Falcon Freight Pvt Ltd
+        contract_file: falcon-freight.md
+        contract_path: /Users/omjogani/Projects/stage2-kit/data/contracts/falcon-freight.md
+        contract_sha256: 6e37557aad7f22da8103e960de6807385088ff0f4bca6fe8da22726998233ca0
+        repo_root: /Users/omjogani/Projects/stage2-kit
+        vocabulary_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/compile/vocabulary.json
+      - card_schema_path: /Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json
+        carrier: sagar
+        carrier_name: Sagar Roadlines
+        contract_file: sagar-roadlines.md
+        contract_path: /Users/omjogani/Projects/stage2-kit/data/contracts/sagar-roadlines.md
+        contract_sha256: 43c3f2dfc4e0eade16e79d4924f4b83c8748dc1a06dfaf3bc2694369aaa5ad95
+        repo_root: /Users/omjogani/Projects/stage2-kit
+        vocabulary_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/compile/vocabulary.json
+      compile_result: null
+      compile_results: null
+      rates_report: null
+      rates_report_2: null
+      rates_verdict: null
+      rates_decision: null
+      reconciled_path: null
+      review_plan_path: null
+      review_jobs: null
+      review_state: null
+      review_output: null
+      review_outputs: null
+      reviews_map: null
+      report_path: null
+      validation_path: null
+      manifest_path: null
+      item:
+        card_schema_path: /Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json
+        carrier: alpine
+        carrier_name: Alpine Express Logistics
+        contract_file: alpine-express.md
+        contract_path: /Users/omjogani/Projects/stage2-kit/data/contracts/alpine-express.md
+        contract_sha256: caa39649f701795356f6545c0a6c86ea12b2037dc96080027bdf8f17801e6001
+        repo_root: /Users/omjogani/Projects/stage2-kit
+        vocabulary_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/compile/vocabulary.json
+    next_child: 0
+  B1.2:
+    branch_id: B1.2
+    variables:
+      _userid: om080jogani
+      _timestamp: 20260928T183534379651Z
+      _run_descriptor: freight-recon
+      _flow_stem: freight-recon
+      _run_artefact_dir: factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z
+      _supervision: afk
+      _supervision_instructions: ''
+      invoices_dir: data/invoices
+      shipments_path: data/shipments.json
+      carriers_config: config/carriers.json
+      approved_store: rate-cards/approved
+      as_of_date: '2026-09-29'
+      publish_dir: .
+      documents_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/work/documents.json
+      lines_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/work/lines.jsonl
+      inventory_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/work/inventory.json
+      unknown_state: none
+      fallback_path: null
+      fallback_merged_path: null
+      compile_plan_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/compile/compile-jobs.json
+      compile_jobs:
+      - card_schema_path: /Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json
+        carrier: alpine
+        carrier_name: Alpine Express Logistics
+        contract_file: alpine-express.md
+        contract_path: /Users/omjogani/Projects/stage2-kit/data/contracts/alpine-express.md
+        contract_sha256: caa39649f701795356f6545c0a6c86ea12b2037dc96080027bdf8f17801e6001
+        repo_root: /Users/omjogani/Projects/stage2-kit
+        vocabulary_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/compile/vocabulary.json
+      - card_schema_path: /Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json
+        carrier: falcon
+        carrier_name: Falcon Freight Pvt Ltd
+        contract_file: falcon-freight.md
+        contract_path: /Users/omjogani/Projects/stage2-kit/data/contracts/falcon-freight.md
+        contract_sha256: 6e37557aad7f22da8103e960de6807385088ff0f4bca6fe8da22726998233ca0
+        repo_root: /Users/omjogani/Projects/stage2-kit
+        vocabulary_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/compile/vocabulary.json
+      - card_schema_path: /Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json
+        carrier: sagar
+        carrier_name: Sagar Roadlines
+        contract_file: sagar-roadlines.md
+        contract_path: /Users/omjogani/Projects/stage2-kit/data/contracts/sagar-roadlines.md
+        contract_sha256: 43c3f2dfc4e0eade16e79d4924f4b83c8748dc1a06dfaf3bc2694369aaa5ad95
+        repo_root: /Users/omjogani/Projects/stage2-kit
+        vocabulary_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/compile/vocabulary.json
+      compile_result: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-compile-rates/B1_2_om080jogani_20260928T183535557157Z_B1.2/compile-result.json
+      compile_results: null
+      rates_report: null
+      rates_report_2: null
+      rates_verdict: null
+      rates_decision: null
+      reconciled_path: null
+      review_plan_path: null
+      review_jobs: null
+      review_state: null
+      review_output: null
+      review_outputs: null
+      reviews_map: null
+      report_path: null
+      validation_path: null
+      manifest_path: null
+      item:
+        card_schema_path: /Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json
+        carrier: falcon
+        carrier_name: Falcon Freight Pvt Ltd
+        contract_file: falcon-freight.md
+        contract_path: /Users/omjogani/Projects/stage2-kit/data/contracts/falcon-freight.md
+        contract_sha256: 6e37557aad7f22da8103e960de6807385088ff0f4bca6fe8da22726998233ca0
+        repo_root: /Users/omjogani/Projects/stage2-kit
+        vocabulary_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/compile/vocabulary.json
+    parent_node: compile_fan
+    seed:
+      _userid: om080jogani
+      _timestamp: 20260928T183534379651Z
+      _run_descriptor: freight-recon
+      _flow_stem: freight-recon
+      _run_artefact_dir: factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z
+      _supervision: afk
+      _supervision_instructions: ''
+      invoices_dir: data/invoices
+      shipments_path: data/shipments.json
+      carriers_config: config/carriers.json
+      approved_store: rate-cards/approved
+      as_of_date: '2026-09-29'
+      publish_dir: .
+      documents_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/work/documents.json
+      lines_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/work/lines.jsonl
+      inventory_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/work/inventory.json
+      unknown_state: none
+      fallback_path: null
+      fallback_merged_path: null
+      compile_plan_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/compile/compile-jobs.json
+      compile_jobs:
+      - card_schema_path: /Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json
+        carrier: alpine
+        carrier_name: Alpine Express Logistics
+        contract_file: alpine-express.md
+        contract_path: /Users/omjogani/Projects/stage2-kit/data/contracts/alpine-express.md
+        contract_sha256: caa39649f701795356f6545c0a6c86ea12b2037dc96080027bdf8f17801e6001
+        repo_root: /Users/omjogani/Projects/stage2-kit
+        vocabulary_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/compile/vocabulary.json
+      - card_schema_path: /Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json
+        carrier: falcon
+        carrier_name: Falcon Freight Pvt Ltd
+        contract_file: falcon-freight.md
+        contract_path: /Users/omjogani/Projects/stage2-kit/data/contracts/falcon-freight.md
+        contract_sha256: 6e37557aad7f22da8103e960de6807385088ff0f4bca6fe8da22726998233ca0
+        repo_root: /Users/omjogani/Projects/stage2-kit
+        vocabulary_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/compile/vocabulary.json
+      - card_schema_path: /Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json
+        carrier: sagar
+        carrier_name: Sagar Roadlines
+        contract_file: sagar-roadlines.md
+        contract_path: /Users/omjogani/Projects/stage2-kit/data/contracts/sagar-roadlines.md
+        contract_sha256: 43c3f2dfc4e0eade16e79d4924f4b83c8748dc1a06dfaf3bc2694369aaa5ad95
+        repo_root: /Users/omjogani/Projects/stage2-kit
+        vocabulary_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/compile/vocabulary.json
+      compile_result: null
+      compile_results: null
+      rates_report: null
+      rates_report_2: null
+      rates_verdict: null
+      rates_decision: null
+      reconciled_path: null
+      review_plan_path: null
+      review_jobs: null
+      review_state: null
+      review_output: null
+      review_outputs: null
+      reviews_map: null
+      report_path: null
+      validation_path: null
+      manifest_path: null
+      item:
+        card_schema_path: /Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json
+        carrier: falcon
+        carrier_name: Falcon Freight Pvt Ltd
+        contract_file: falcon-freight.md
+        contract_path: /Users/omjogani/Projects/stage2-kit/data/contracts/falcon-freight.md
+        contract_sha256: 6e37557aad7f22da8103e960de6807385088ff0f4bca6fe8da22726998233ca0
+        repo_root: /Users/omjogani/Projects/stage2-kit
+        vocabulary_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/compile/vocabulary.json
+    next_child: 0
+  B1.3:
+    branch_id: B1.3
+    variables:
+      _userid: om080jogani
+      _timestamp: 20260928T183534379651Z
+      _run_descriptor: freight-recon
+      _flow_stem: freight-recon
+      _run_artefact_dir: factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z
+      _supervision: afk
+      _supervision_instructions: ''
+      invoices_dir: data/invoices
+      shipments_path: data/shipments.json
+      carriers_config: config/carriers.json
+      approved_store: rate-cards/approved
+      as_of_date: '2026-09-29'
+      publish_dir: .
+      documents_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/work/documents.json
+      lines_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/work/lines.jsonl
+      inventory_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/work/inventory.json
+      unknown_state: none
+      fallback_path: null
+      fallback_merged_path: null
+      compile_plan_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/compile/compile-jobs.json
+      compile_jobs:
+      - card_schema_path: /Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json
+        carrier: alpine
+        carrier_name: Alpine Express Logistics
+        contract_file: alpine-express.md
+        contract_path: /Users/omjogani/Projects/stage2-kit/data/contracts/alpine-express.md
+        contract_sha256: caa39649f701795356f6545c0a6c86ea12b2037dc96080027bdf8f17801e6001
+        repo_root: /Users/omjogani/Projects/stage2-kit
+        vocabulary_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/compile/vocabulary.json
+      - card_schema_path: /Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json
+        carrier: falcon
+        carrier_name: Falcon Freight Pvt Ltd
+        contract_file: falcon-freight.md
+        contract_path: /Users/omjogani/Projects/stage2-kit/data/contracts/falcon-freight.md
+        contract_sha256: 6e37557aad7f22da8103e960de6807385088ff0f4bca6fe8da22726998233ca0
+        repo_root: /Users/omjogani/Projects/stage2-kit
+        vocabulary_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/compile/vocabulary.json
+      - card_schema_path: /Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json
+        carrier: sagar
+        carrier_name: Sagar Roadlines
+        contract_file: sagar-roadlines.md
+        contract_path: /Users/omjogani/Projects/stage2-kit/data/contracts/sagar-roadlines.md
+        contract_sha256: 43c3f2dfc4e0eade16e79d4924f4b83c8748dc1a06dfaf3bc2694369aaa5ad95
+        repo_root: /Users/omjogani/Projects/stage2-kit
+        vocabulary_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/compile/vocabulary.json
+      compile_result: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-compile-rates/B1_3_om080jogani_20260928T183535881364Z_B1.3/compile-result.json
+      compile_results: null
+      rates_report: null
+      rates_report_2: null
+      rates_verdict: null
+      rates_decision: null
+      reconciled_path: null
+      review_plan_path: null
+      review_jobs: null
+      review_state: null
+      review_output: null
+      review_outputs: null
+      reviews_map: null
+      report_path: null
+      validation_path: null
+      manifest_path: null
+      item:
+        card_schema_path: /Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json
+        carrier: sagar
+        carrier_name: Sagar Roadlines
+        contract_file: sagar-roadlines.md
+        contract_path: /Users/omjogani/Projects/stage2-kit/data/contracts/sagar-roadlines.md
+        contract_sha256: 43c3f2dfc4e0eade16e79d4924f4b83c8748dc1a06dfaf3bc2694369aaa5ad95
+        repo_root: /Users/omjogani/Projects/stage2-kit
+        vocabulary_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/compile/vocabulary.json
+    parent_node: compile_fan
+    seed:
+      _userid: om080jogani
+      _timestamp: 20260928T183534379651Z
+      _run_descriptor: freight-recon
+      _flow_stem: freight-recon
+      _run_artefact_dir: factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z
+      _supervision: afk
+      _supervision_instructions: ''
+      invoices_dir: data/invoices
+      shipments_path: data/shipments.json
+      carriers_config: config/carriers.json
+      approved_store: rate-cards/approved
+      as_of_date: '2026-09-29'
+      publish_dir: .
+      documents_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/work/documents.json
+      lines_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/work/lines.jsonl
+      inventory_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/work/inventory.json
+      unknown_state: none
+      fallback_path: null
+      fallback_merged_path: null
+      compile_plan_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/compile/compile-jobs.json
+      compile_jobs:
+      - card_schema_path: /Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json
+        carrier: alpine
+        carrier_name: Alpine Express Logistics
+        contract_file: alpine-express.md
+        contract_path: /Users/omjogani/Projects/stage2-kit/data/contracts/alpine-express.md
+        contract_sha256: caa39649f701795356f6545c0a6c86ea12b2037dc96080027bdf8f17801e6001
+        repo_root: /Users/omjogani/Projects/stage2-kit
+        vocabulary_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/compile/vocabulary.json
+      - card_schema_path: /Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json
+        carrier: falcon
+        carrier_name: Falcon Freight Pvt Ltd
+        contract_file: falcon-freight.md
+        contract_path: /Users/omjogani/Projects/stage2-kit/data/contracts/falcon-freight.md
+        contract_sha256: 6e37557aad7f22da8103e960de6807385088ff0f4bca6fe8da22726998233ca0
+        repo_root: /Users/omjogani/Projects/stage2-kit
+        vocabulary_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/compile/vocabulary.json
+      - card_schema_path: /Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json
+        carrier: sagar
+        carrier_name: Sagar Roadlines
+        contract_file: sagar-roadlines.md
+        contract_path: /Users/omjogani/Projects/stage2-kit/data/contracts/sagar-roadlines.md
+        contract_sha256: 43c3f2dfc4e0eade16e79d4924f4b83c8748dc1a06dfaf3bc2694369aaa5ad95
+        repo_root: /Users/omjogani/Projects/stage2-kit
+        vocabulary_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/compile/vocabulary.json
+      compile_result: null
+      compile_results: null
+      rates_report: null
+      rates_report_2: null
+      rates_verdict: null
+      rates_decision: null
+      reconciled_path: null
+      review_plan_path: null
+      review_jobs: null
+      review_state: null
+      review_output: null
+      review_outputs: null
+      reviews_map: null
+      report_path: null
+      validation_path: null
+      manifest_path: null
+      item:
+        card_schema_path: /Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json
+        carrier: sagar
+        carrier_name: Sagar Roadlines
+        contract_file: sagar-roadlines.md
+        contract_path: /Users/omjogani/Projects/stage2-kit/data/contracts/sagar-roadlines.md
+        contract_sha256: 43c3f2dfc4e0eade16e79d4924f4b83c8748dc1a06dfaf3bc2694369aaa5ad95
+        repo_root: /Users/omjogani/Projects/stage2-kit
+        vocabulary_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/compile/vocabulary.json
+    next_child: 0
+  B1.4:
+    branch_id: B1.4
+    variables:
+      _userid: om080jogani
+      _timestamp: 20260928T183534379651Z
+      _run_descriptor: freight-recon
+      _flow_stem: freight-recon
+      _run_artefact_dir: factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z
+      _supervision: afk
+      _supervision_instructions: ''
+      invoices_dir: data/invoices
+      shipments_path: data/shipments.json
+      carriers_config: config/carriers.json
+      approved_store: rate-cards/approved
+      as_of_date: '2026-09-29'
+      publish_dir: .
+      documents_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/work/documents.json
+      lines_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/work/lines.jsonl
+      inventory_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/work/inventory.json
+      unknown_state: none
+      fallback_path: null
+      fallback_merged_path: null
+      compile_plan_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/compile/compile-jobs.json
+      compile_jobs:
+      - card_schema_path: /Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json
+        carrier: alpine
+        carrier_name: Alpine Express Logistics
+        contract_file: alpine-express.md
+        contract_path: /Users/omjogani/Projects/stage2-kit/data/contracts/alpine-express.md
+        contract_sha256: caa39649f701795356f6545c0a6c86ea12b2037dc96080027bdf8f17801e6001
+        repo_root: /Users/omjogani/Projects/stage2-kit
+        vocabulary_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/compile/vocabulary.json
+      - card_schema_path: /Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json
+        carrier: falcon
+        carrier_name: Falcon Freight Pvt Ltd
+        contract_file: falcon-freight.md
+        contract_path: /Users/omjogani/Projects/stage2-kit/data/contracts/falcon-freight.md
+        contract_sha256: 6e37557aad7f22da8103e960de6807385088ff0f4bca6fe8da22726998233ca0
+        repo_root: /Users/omjogani/Projects/stage2-kit
+        vocabulary_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/compile/vocabulary.json
+      - card_schema_path: /Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json
+        carrier: sagar
+        carrier_name: Sagar Roadlines
+        contract_file: sagar-roadlines.md
+        contract_path: /Users/omjogani/Projects/stage2-kit/data/contracts/sagar-roadlines.md
+        contract_sha256: 43c3f2dfc4e0eade16e79d4924f4b83c8748dc1a06dfaf3bc2694369aaa5ad95
+        repo_root: /Users/omjogani/Projects/stage2-kit
+        vocabulary_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/compile/vocabulary.json
+      compile_result: null
+      compile_results:
+        B1.1: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-compile-rates/B1_1_om080jogani_20260928T183535232416Z_B1.1/compile-result.json
+        B1.2: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-compile-rates/B1_2_om080jogani_20260928T183535557157Z_B1.2/compile-result.json
+        B1.3: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-compile-rates/B1_3_om080jogani_20260928T183535881364Z_B1.3/compile-result.json
+      rates_report: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/rates/rates-report.json
+      rates_report_2: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/rates-recheck/rates-report.json
+      rates_verdict: ok
+      rates_decision: recheck
+      reconciled_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/reconciled.json
+      review_plan_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/batches/jobs.json
+      review_jobs:
+      - batch_id: B01
+        batch_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/batches/B01.json
+        repo_root: /Users/omjogani/Projects/stage2-kit
+      - batch_id: B02
+        batch_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/batches/B02.json
+        repo_root: /Users/omjogani/Projects/stage2-kit
+      - batch_id: B03
+        batch_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/batches/B03.json
+        repo_root: /Users/omjogani/Projects/stage2-kit
+      review_state: some
+      review_output: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-review/B1_4_om080jogani_20260928T185741849417Z_B1.4/review-final.json
+      review_outputs: null
+      reviews_map: null
+      report_path: null
+      validation_path: null
+      manifest_path: null
+      _branches:
+      - branch_id: B1
+        source_node: compile_t
+        status: done
+      item:
+        batch_id: B01
+        batch_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/batches/B01.json
+        repo_root: /Users/omjogani/Projects/stage2-kit
+    parent_node: review_fan
+    seed:
+      _userid: om080jogani
+      _timestamp: 20260928T183534379651Z
+      _run_descriptor: freight-recon
+      _flow_stem: freight-recon
+      _run_artefact_dir: factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z
+      _supervision: afk
+      _supervision_instructions: ''
+      invoices_dir: data/invoices
+      shipments_path: data/shipments.json
+      carriers_config: config/carriers.json
+      approved_store: rate-cards/approved
+      as_of_date: '2026-09-29'
+      publish_dir: .
+      documents_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/work/documents.json
+      lines_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/work/lines.jsonl
+      inventory_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/work/inventory.json
+      unknown_state: none
+      fallback_path: null
+      fallback_merged_path: null
+      compile_plan_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/compile/compile-jobs.json
+      compile_jobs:
+      - card_schema_path: /Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json
+        carrier: alpine
+        carrier_name: Alpine Express Logistics
+        contract_file: alpine-express.md
+        contract_path: /Users/omjogani/Projects/stage2-kit/data/contracts/alpine-express.md
+        contract_sha256: caa39649f701795356f6545c0a6c86ea12b2037dc96080027bdf8f17801e6001
+        repo_root: /Users/omjogani/Projects/stage2-kit
+        vocabulary_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/compile/vocabulary.json
+      - card_schema_path: /Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json
+        carrier: falcon
+        carrier_name: Falcon Freight Pvt Ltd
+        contract_file: falcon-freight.md
+        contract_path: /Users/omjogani/Projects/stage2-kit/data/contracts/falcon-freight.md
+        contract_sha256: 6e37557aad7f22da8103e960de6807385088ff0f4bca6fe8da22726998233ca0
+        repo_root: /Users/omjogani/Projects/stage2-kit
+        vocabulary_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/compile/vocabulary.json
+      - card_schema_path: /Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json
+        carrier: sagar
+        carrier_name: Sagar Roadlines
+        contract_file: sagar-roadlines.md
+        contract_path: /Users/omjogani/Projects/stage2-kit/data/contracts/sagar-roadlines.md
+        contract_sha256: 43c3f2dfc4e0eade16e79d4924f4b83c8748dc1a06dfaf3bc2694369aaa5ad95
+        repo_root: /Users/omjogani/Projects/stage2-kit
+        vocabulary_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/compile/vocabulary.json
+      compile_result: null
+      compile_results:
+        B1.1: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-compile-rates/B1_1_om080jogani_20260928T183535232416Z_B1.1/compile-result.json
+        B1.2: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-compile-rates/B1_2_om080jogani_20260928T183535557157Z_B1.2/compile-result.json
+        B1.3: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-compile-rates/B1_3_om080jogani_20260928T183535881364Z_B1.3/compile-result.json
+      rates_report: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/rates/rates-report.json
+      rates_report_2: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/rates-recheck/rates-report.json
+      rates_verdict: ok
+      rates_decision: recheck
+      reconciled_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/reconciled.json
+      review_plan_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/batches/jobs.json
+      review_jobs:
+      - batch_id: B01
+        batch_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/batches/B01.json
+        repo_root: /Users/omjogani/Projects/stage2-kit
+      - batch_id: B02
+        batch_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/batches/B02.json
+        repo_root: /Users/omjogani/Projects/stage2-kit
+      - batch_id: B03
+        batch_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/batches/B03.json
+        repo_root: /Users/omjogani/Projects/stage2-kit
+      review_state: some
+      review_output: null
+      review_outputs: null
+      reviews_map: null
+      report_path: null
+      validation_path: null
+      manifest_path: null
+      _branches:
+      - branch_id: B1
+        source_node: compile_t
+        status: done
+      item:
+        batch_id: B01
+        batch_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/batches/B01.json
+        repo_root: /Users/omjogani/Projects/stage2-kit
+    next_child: 0
+  B1.5:
+    branch_id: B1.5
+    variables:
+      _userid: om080jogani
+      _timestamp: 20260928T183534379651Z
+      _run_descriptor: freight-recon
+      _flow_stem: freight-recon
+      _run_artefact_dir: factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z
+      _supervision: afk
+      _supervision_instructions: ''
+      invoices_dir: data/invoices
+      shipments_path: data/shipments.json
+      carriers_config: config/carriers.json
+      approved_store: rate-cards/approved
+      as_of_date: '2026-09-29'
+      publish_dir: .
+      documents_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/work/documents.json
+      lines_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/work/lines.jsonl
+      inventory_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/work/inventory.json
+      unknown_state: none
+      fallback_path: null
+      fallback_merged_path: null
+      compile_plan_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/compile/compile-jobs.json
+      compile_jobs:
+      - card_schema_path: /Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json
+        carrier: alpine
+        carrier_name: Alpine Express Logistics
+        contract_file: alpine-express.md
+        contract_path: /Users/omjogani/Projects/stage2-kit/data/contracts/alpine-express.md
+        contract_sha256: caa39649f701795356f6545c0a6c86ea12b2037dc96080027bdf8f17801e6001
+        repo_root: /Users/omjogani/Projects/stage2-kit
+        vocabulary_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/compile/vocabulary.json
+      - card_schema_path: /Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json
+        carrier: falcon
+        carrier_name: Falcon Freight Pvt Ltd
+        contract_file: falcon-freight.md
+        contract_path: /Users/omjogani/Projects/stage2-kit/data/contracts/falcon-freight.md
+        contract_sha256: 6e37557aad7f22da8103e960de6807385088ff0f4bca6fe8da22726998233ca0
+        repo_root: /Users/omjogani/Projects/stage2-kit
+        vocabulary_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/compile/vocabulary.json
+      - card_schema_path: /Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json
+        carrier: sagar
+        carrier_name: Sagar Roadlines
+        contract_file: sagar-roadlines.md
+        contract_path: /Users/omjogani/Projects/stage2-kit/data/contracts/sagar-roadlines.md
+        contract_sha256: 43c3f2dfc4e0eade16e79d4924f4b83c8748dc1a06dfaf3bc2694369aaa5ad95
+        repo_root: /Users/omjogani/Projects/stage2-kit
+        vocabulary_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/compile/vocabulary.json
+      compile_result: null
+      compile_results:
+        B1.1: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-compile-rates/B1_1_om080jogani_20260928T183535232416Z_B1.1/compile-result.json
+        B1.2: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-compile-rates/B1_2_om080jogani_20260928T183535557157Z_B1.2/compile-result.json
+        B1.3: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-compile-rates/B1_3_om080jogani_20260928T183535881364Z_B1.3/compile-result.json
+      rates_report: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/rates/rates-report.json
+      rates_report_2: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/rates-recheck/rates-report.json
+      rates_verdict: ok
+      rates_decision: recheck
+      reconciled_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/reconciled.json
+      review_plan_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/batches/jobs.json
+      review_jobs:
+      - batch_id: B01
+        batch_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/batches/B01.json
+        repo_root: /Users/omjogani/Projects/stage2-kit
+      - batch_id: B02
+        batch_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/batches/B02.json
+        repo_root: /Users/omjogani/Projects/stage2-kit
+      - batch_id: B03
+        batch_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/batches/B03.json
+        repo_root: /Users/omjogani/Projects/stage2-kit
+      review_state: some
+      review_output: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-review/B1_5_om080jogani_20260928T185743196239Z_B1.5/review-final.json
+      review_outputs: null
+      reviews_map: null
+      report_path: null
+      validation_path: null
+      manifest_path: null
+      _branches:
+      - branch_id: B1
+        source_node: compile_t
+        status: done
+      item:
+        batch_id: B02
+        batch_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/batches/B02.json
+        repo_root: /Users/omjogani/Projects/stage2-kit
+    parent_node: review_fan
+    seed:
+      _userid: om080jogani
+      _timestamp: 20260928T183534379651Z
+      _run_descriptor: freight-recon
+      _flow_stem: freight-recon
+      _run_artefact_dir: factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z
+      _supervision: afk
+      _supervision_instructions: ''
+      invoices_dir: data/invoices
+      shipments_path: data/shipments.json
+      carriers_config: config/carriers.json
+      approved_store: rate-cards/approved
+      as_of_date: '2026-09-29'
+      publish_dir: .
+      documents_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/work/documents.json
+      lines_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/work/lines.jsonl
+      inventory_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/work/inventory.json
+      unknown_state: none
+      fallback_path: null
+      fallback_merged_path: null
+      compile_plan_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/compile/compile-jobs.json
+      compile_jobs:
+      - card_schema_path: /Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json
+        carrier: alpine
+        carrier_name: Alpine Express Logistics
+        contract_file: alpine-express.md
+        contract_path: /Users/omjogani/Projects/stage2-kit/data/contracts/alpine-express.md
+        contract_sha256: caa39649f701795356f6545c0a6c86ea12b2037dc96080027bdf8f17801e6001
+        repo_root: /Users/omjogani/Projects/stage2-kit
+        vocabulary_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/compile/vocabulary.json
+      - card_schema_path: /Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json
+        carrier: falcon
+        carrier_name: Falcon Freight Pvt Ltd
+        contract_file: falcon-freight.md
+        contract_path: /Users/omjogani/Projects/stage2-kit/data/contracts/falcon-freight.md
+        contract_sha256: 6e37557aad7f22da8103e960de6807385088ff0f4bca6fe8da22726998233ca0
+        repo_root: /Users/omjogani/Projects/stage2-kit
+        vocabulary_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/compile/vocabulary.json
+      - card_schema_path: /Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json
+        carrier: sagar
+        carrier_name: Sagar Roadlines
+        contract_file: sagar-roadlines.md
+        contract_path: /Users/omjogani/Projects/stage2-kit/data/contracts/sagar-roadlines.md
+        contract_sha256: 43c3f2dfc4e0eade16e79d4924f4b83c8748dc1a06dfaf3bc2694369aaa5ad95
+        repo_root: /Users/omjogani/Projects/stage2-kit
+        vocabulary_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/compile/vocabulary.json
+      compile_result: null
+      compile_results:
+        B1.1: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-compile-rates/B1_1_om080jogani_20260928T183535232416Z_B1.1/compile-result.json
+        B1.2: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-compile-rates/B1_2_om080jogani_20260928T183535557157Z_B1.2/compile-result.json
+        B1.3: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-compile-rates/B1_3_om080jogani_20260928T183535881364Z_B1.3/compile-result.json
+      rates_report: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/rates/rates-report.json
+      rates_report_2: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/rates-recheck/rates-report.json
+      rates_verdict: ok
+      rates_decision: recheck
+      reconciled_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/reconciled.json
+      review_plan_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/batches/jobs.json
+      review_jobs:
+      - batch_id: B01
+        batch_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/batches/B01.json
+        repo_root: /Users/omjogani/Projects/stage2-kit
+      - batch_id: B02
+        batch_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/batches/B02.json
+        repo_root: /Users/omjogani/Projects/stage2-kit
+      - batch_id: B03
+        batch_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/batches/B03.json
+        repo_root: /Users/omjogani/Projects/stage2-kit
+      review_state: some
+      review_output: null
+      review_outputs: null
+      reviews_map: null
+      report_path: null
+      validation_path: null
+      manifest_path: null
+      _branches:
+      - branch_id: B1
+        source_node: compile_t
+        status: done
+      item:
+        batch_id: B02
+        batch_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/batches/B02.json
+        repo_root: /Users/omjogani/Projects/stage2-kit
+    next_child: 0
+  B1.6:
+    branch_id: B1.6
+    variables:
+      _userid: om080jogani
+      _timestamp: 20260928T183534379651Z
+      _run_descriptor: freight-recon
+      _flow_stem: freight-recon
+      _run_artefact_dir: factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z
+      _supervision: afk
+      _supervision_instructions: ''
+      invoices_dir: data/invoices
+      shipments_path: data/shipments.json
+      carriers_config: config/carriers.json
+      approved_store: rate-cards/approved
+      as_of_date: '2026-09-29'
+      publish_dir: .
+      documents_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/work/documents.json
+      lines_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/work/lines.jsonl
+      inventory_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/work/inventory.json
+      unknown_state: none
+      fallback_path: null
+      fallback_merged_path: null
+      compile_plan_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/compile/compile-jobs.json
+      compile_jobs:
+      - card_schema_path: /Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json
+        carrier: alpine
+        carrier_name: Alpine Express Logistics
+        contract_file: alpine-express.md
+        contract_path: /Users/omjogani/Projects/stage2-kit/data/contracts/alpine-express.md
+        contract_sha256: caa39649f701795356f6545c0a6c86ea12b2037dc96080027bdf8f17801e6001
+        repo_root: /Users/omjogani/Projects/stage2-kit
+        vocabulary_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/compile/vocabulary.json
+      - card_schema_path: /Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json
+        carrier: falcon
+        carrier_name: Falcon Freight Pvt Ltd
+        contract_file: falcon-freight.md
+        contract_path: /Users/omjogani/Projects/stage2-kit/data/contracts/falcon-freight.md
+        contract_sha256: 6e37557aad7f22da8103e960de6807385088ff0f4bca6fe8da22726998233ca0
+        repo_root: /Users/omjogani/Projects/stage2-kit
+        vocabulary_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/compile/vocabulary.json
+      - card_schema_path: /Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json
+        carrier: sagar
+        carrier_name: Sagar Roadlines
+        contract_file: sagar-roadlines.md
+        contract_path: /Users/omjogani/Projects/stage2-kit/data/contracts/sagar-roadlines.md
+        contract_sha256: 43c3f2dfc4e0eade16e79d4924f4b83c8748dc1a06dfaf3bc2694369aaa5ad95
+        repo_root: /Users/omjogani/Projects/stage2-kit
+        vocabulary_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/compile/vocabulary.json
+      compile_result: null
+      compile_results:
+        B1.1: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-compile-rates/B1_1_om080jogani_20260928T183535232416Z_B1.1/compile-result.json
+        B1.2: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-compile-rates/B1_2_om080jogani_20260928T183535557157Z_B1.2/compile-result.json
+        B1.3: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-compile-rates/B1_3_om080jogani_20260928T183535881364Z_B1.3/compile-result.json
+      rates_report: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/rates/rates-report.json
+      rates_report_2: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/rates-recheck/rates-report.json
+      rates_verdict: ok
+      rates_decision: recheck
+      reconciled_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/reconciled.json
+      review_plan_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/batches/jobs.json
+      review_jobs:
+      - batch_id: B01
+        batch_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/batches/B01.json
+        repo_root: /Users/omjogani/Projects/stage2-kit
+      - batch_id: B02
+        batch_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/batches/B02.json
+        repo_root: /Users/omjogani/Projects/stage2-kit
+      - batch_id: B03
+        batch_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/batches/B03.json
+        repo_root: /Users/omjogani/Projects/stage2-kit
+      review_state: some
+      review_output: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-review/B1_6_om080jogani_20260928T185744668855Z_B1.6/review-final.json
+      review_outputs: null
+      reviews_map: null
+      report_path: null
+      validation_path: null
+      manifest_path: null
+      _branches:
+      - branch_id: B1
+        source_node: compile_t
+        status: done
+      item:
+        batch_id: B03
+        batch_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/batches/B03.json
+        repo_root: /Users/omjogani/Projects/stage2-kit
+    parent_node: review_fan
+    seed:
+      _userid: om080jogani
+      _timestamp: 20260928T183534379651Z
+      _run_descriptor: freight-recon
+      _flow_stem: freight-recon
+      _run_artefact_dir: factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z
+      _supervision: afk
+      _supervision_instructions: ''
+      invoices_dir: data/invoices
+      shipments_path: data/shipments.json
+      carriers_config: config/carriers.json
+      approved_store: rate-cards/approved
+      as_of_date: '2026-09-29'
+      publish_dir: .
+      documents_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/work/documents.json
+      lines_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/work/lines.jsonl
+      inventory_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/work/inventory.json
+      unknown_state: none
+      fallback_path: null
+      fallback_merged_path: null
+      compile_plan_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/compile/compile-jobs.json
+      compile_jobs:
+      - card_schema_path: /Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json
+        carrier: alpine
+        carrier_name: Alpine Express Logistics
+        contract_file: alpine-express.md
+        contract_path: /Users/omjogani/Projects/stage2-kit/data/contracts/alpine-express.md
+        contract_sha256: caa39649f701795356f6545c0a6c86ea12b2037dc96080027bdf8f17801e6001
+        repo_root: /Users/omjogani/Projects/stage2-kit
+        vocabulary_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/compile/vocabulary.json
+      - card_schema_path: /Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json
+        carrier: falcon
+        carrier_name: Falcon Freight Pvt Ltd
+        contract_file: falcon-freight.md
+        contract_path: /Users/omjogani/Projects/stage2-kit/data/contracts/falcon-freight.md
+        contract_sha256: 6e37557aad7f22da8103e960de6807385088ff0f4bca6fe8da22726998233ca0
+        repo_root: /Users/omjogani/Projects/stage2-kit
+        vocabulary_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/compile/vocabulary.json
+      - card_schema_path: /Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json
+        carrier: sagar
+        carrier_name: Sagar Roadlines
+        contract_file: sagar-roadlines.md
+        contract_path: /Users/omjogani/Projects/stage2-kit/data/contracts/sagar-roadlines.md
+        contract_sha256: 43c3f2dfc4e0eade16e79d4924f4b83c8748dc1a06dfaf3bc2694369aaa5ad95
+        repo_root: /Users/omjogani/Projects/stage2-kit
+        vocabulary_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/compile/vocabulary.json
+      compile_result: null
+      compile_results:
+        B1.1: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-compile-rates/B1_1_om080jogani_20260928T183535232416Z_B1.1/compile-result.json
+        B1.2: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-compile-rates/B1_2_om080jogani_20260928T183535557157Z_B1.2/compile-result.json
+        B1.3: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-compile-rates/B1_3_om080jogani_20260928T183535881364Z_B1.3/compile-result.json
+      rates_report: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/rates/rates-report.json
+      rates_report_2: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/rates-recheck/rates-report.json
+      rates_verdict: ok
+      rates_decision: recheck
+      reconciled_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/reconciled.json
+      review_plan_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/batches/jobs.json
+      review_jobs:
+      - batch_id: B01
+        batch_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/batches/B01.json
+        repo_root: /Users/omjogani/Projects/stage2-kit
+      - batch_id: B02
+        batch_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/batches/B02.json
+        repo_root: /Users/omjogani/Projects/stage2-kit
+      - batch_id: B03
+        batch_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/batches/B03.json
+        repo_root: /Users/omjogani/Projects/stage2-kit
+      review_state: some
+      review_output: null
+      review_outputs: null
+      reviews_map: null
+      report_path: null
+      validation_path: null
+      manifest_path: null
+      _branches:
+      - branch_id: B1
+        source_node: compile_t
+        status: done
+      item:
+        batch_id: B03
+        batch_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/batches/B03.json
+        repo_root: /Users/omjogani/Projects/stage2-kit
+    next_child: 0
+events:
+- t: '2026-09-28T18:35:34Z'
+  kind: run_started
+  by: om080jogani
+- t: '2026-09-28T18:35:34Z'
+  kind: node_entered
+  node: ingest
+- t: '2026-09-28T18:35:34Z'
+  kind: script_node_ran
+  node: ingest
+  exit_code: 0
+- t: '2026-09-28T18:35:34Z'
+  kind: validation_passed
+  node: ingest
+  agent_session_id: null
+- t: '2026-09-28T18:35:34Z'
+  kind: branch_auto_resolved
+  node: ingest
+  chose: plan_compile
+- t: '2026-09-28T18:35:34Z'
+  kind: node_entered
+  node: plan_compile
+- t: '2026-09-28T18:35:34Z'
+  kind: script_node_ran
+  node: plan_compile
+  exit_code: 0
+- t: '2026-09-28T18:35:34Z'
+  kind: validation_passed
+  node: plan_compile
+  agent_session_id: null
+- t: '2026-09-28T18:35:34Z'
+  kind: node_entered
+  node: compile_fan
+- t: '2026-09-28T18:35:34Z'
+  kind: dynamic_fanout
+  node: compile_fan
+  count: 3
+  source: compile_jobs
+  branch_ids:
+  - B1.1
+  - B1.2
+  - B1.3
+- t: '2026-09-28T18:46:11Z'
+  kind: reducer_fired
+  node: compile_join
+  branch_id: B1.3
+  output_keys:
+  - compile_results
+- t: '2026-09-28T18:47:29Z'
+  kind: reducer_fired
+  node: compile_join
+  branch_id: B1.2
+  output_keys:
+  - compile_results
+- t: '2026-09-28T18:51:43Z'
+  kind: reducer_fired
+  node: compile_join
+  branch_id: B1.1
+  output_keys:
+  - compile_results
+- t: '2026-09-28T18:51:43Z'
+  kind: join_ready_to_fire_after_fanout
+  join: compile_join
+  fanout: compile_fan
+- t: '2026-09-28T18:51:52Z'
+  kind: dynamic_fanout_complete
+  node: compile_fan
+  branches:
+  - B1.1
+  - B1.2
+  - B1.3
+  errored_branches: []
+- t: '2026-09-28T18:51:52Z'
+  kind: subflow_template_passthrough
+  node: compile_t
+- t: '2026-09-28T18:51:52Z'
+  kind: join_fired
+  join: compile_join
+  downstream: rates_check
+  errored_branches: []
+- t: '2026-09-28T18:51:52Z'
+  kind: script_node_ran
+  node: rates_check
+  exit_code: 0
+- t: '2026-09-28T18:51:52Z'
+  kind: validation_passed
+  node: rates_check
+  agent_session_id: null
+- t: '2026-09-28T18:51:53Z'
+  kind: branch_auto_resolved
+  node: rates_check
+  chose: rates_hold
+- t: '2026-09-28T18:51:53Z'
+  kind: node_entered
+  node: rates_hold
+- t: '2026-09-28T18:57:22Z'
+  kind: rates_decision
+  node: rates_hold
+  message: Om Jogani approved the alpine, falcon and sagar rate cards after the orchestrator
+    verified each rule against its contract clause and confirmed both agent extractions
+    and an independent hand reading agree; snapshots written to rate-cards/approved
+- t: '2026-09-28T18:57:22Z'
+  kind: var_set
+  name: rates_decision
+  node: null
+  branch_id: null
+  value_preview: recheck
+- t: '2026-09-28T18:57:22Z'
+  kind: node_completed_inline
+  node: rates_hold
+- t: '2026-09-28T18:57:29Z'
+  kind: branch_auto_resolved
+  node: rates_hold
+  chose: rates_recheck
+- t: '2026-09-28T18:57:29Z'
+  kind: node_entered
+  node: rates_recheck
+- t: '2026-09-28T18:57:29Z'
+  kind: script_node_ran
+  node: rates_recheck
+  exit_code: 0
+- t: '2026-09-28T18:57:29Z'
+  kind: validation_passed
+  node: rates_recheck
+  agent_session_id: null
+- t: '2026-09-28T18:57:29Z'
+  kind: branch_auto_resolved
+  node: rates_recheck
+  chose: reconcile
+- t: '2026-09-28T18:57:29Z'
+  kind: node_entered
+  node: reconcile
+- t: '2026-09-28T18:57:30Z'
+  kind: script_node_ran
+  node: reconcile
+  exit_code: 0
+- t: '2026-09-28T18:57:30Z'
+  kind: validation_passed
+  node: reconcile
+  agent_session_id: null
+- t: '2026-09-28T18:57:30Z'
+  kind: node_entered
+  node: plan_review
+- t: '2026-09-28T18:57:31Z'
+  kind: script_node_ran
+  node: plan_review
+  exit_code: 0
+- t: '2026-09-28T18:57:31Z'
+  kind: validation_passed
+  node: plan_review
+  agent_session_id: null
+- t: '2026-09-28T18:57:31Z'
+  kind: branch_auto_resolved
+  node: plan_review
+  chose: review_fan
+- t: '2026-09-28T18:57:31Z'
+  kind: node_entered
+  node: review_fan
+- t: '2026-09-28T18:57:40Z'
+  kind: dynamic_fanout
+  node: review_fan
+  count: 3
+  source: review_jobs
+  branch_ids:
+  - B1.4
+  - B1.5
+  - B1.6
+- t: '2026-09-28T18:59:27Z'
+  kind: reducer_fired
+  node: review_join
+  branch_id: B1.4
+  output_keys:
+  - review_outputs
+- t: '2026-09-28T18:59:28Z'
+  kind: reducer_fired
+  node: review_join
+  branch_id: B1.5
+  output_keys:
+  - review_outputs
+- t: '2026-09-28T18:59:28Z'
+  kind: reducer_fired
+  node: review_join
+  branch_id: B1.6
+  output_keys:
+  - review_outputs
+- t: '2026-09-28T18:59:28Z'
+  kind: join_ready_to_fire_after_fanout
+  join: review_join
+  fanout: review_fan
+- t: '2026-09-28T18:59:35Z'
+  kind: dynamic_fanout_complete
+  node: review_fan
+  branches:
+  - B1.4
+  - B1.5
+  - B1.6
+  errored_branches: []
+- t: '2026-09-28T18:59:35Z'
+  kind: subflow_template_passthrough
+  node: review_t
+- t: '2026-09-28T18:59:35Z'
+  kind: join_fired
+  join: review_join
+  downstream: review_check
+  errored_branches: []
+- t: '2026-09-28T18:59:36Z'
+  kind: script_node_ran
+  node: review_check
+  exit_code: 0
+- t: '2026-09-28T18:59:36Z'
+  kind: validation_passed
+  node: review_check
+  agent_session_id: null
+- t: '2026-09-28T18:59:36Z'
+  kind: node_entered
+  node: assemble
+- t: '2026-09-28T18:59:37Z'
+  kind: script_node_ran
+  node: assemble
+  exit_code: 0
+- t: '2026-09-28T18:59:37Z'
+  kind: validation_passed
+  node: assemble
+  agent_session_id: null
+- t: '2026-09-28T18:59:37Z'
+  kind: node_entered
+  node: validate_report
+- t: '2026-09-28T18:59:37Z'
+  kind: script_node_ran
+  node: validate_report
+  exit_code: 0
+- t: '2026-09-28T18:59:37Z'
+  kind: validation_passed
+  node: validate_report
+  agent_session_id: null
+- t: '2026-09-28T18:59:38Z'
+  kind: node_entered
+  node: publish
+- t: '2026-09-28T18:59:38Z'
+  kind: script_node_ran
+  node: publish
+  exit_code: 0
+- t: '2026-09-28T18:59:38Z'
+  kind: validation_passed
+  node: publish
+  agent_session_id: null
+- t: '2026-09-28T18:59:38Z'
+  kind: run_completed

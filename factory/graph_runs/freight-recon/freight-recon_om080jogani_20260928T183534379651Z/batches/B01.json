@@ -1,0 +1,155 @@
+{
+  "as_of_date": "2026-09-29",
+  "batch_id": "B01",
+  "carrier": "alpine",
+  "items": [
+    {
+      "billed_amount": "475.00",
+      "billed_components": [
+        {
+          "amount": "475.00",
+          "derived": true,
+          "kind": "freight",
+          "label": "freight (chargeable_weight_kg x rate_per_kg)"
+        }
+      ],
+      "candidates": [],
+      "carrier": "alpine",
+      "clause_texts": {
+        "§2": "Rates: - consignments **under 50 kg**: ₹9.50 per kg of chargeable weight - consignments **over 50 kg**: ₹8.25 per kg of chargeable weight"
+      },
+      "consignment_ref": "AE-3005",
+      "contract_breakdown": null,
+      "contract_clause": "alpine-express.md §2",
+      "delta": null,
+      "dispute_window": null,
+      "expected_amount": null,
+      "findings": [
+        {
+          "amount": null,
+          "clause": "§2",
+          "code": "CONTRACT_GAP",
+          "detail": "50.0 kg (chargeable weight) falls between the bands the contract defines (<50 kg; >50 kg)"
+        }
+      ],
+      "invoice": "ALPINE-0726",
+      "item_id": "ALPINE-0726#5",
+      "kind": "line",
+      "memo_file": "ALPINE-0726__5.md",
+      "notes": [
+        "Candidate amounts under the adjacent contract bands: ₹475.00 at ₹9.50/unit (<50 kg); ₹412.50 at ₹8.25/unit (>50 kg)."
+      ],
+      "policy_disposition": "escalate",
+      "printed": {
+        "booking_date": "2026-07-06",
+        "chargeable_weight_kg": "50.0",
+        "handling_fee": "0",
+        "rate_per_kg": "9.5",
+        "weight_kg": "50.0"
+      },
+      "required_figures": [
+        "475.00"
+      ],
+      "resolved_findings": [],
+      "shipment": {
+        "billed_weight_kg": 50.0,
+        "carrier_consignment_ref": "AE-3005",
+        "delivered_at": "2026-07-08",
+        "delivery_status": "delivered",
+        "distance_km": 570,
+        "service_level": "standard",
+        "ship_date": "2026-07-06",
+        "shipment_id": "SH-4111",
+        "special_handling": []
+      },
+      "shipment_id": "SH-4111"
+    },
+    {
+      "billed_amount": "475.00",
+      "billed_components": [
+        {
+          "amount": "475.00",
+          "derived": true,
+          "kind": "freight",
+          "label": "freight (chargeable_weight_kg x rate_per_kg)"
+        }
+      ],
+      "candidates": [],
+      "carrier": "alpine",
+      "clause_texts": {
+        "§2": "Rates: - consignments **under 50 kg**: ₹9.50 per kg of chargeable weight - consignments **over 50 kg**: ₹8.25 per kg of chargeable weight"
+      },
+      "consignment_ref": "AE-3092",
+      "contract_breakdown": null,
+      "contract_clause": "alpine-express.md §2",
+      "delta": null,
+      "dispute_window": null,
+      "expected_amount": null,
+      "findings": [
+        {
+          "amount": null,
+          "clause": "§2",
+          "code": "CONTRACT_GAP",
+          "detail": "50.0 kg (chargeable weight) falls between the bands the contract defines (<50 kg; >50 kg)"
+        }
+      ],
+      "invoice": "ALPINE-0926",
+      "item_id": "ALPINE-0926#17",
+      "kind": "line",
+      "memo_file": "ALPINE-0926__17.md",
+      "notes": [
+        "Candidate amounts under the adjacent contract bands: ₹475.00 at ₹9.50/unit (<50 kg); ₹412.50 at ₹8.25/unit (>50 kg)."
+      ],
+      "policy_disposition": "escalate",
+      "printed": {
+        "booking_date": "2026-09-18",
+        "chargeable_weight_kg": "50.0",
+        "handling_fee": "0",
+        "rate_per_kg": "9.5",
+        "weight_kg": "50.0"
+      },
+      "required_figures": [
+        "475.00"
+      ],
+      "resolved_findings": [],
+      "shipment": {
+        "billed_weight_kg": 50.0,
+        "carrier_consignment_ref": "AE-3092",
+        "delivered_at": "2026-09-20",
+        "delivery_status": "delivered",
+        "distance_km": 330,
+        "service_level": "standard",
+        "ship_date": "2026-09-18",
+        "shipment_id": "SH-4198",
+        "special_handling": []
+      },
+      "shipment_id": "SH-4198"
+    },
+    {
+      "amount_impact": "1007.46",
+      "carrier": "alpine",
+      "clause_texts": {
+        "§5": "In any calendar month in which the Customer tenders **more than 12 consignments**, the Carrier will apply a **5% discount to the invoice total** for that month's invoice."
+      },
+      "code": "MISSING_DISCOUNT",
+      "consignment_ref": null,
+      "contract_clause": "alpine-express.md §5",
+      "description": "volume discount not applied in full: 40 consignments tendered in 2026-07; 5% of the expected subtotal ₹20,149.26 is ₹1,007.46, billed discount ₹0.00",
+      "dispute_window": null,
+      "invoice": "ALPINE-0726",
+      "invoice_notes": [
+        "40 consignments tendered in 2026-07 (more than 12): 5% volume discount applies (alpine-express.md §5). Expected discount ₹1,007.46 on determinable lines; ₹1,028.09 to ₹1,031.21 once ALPINE-0726#5 is settled; billed ₹0.00."
+      ],
+      "item_id": "ALPINE-0726#missing_discount",
+      "kind": "invoice_finding",
+      "memo_file": "ALPINE-0726__missing_discount.md",
+      "notes": [
+        "A further ₹20.63 to ₹23.75 depends on ALPINE-0726#5, which is escalated separately."
+      ],
+      "policy_disposition": "dispute",
+      "required_figures": [
+        "1007.46"
+      ]
+    }
+  ]
+}

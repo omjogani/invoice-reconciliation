@@ -1,0 +1,603 @@
+{
+  "as_of_date": "2026-09-29",
+  "batch_id": "B02",
+  "carrier": "falcon",
+  "items": [
+    {
+      "billed_amount": "22704.00",
+      "billed_components": [
+        {
+          "amount": "1200.00",
+          "kind": "accessorial",
+          "label": "Detention charge at consignee"
+        },
+        {
+          "amount": "21504.00",
+          "kind": "freight",
+          "label": "Freight incl. fuel surcharge"
+        }
+      ],
+      "candidates": [],
+      "carrier": "falcon",
+      "clause_texts": {
+        "§1": "Base freight is charged **per kilometre of the booked lane distance**, according to the consignment's billed weight: - up to and including 500 kg: **₹18.00 per km** - 501 kg to 2,000 kg: **₹24.00 per km** Consignments above 2,000 kg are quoted case by case and are outside this rate card.",
+        "§3": "A **fuel surcharge of 12%** applies to the freight charge (base freight plus express premium, where applicable).",
+        "§5": "No other accessorial charges are payable under this agreement. Any service outside this schedule requires the Customer's written agreement in advance, evidenced by a rate confirmation referencing this agreement."
+      },
+      "consignment_ref": "FF-8011",
+      "contract_breakdown": {
+        "accessorials": [],
+        "components": [
+          {
+            "amount": "19200.00",
+            "band": "≥501 kg and ≤2000 kg",
+            "basis": "per_km",
+            "label": "Base freight per km by billed weight",
+            "quantity": "800.00",
+            "rate": "24.00"
+          }
+        ],
+        "contract_amount": "21504.00",
+        "surcharges": [
+          {
+            "amount": "2304.00",
+            "base": "19200.00",
+            "label": "Fuel surcharge",
+            "pct": "12.00"
+          }
+        ]
+      },
+      "contract_clause": "falcon-freight.md §1, §3, §5",
+      "delta": "1200.00",
+      "dispute_window": {
+        "as_of": "2026-09-29",
+        "assumed": true,
+        "clause": "falcon-freight.md §7",
+        "closes": "2026-08-28",
+        "days": 45,
+        "days_left": -32,
+        "invoice_date": "2026-07-14",
+        "status": "closed"
+      },
+      "expected_amount": "21504.00",
+      "findings": [
+        {
+          "amount": "1200.00",
+          "clause": "§5",
+          "code": "UNAUTHORISED_ACCESSORIAL",
+          "detail": "Detention charge at consignee ₹1,200.00 is not a charge the contract allows"
+        }
+      ],
+      "invoice": "FALCON-2026-07A",
+      "item_id": "FALCON-2026-07A#11",
+      "kind": "line",
+      "memo_file": "FALCON-2026-07A__11.md",
+      "notes": [
+        "Dispute window (falcon-freight.md §7): 45 days from invoice date; closes 2026-08-28 if the invoice is dated 2026-07-14 (end of billing period, assumed: the invoice date is not printed)."
+      ],
+      "policy_disposition": "dispute",
+      "printed": {
+        "destination": "Bengaluru",
+        "distance_km": "800",
+        "origin": "Mumbai",
+        "service_level": "standard",
+        "weight_kg": "700"
+      },
+      "required_figures": [
+        "1200.00"
+      ],
+      "resolved_findings": [],
+      "shipment": {
+        "billed_weight_kg": 700,
+        "carrier_consignment_ref": "FF-8011",
+        "delivered_at": "2026-07-14",
+        "delivery_status": "delivered",
+        "distance_km": 800,
+        "service_level": "standard",
+        "ship_date": "2026-07-12",
+        "shipment_id": "SH-4011",
+        "special_handling": []
+      },
+      "shipment_id": "SH-4011"
+    },
+    {
+      "billed_amount": "7392.00",
+      "billed_components": [
+        {
+          "amount": "7392.00",
+          "kind": "freight",
+          "label": "Freight incl. fuel surcharge"
+        }
+      ],
+      "candidates": [],
+      "carrier": "falcon",
+      "clause_texts": {
+        "§1": "Base freight is charged **per kilometre of the booked lane distance**, according to the consignment's billed weight: - up to and including 500 kg: **₹18.00 per km** - 501 kg to 2,000 kg: **₹24.00 per km** Consignments above 2,000 kg are quoted case by case and are outside this rate card.",
+        "§3": "A **fuel surcharge of 12%** applies to the freight charge (base freight plus express premium, where applicable)."
+      },
+      "consignment_ref": "FF-8003",
+      "contract_breakdown": {
+        "accessorials": [],
+        "components": [
+          {
+            "amount": "6600.00",
+            "band": "≥501 kg and ≤2000 kg",
+            "basis": "per_km",
+            "label": "Base freight per km by billed weight",
+            "quantity": "275.00",
+            "rate": "24.00"
+          }
+        ],
+        "contract_amount": "7392.00",
+        "surcharges": [
+          {
+            "amount": "792.00",
+            "base": "6600.00",
+            "label": "Fuel surcharge",
+            "pct": "12.00"
+          }
+        ]
+      },
+      "contract_clause": "falcon-freight.md §1, §3",
+      "delta": "7392.00",
+      "dispute_window": {
+        "as_of": "2026-09-29",
+        "assumed": true,
+        "clause": "falcon-freight.md §7",
+        "closes": "2026-09-13",
+        "days": 45,
+        "days_left": -16,
+        "invoice_date": "2026-07-30",
+        "status": "closed"
+      },
+      "expected_amount": "0.00",
+      "findings": [
+        {
+          "amount": null,
+          "clause": null,
+          "code": "OUT_OF_PERIOD",
+          "detail": "shipped 2026-07-04, invoice period 2026-07-15 to 2026-07-30"
+        },
+        {
+          "amount": "7392.00",
+          "clause": "§1",
+          "code": "DUPLICATE_BILLING",
+          "detail": "FF-8003 is already billed on FALCON-2026-07A line 3 with identical details; one booking is charged once"
+        }
+      ],
+      "invoice": "FALCON-2026-07B",
+      "item_id": "FALCON-2026-07B#8",
+      "kind": "line",
+      "memo_file": "FALCON-2026-07B__8.md",
+      "notes": [
+        "Dispute window (falcon-freight.md §7): 45 days from invoice date; closes 2026-09-13 if the invoice is dated 2026-07-30 (end of billing period, assumed: the invoice date is not printed)."
+      ],
+      "policy_disposition": "dispute",
+      "printed": {
+        "destination": "Kolhapur",
+        "distance_km": "275",
+        "origin": "Pune",
+        "service_level": "standard",
+        "weight_kg": "900"
+      },
+      "required_figures": [
+        "7392.00"
+      ],
+      "resolved_findings": [],
+      "shipment": {
+        "billed_weight_kg": 900,
+        "carrier_consignment_ref": "FF-8003",
+        "delivered_at": "2026-07-06",
+        "delivery_status": "delivered",
+        "distance_km": 275,
+        "service_level": "standard",
+        "ship_date": "2026-07-04",
+        "shipment_id": "SH-4003",
+        "special_handling": []
+      },
+      "shipment_id": "SH-4003"
+    },
+    {
+      "billed_amount": "4968.00",
+      "billed_components": [
+        {
+          "amount": "4968.00",
+          "kind": "freight",
+          "label": "Freight incl. fuel surcharge"
+        }
+      ],
+      "candidates": [],
+      "carrier": "falcon",
+      "clause_texts": {
+        "§1": "Base freight is charged **per kilometre of the booked lane distance**, according to the consignment's billed weight: - up to and including 500 kg: **₹18.00 per km** - 501 kg to 2,000 kg: **₹24.00 per km** Consignments above 2,000 kg are quoted case by case and are outside this rate card.",
+        "§3": "A **fuel surcharge of 12%** applies to the freight charge (base freight plus express premium, where applicable)."
+      },
+      "consignment_ref": "FF-8057",
+      "contract_breakdown": {
+        "accessorials": [],
+        "components": [
+          {
+            "amount": "4320.00",
+            "band": "≥501 kg and ≤2000 kg",
+            "basis": "per_km",
+            "label": "Base freight per km by billed weight",
+            "quantity": "180.00",
+            "rate": "24.00"
+          }
+        ],
+        "contract_amount": "4838.40",
+        "surcharges": [
+          {
+            "amount": "518.40",
+            "base": "4320.00",
+            "label": "Fuel surcharge",
+            "pct": "12.00"
+          }
+        ]
+      },
+      "contract_clause": "falcon-freight.md §1, §3",
+      "delta": "129.60",
+      "dispute_window": {
+        "as_of": "2026-09-29",
+        "assumed": true,
+        "clause": "falcon-freight.md §7",
+        "closes": "2026-10-14",
+        "days": 45,
+        "days_left": 15,
+        "invoice_date": "2026-08-30",
+        "status": "open"
+      },
+      "expected_amount": "4838.40",
+      "findings": [
+        {
+          "amount": "129.60",
+          "clause": "§1, §3",
+          "code": "RATE_MISMATCH",
+          "detail": "billed ₹4,968.00 against a contract amount of ₹4,838.40"
+        }
+      ],
+      "invoice": "FALCON-2026-08B",
+      "item_id": "FALCON-2026-08B#4",
+      "kind": "line",
+      "memo_file": "FALCON-2026-08B__4.md",
+      "notes": [
+        "Dispute window (falcon-freight.md §7): 45 days from invoice date; closes 2026-10-14 if the invoice is dated 2026-08-30 (end of billing period, assumed: the invoice date is not printed)."
+      ],
+      "policy_disposition": "dispute",
+      "printed": {
+        "destination": "Mumbai",
+        "distance_km": "180",
+        "origin": "Pune",
+        "service_level": "standard",
+        "weight_kg": "1800"
+      },
+      "required_figures": [
+        "129.60"
+      ],
+      "resolved_findings": [],
+      "shipment": {
+        "billed_weight_kg": 1800,
+        "carrier_consignment_ref": "FF-8057",
+        "delivered_at": "2026-08-22",
+        "delivery_status": "delivered",
+        "distance_km": 180,
+        "service_level": "standard",
+        "ship_date": "2026-08-20",
+        "shipment_id": "SH-4057",
+        "special_handling": []
+      },
+      "shipment_id": "SH-4057"
+    },
+    {
+      "billed_amount": "7901.20",
+      "billed_components": [
+        {
+          "amount": "250.00",
+          "kind": "accessorial",
+          "label": "Residential delivery"
+        },
+        {
+          "amount": "1200.00",
+          "kind": "accessorial",
+          "label": "Detention charge at consignee"
+        },
+        {
+          "amount": "6451.20",
+          "kind": "freight",
+          "label": "Freight incl. fuel surcharge"
+        }
+      ],
+      "candidates": [],
+      "carrier": "falcon",
+      "clause_texts": {
+        "§1": "Base freight is charged **per kilometre of the booked lane distance**, according to the consignment's billed weight: - up to and including 500 kg: **₹18.00 per km** - 501 kg to 2,000 kg: **₹24.00 per km** Consignments above 2,000 kg are quoted case by case and are outside this rate card.",
+        "§3": "A **fuel surcharge of 12%** applies to the freight charge (base freight plus express premium, where applicable).",
+        "§4": "**Residential delivery** (consignee address is a residence, or the booking is flagged residential): **₹250.00 flat per consignment**.",
+        "§5": "No other accessorial charges are payable under this agreement. Any service outside this schedule requires the Customer's written agreement in advance, evidenced by a rate confirmation referencing this agreement."
+      },
+      "consignment_ref": "FF-8067",
+      "contract_breakdown": {
+        "accessorials": [
+          {
+            "amount": "250.00",
+            "label": "Residential delivery"
+          }
+        ],
+        "components": [
+          {
+            "amount": "5760.00",
+            "band": "≥501 kg and ≤2000 kg",
+            "basis": "per_km",
+            "label": "Base freight per km by billed weight",
+            "quantity": "240.00",
+            "rate": "24.00"
+          }
+        ],
+        "contract_amount": "6701.20",
+        "surcharges": [
+          {
+            "amount": "691.20",
+            "base": "5760.00",
+            "label": "Fuel surcharge",
+            "pct": "12.00"
+          }
+        ]
+      },
+      "contract_clause": "falcon-freight.md §1, §3, §4, §5",
+      "delta": "1200.00",
+      "dispute_window": {
+        "as_of": "2026-09-29",
+        "assumed": true,
+        "clause": "falcon-freight.md §7",
+        "closes": "2026-10-14",
+        "days": 45,
+        "days_left": 15,
+        "invoice_date": "2026-08-30",
+        "status": "open"
+      },
+      "expected_amount": "6701.20",
+      "findings": [
+        {
+          "amount": "1200.00",
+          "clause": "§5",
+          "code": "UNAUTHORISED_ACCESSORIAL",
+          "detail": "Detention charge at consignee ₹1,200.00 is not a charge the contract allows"
+        }
+      ],
+      "invoice": "FALCON-2026-08B",
+      "item_id": "FALCON-2026-08B#14",
+      "kind": "line",
+      "memo_file": "FALCON-2026-08B__14.md",
+      "notes": [
+        "Dispute window (falcon-freight.md §7): 45 days from invoice date; closes 2026-10-14 if the invoice is dated 2026-08-30 (end of billing period, assumed: the invoice date is not printed)."
+      ],
+      "policy_disposition": "dispute",
+      "printed": {
+        "destination": "Nashik",
+        "distance_km": "240",
+        "origin": "Pune",
+        "service_level": "standard",
+        "weight_kg": "1800"
+      },
+      "required_figures": [
+        "1200.00"
+      ],
+      "resolved_findings": [],
+      "shipment": {
+        "billed_weight_kg": 1800,
+        "carrier_consignment_ref": "FF-8067",
+        "delivered_at": "2026-08-19",
+        "delivery_status": "delivered",
+        "distance_km": 240,
+        "service_level": "standard",
+        "ship_date": "2026-08-17",
+        "shipment_id": "SH-4067",
+        "special_handling": [
+          "residential"
+        ]
+      },
+      "shipment_id": "SH-4067"
+    },
+    {
+      "billed_amount": "14878.00",
+      "billed_components": [
+        {
+          "amount": "250.00",
+          "kind": "accessorial",
+          "label": "Residential delivery"
+        },
+        {
+          "amount": "14628.00",
+          "kind": "freight",
+          "label": "Freight incl. fuel surcharge"
+        }
+      ],
+      "candidates": [],
+      "carrier": "falcon",
+      "clause_texts": {
+        "§1": "Base freight is charged **per kilometre of the booked lane distance**, according to the consignment's billed weight: - up to and including 500 kg: **₹18.00 per km** - 501 kg to 2,000 kg: **₹24.00 per km** Consignments above 2,000 kg are quoted case by case and are outside this rate card.",
+        "§3": "A **fuel surcharge of 12%** applies to the freight charge (base freight plus express premium, where applicable).",
+        "§4": "**Residential delivery** (consignee address is a residence, or the booking is flagged residential): **₹250.00 flat per consignment**."
+      },
+      "consignment_ref": "FF-8078",
+      "contract_breakdown": {
+        "accessorials": [
+          {
+            "amount": "250.00",
+            "label": "Residential delivery"
+          }
+        ],
+        "components": [
+          {
+            "amount": "12720.00",
+            "band": "≥501 kg and ≤2000 kg",
+            "basis": "per_km",
+            "label": "Base freight per km by billed weight",
+            "quantity": "530.00",
+            "rate": "24.00"
+          }
+        ],
+        "contract_amount": "14496.40",
+        "surcharges": [
+          {
+            "amount": "1526.40",
+            "base": "12720.00",
+            "label": "Fuel surcharge",
+            "pct": "12.00"
+          }
+        ]
+      },
+      "contract_clause": "falcon-freight.md §1, §3, §4",
+      "delta": "381.60",
+      "dispute_window": {
+        "as_of": "2026-09-29",
+        "assumed": true,
+        "clause": "falcon-freight.md §7",
+        "closes": "2026-10-29",
+        "days": 45,
+        "days_left": 30,
+        "invoice_date": "2026-09-14",
+        "status": "open"
+      },
+      "expected_amount": "14496.40",
+      "findings": [
+        {
+          "amount": "381.60",
+          "clause": "§1, §3, §4",
+          "code": "RATE_MISMATCH",
+          "detail": "billed ₹14,878.00 against a contract amount of ₹14,496.40"
+        }
+      ],
+      "invoice": "FALCON-2026-09A",
+      "item_id": "FALCON-2026-09A#7",
+      "kind": "line",
+      "memo_file": "FALCON-2026-09A__7.md",
+      "notes": [
+        "Dispute window (falcon-freight.md §7): 45 days from invoice date; closes 2026-10-29 if the invoice is dated 2026-09-14 (end of billing period, assumed: the invoice date is not printed)."
+      ],
+      "policy_disposition": "dispute",
+      "printed": {
+        "destination": "Ahmedabad",
+        "distance_km": "530",
+        "origin": "Mumbai",
+        "service_level": "standard",
+        "weight_kg": "1500"
+      },
+      "required_figures": [
+        "381.60"
+      ],
+      "resolved_findings": [],
+      "shipment": {
+        "billed_weight_kg": 1500,
+        "carrier_consignment_ref": "FF-8078",
+        "delivered_at": "2026-09-10",
+        "delivery_status": "delivered",
+        "distance_km": 530,
+        "service_level": "standard",
+        "ship_date": "2026-09-08",
+        "shipment_id": "SH-4078",
+        "special_handling": [
+          "residential"
+        ]
+      },
+      "shipment_id": "SH-4078"
+    },
+    {
+      "billed_amount": "4838.40",
+      "billed_components": [
+        {
+          "amount": "4838.40",
+          "kind": "freight",
+          "label": "Freight incl. fuel surcharge"
+        }
+      ],
+      "candidates": [],
+      "carrier": "falcon",
+      "clause_texts": {
+        "§1": "Base freight is charged **per kilometre of the booked lane distance**, according to the consignment's billed weight: - up to and including 500 kg: **₹18.00 per km** - 501 kg to 2,000 kg: **₹24.00 per km** Consignments above 2,000 kg are quoted case by case and are outside this rate card.",
+        "§3": "A **fuel surcharge of 12%** applies to the freight charge (base freight plus express premium, where applicable)."
+      },
+      "consignment_ref": "FF-8055",
+      "contract_breakdown": {
+        "accessorials": [],
+        "components": [
+          {
+            "amount": "4320.00",
+            "band": "≤500 kg",
+            "basis": "per_km",
+            "label": "Base freight per km by billed weight",
+            "quantity": "240.00",
+            "rate": "18.00"
+          }
+        ],
+        "contract_amount": "4838.40",
+        "surcharges": [
+          {
+            "amount": "518.40",
+            "base": "4320.00",
+            "label": "Fuel surcharge",
+            "pct": "12.00"
+          }
+        ]
+      },
+      "contract_clause": "falcon-freight.md §1, §3",
+      "delta": "4838.40",
+      "dispute_window": {
+        "as_of": "2026-09-29",
+        "assumed": true,
+        "clause": "falcon-freight.md §7",
+        "closes": "2026-10-29",
+        "days": 45,
+        "days_left": 30,
+        "invoice_date": "2026-09-14",
+        "status": "open"
+      },
+      "expected_amount": "0.00",
+      "findings": [
+        {
+          "amount": null,
+          "clause": null,
+          "code": "OUT_OF_PERIOD",
+          "detail": "shipped 2026-08-18, invoice period 2026-09-01 to 2026-09-14"
+        },
+        {
+          "amount": "4838.40",
+          "clause": "§1",
+          "code": "DUPLICATE_BILLING",
+          "detail": "FF-8055 is already billed on FALCON-2026-08B line 2 with identical details; one booking is charged once"
+        }
+      ],
+      "invoice": "FALCON-2026-09A",
+      "item_id": "FALCON-2026-09A#12",
+      "kind": "line",
+      "memo_file": "FALCON-2026-09A__12.md",
+      "notes": [
+        "Dispute window (falcon-freight.md §7): 45 days from invoice date; closes 2026-10-29 if the invoice is dated 2026-09-14 (end of billing period, assumed: the invoice date is not printed)."
+      ],
+      "policy_disposition": "dispute",
+      "printed": {
+        "destination": "Nashik",
+        "distance_km": "240",
+        "origin": "Pune",
+        "service_level": "standard",
+        "weight_kg": "260"
+      },
+      "required_figures": [
+        "4838.40"
+      ],
+      "resolved_findings": [],
+      "shipment": {
+        "billed_weight_kg": 260,
+        "carrier_consignment_ref": "FF-8055",
+        "delivered_at": "2026-08-20",
+        "delivery_status": "delivered",
+        "distance_km": 240,
+        "service_level": "standard",
+        "ship_date": "2026-08-18",
+        "shipment_id": "SH-4055",
+        "special_handling": []
+      },
+      "shipment_id": "SH-4055"
+    }
+  ]
+}

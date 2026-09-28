@@ -1,0 +1,27 @@
+{
+  "_session_id": "6a40cef0-c784-43f6-bf74-ce0e81d60feb",
+  "batch_id": "B01",
+  "items": [
+    {
+      "item_id": "ALPINE-0726#5",
+      "disposition": "escalate",
+      "raised_reason": null,
+      "justification": "The consignment's chargeable weight is exactly 50.0 kg, which falls between the two rate bands §2 defines (\"under 50 kg\" and \"over 50 kg\") without stating which one governs a shipment weighing exactly 50 kg. The contract text alone cannot settle which rate applies, so a person must decide.",
+      "memo_markdown": "# ALPINE-0726 · AE-3005\n\n**Disposition:** Escalate\n**Amount:** ₹475.00 billed amount, unresolved pending contract clarification\n**What happened:** The shipment's chargeable weight is exactly 50.0 kg. It was billed at ₹9.50/kg, the \"under 50 kg\" band, but the contract's two rate bands do not say which one governs a shipment weighing exactly 50 kg.\n**Contract basis:** §2 — \"consignments **under 50 kg**: ₹9.50 per kg of chargeable weight - consignments **over 50 kg**: ₹8.25 per kg of chargeable weight.\" Neither band explicitly covers exactly 50 kg.\n**Recommended action:** Ask the contract owner to clarify which band applies at exactly 50 kg. The candidate amounts under the adjacent bands are ₹475.00 (under-50kg rate) and ₹412.50 (over-50kg rate). Hold the line pending that clarification rather than accepting the billed amount."
+    },
+    {
+      "item_id": "ALPINE-0926#17",
+      "disposition": "escalate",
+      "raised_reason": null,
+      "justification": "The consignment's chargeable weight is exactly 50.0 kg, which falls between the two rate bands §2 defines (\"under 50 kg\" and \"over 50 kg\") without stating which one governs a shipment weighing exactly 50 kg. The contract text alone cannot settle which rate applies, so a person must decide.",
+      "memo_markdown": "# ALPINE-0926 · AE-3092\n\n**Disposition:** Escalate\n**Amount:** ₹475.00 billed amount, unresolved pending contract clarification\n**What happened:** The shipment's chargeable weight is exactly 50.0 kg. It was billed at ₹9.50/kg, the \"under 50 kg\" band, but the contract's two rate bands do not say which one governs a shipment weighing exactly 50 kg.\n**Contract basis:** §2 — \"consignments **under 50 kg**: ₹9.50 per kg of chargeable weight - consignments **over 50 kg**: ₹8.25 per kg of chargeable weight.\" Neither band explicitly covers exactly 50 kg.\n**Recommended action:** Ask the contract owner to clarify which band applies at exactly 50 kg. The candidate amounts under the adjacent bands are ₹475.00 (under-50kg rate) and ₹412.50 (over-50kg rate). Hold the line pending that clarification rather than accepting the billed amount."
+    },
+    {
+      "item_id": "ALPINE-0726#missing_discount",
+      "disposition": "dispute",
+      "raised_reason": null,
+      "justification": "Alpine tendered 40 consignments in 2026-07, exceeding the 12-consignment threshold in §5, which entitles BlueFin to a 5% discount on the invoice total for that month. The invoice was billed with no discount applied, so the carrier owes the shortfall on the determinable lines.",
+      "memo_markdown": "# ALPINE-0726 · Missing volume discount\n\n**Disposition:** Dispute\n**Amount:** ₹1,007.46 discount shortfall on determinable lines\n**What happened:** Alpine tendered 40 consignments in July 2026, well over the 12-consignment threshold that triggers a monthly invoice discount under §5. The invoice was billed with ₹0.00 discount applied instead of the required 5%.\n**Contract basis:** §5 — \"In any calendar month in which the Customer tenders more than 12 consignments, the Carrier will apply a 5% discount to the invoice total for that month's invoice.\"\n**Recommended action:** Bill Alpine for the missing discount of ₹1,007.46 on the determinable lines. A further amount depends on line ALPINE-0726#5, which is being escalated separately for a contract-gap rate question; once that line settles, the total discount owed may increase."
+    }
+  ]
+}

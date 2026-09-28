@@ -1,0 +1,280 @@
+{
+  "document_count": 17,
+  "files": [
+    {
+      "doc_id": "ALPINE-0726",
+      "file": "ALPINE-0726.json",
+      "format": "alpine-json-v1",
+      "sha256": "6caa3d9239c7db3c89589d267e5712f48249778a241736f1cef73a12f60409f3",
+      "status": "parsed",
+      "tie_out": {
+        "discount": "0.00",
+        "doc_id": "ALPINE-0726",
+        "line_count": 40,
+        "line_sum": "20624.26",
+        "passed": true,
+        "printed_total": "20624.26",
+        "problems": []
+      }
+    },
+    {
+      "doc_id": "ALPINE-0826",
+      "file": "ALPINE-0826.json",
+      "format": "alpine-json-v1",
+      "sha256": "aadd816330711614078e6f3802a192c6fadab364e14f1d2d6621ff36d57553d9",
+      "status": "parsed",
+      "tie_out": {
+        "discount": "878.88",
+        "doc_id": "ALPINE-0826",
+        "line_count": 35,
+        "line_sum": "17577.51",
+        "passed": true,
+        "printed_total": "16698.63",
+        "problems": []
+      }
+    },
+    {
+      "doc_id": "ALPINE-0926",
+      "file": "ALPINE-0926.json",
+      "format": "alpine-json-v1",
+      "sha256": "fc87fb3ac4e7ef40e3d5150b17d66184a58e7b665a291949265a5decf54f8371",
+      "status": "parsed",
+      "tie_out": {
+        "discount": "1163.76",
+        "doc_id": "ALPINE-0926",
+        "line_count": 45,
+        "line_sum": "23275.26",
+        "passed": true,
+        "printed_total": "22111.50",
+        "problems": []
+      }
+    },
+    {
+      "doc_id": "FALCON-2026-07A",
+      "file": "FALCON-2026-07A.txt",
+      "format": "falcon-text-v1",
+      "sha256": "a6fd4d0aa9183d1d2056ddf72852c99743b8b4d8951645d7db55e0389a8c53fd",
+      "status": "parsed",
+      "tie_out": {
+        "discount": "0.00",
+        "doc_id": "FALCON-2026-07A",
+        "line_count": 18,
+        "line_sum": "181637.60",
+        "passed": true,
+        "printed_total": "181637.60",
+        "problems": []
+      }
+    },
+    {
+      "doc_id": "FALCON-2026-07B",
+      "file": "FALCON-2026-07B.txt",
+      "format": "falcon-text-v1",
+      "sha256": "b9c3e94f945dc6c0616c255b6794cc9586fad156e0b2dc510104f1a81f35a5ef",
+      "status": "parsed",
+      "tie_out": {
+        "discount": "0.00",
+        "doc_id": "FALCON-2026-07B",
+        "line_count": 18,
+        "line_sum": "205527.20",
+        "passed": true,
+        "printed_total": "205527.20",
+        "problems": []
+      }
+    },
+    {
+      "doc_id": "FALCON-2026-08A",
+      "file": "FALCON-2026-08A.txt",
+      "format": "falcon-text-v1",
+      "sha256": "cbb45b3f4d96d8b721846e3915a836552643eb68161cced08d9f3d09e22eee65",
+      "status": "parsed",
+      "tie_out": {
+        "discount": "0.00",
+        "doc_id": "FALCON-2026-08A",
+        "line_count": 18,
+        "line_sum": "223059.68",
+        "passed": true,
+        "printed_total": "223059.68",
+        "problems": []
+      }
+    },
+    {
+      "doc_id": "FALCON-2026-08B",
+      "file": "FALCON-2026-08B.txt",
+      "format": "falcon-text-v1",
+      "sha256": "2399ea51d0320a3e2c5fd51e8ee57c3b8e9a73d6a3361fb64f2b811811c8cb07",
+      "status": "parsed",
+      "tie_out": {
+        "discount": "0.00",
+        "doc_id": "FALCON-2026-08B",
+        "line_count": 18,
+        "line_sum": "140564.00",
+        "passed": true,
+        "printed_total": "140564.00",
+        "problems": []
+      }
+    },
+    {
+      "doc_id": "FALCON-2026-09A",
+      "file": "FALCON-2026-09A.txt",
+      "format": "falcon-text-v1",
+      "sha256": "230cfbbfe96f4b3553e9406fd3a19065ac61fe9c43e517aeef9ef3becdf9d0a1",
+      "status": "parsed",
+      "tie_out": {
+        "discount": "0.00",
+        "doc_id": "FALCON-2026-09A",
+        "line_count": 18,
+        "line_sum": "175601.60",
+        "passed": true,
+        "printed_total": "175601.60",
+        "problems": []
+      }
+    },
+    {
+      "doc_id": "FALCON-2026-09B",
+      "file": "FALCON-2026-09B.txt",
+      "format": "falcon-text-v1",
+      "sha256": "48dabd9157ec7e074a0b8856061bc59fcff0156df1b3909e819039afd7bb95d9",
+      "status": "parsed",
+      "tie_out": {
+        "discount": "0.00",
+        "doc_id": "FALCON-2026-09B",
+        "line_count": 18,
+        "line_sum": "228079.52",
+        "passed": true,
+        "printed_total": "228079.52",
+        "problems": []
+      }
+    },
+    {
+      "doc_id": "FALCON-CN-01",
+      "file": "FALCON-CN-01.txt",
+      "format": "falcon-text-v1",
+      "sha256": "665f47549d16c4ceaeebc9c26d465bc281a5ad67e11e2388e9ae118af1c3ae98",
+      "status": "parsed",
+      "tie_out": {
+        "discount": "0.00",
+        "doc_id": "FALCON-CN-01",
+        "line_count": 1,
+        "line_sum": "-496.80",
+        "passed": true,
+        "printed_total": "-496.80",
+        "problems": []
+      }
+    },
+    {
+      "doc_id": "SAGAR-AUG-1",
+      "file": "SAGAR-AUG-1.csv",
+      "format": "sagar-csv-invoice-v1",
+      "sha256": "0fc64d9d7a6df6288c52ed5463b4b5d9eb413b416782bda1f9265fdf81d425c8",
+      "status": "parsed",
+      "tie_out": {
+        "discount": "0.00",
+        "doc_id": "SAGAR-AUG-1",
+        "line_count": 25,
+        "line_sum": "27140.00",
+        "passed": true,
+        "printed_total": "27140.00",
+        "problems": []
+      }
+    },
+    {
+      "doc_id": "SAGAR-AUG-2",
+      "file": "SAGAR-AUG-2.csv",
+      "format": "sagar-csv-invoice-v1",
+      "sha256": "dfcd68b41fc37f5ebbde62fd7011886f2d61627fd62640fbe743a4fa258a903c",
+      "status": "parsed",
+      "tie_out": {
+        "discount": "0.00",
+        "doc_id": "SAGAR-AUG-2",
+        "line_count": 25,
+        "line_sum": "28750.00",
+        "passed": true,
+        "printed_total": "28750.00",
+        "problems": []
+      }
+    },
+    {
+      "doc_id": "SAGAR-CN-01",
+      "file": "SAGAR-CN-01.csv",
+      "format": "sagar-csv-credit-v1",
+      "sha256": "78cf91337209cead12b9c40c00d314daa749668f6808b5cc0600aaeeb1c48e37",
+      "status": "parsed",
+      "tie_out": {
+        "discount": "0.00",
+        "doc_id": "SAGAR-CN-01",
+        "line_count": 1,
+        "line_sum": "-156.00",
+        "passed": true,
+        "printed_total": "-156.00",
+        "problems": []
+      }
+    },
+    {
+      "doc_id": "SAGAR-JUL-1",
+      "file": "SAGAR-JUL-1.csv",
+      "format": "sagar-csv-invoice-v1",
+      "sha256": "0a399c565061ce59af6100c280593cc7faeb85d8bcbbca68a293426e56ad83d0",
+      "status": "parsed",
+      "tie_out": {
+        "discount": "0.00",
+        "doc_id": "SAGAR-JUL-1",
+        "line_count": 25,
+        "line_sum": "30259.20",
+        "passed": true,
+        "printed_total": "30259.20",
+        "problems": []
+      }
+    },
+    {
+      "doc_id": "SAGAR-JUL-2",
+      "file": "SAGAR-JUL-2.csv",
+      "format": "sagar-csv-invoice-v1",
+      "sha256": "0c9f3b771ff821a5f72c7b582d7cb9845ca719e1fad7de34c99034b663380ae9",
+      "status": "parsed",
+      "tie_out": {
+        "discount": "0.00",
+        "doc_id": "SAGAR-JUL-2",
+        "line_count": 25,
+        "line_sum": "20556.00",
+        "passed": true,
+        "printed_total": "20556.00",
+        "problems": []
+      }
+    },
+    {
+      "doc_id": "SAGAR-SEP-1",
+      "file": "SAGAR-SEP-1.csv",
+      "format": "sagar-csv-invoice-v1",
+      "sha256": "085bc4248dae18d3abebda2acc30c8e37f5476f3166f017938ab88c88e770a80",
+      "status": "parsed",
+      "tie_out": {
+        "discount": "0.00",
+        "doc_id": "SAGAR-SEP-1",
+        "line_count": 25,
+        "line_sum": "25365.00",
+        "passed": true,
+        "printed_total": "25365.00",
+        "problems": []
+      }
+    },
+    {
+      "doc_id": "SAGAR-SEP-2",
+      "file": "SAGAR-SEP-2.csv",
+      "format": "sagar-csv-invoice-v1",
+      "sha256": "72d05bb6e9dd600666d2fed21b96222ddbf2938c483e707e18bd28b4181a6205",
+      "status": "parsed",
+      "tie_out": {
+        "discount": "0.00",
+        "doc_id": "SAGAR-SEP-2",
+        "line_count": 25,
+        "line_sum": "26612.00",
+        "passed": true,
+        "printed_total": "26612.00",
+        "problems": []
+      }
+    }
+  ],
+  "invoice_dir": "data/invoices",
+  "line_count": 380,
+  "unknown": []
+}

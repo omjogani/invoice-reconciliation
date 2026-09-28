@@ -1,0 +1,9 @@
+{
+  "agreed": true,
+  "card_a": "/Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-compile-rates/B1_2_om080jogani_20260928T183535557157Z_B1.2/card-a.json",
+  "card_b": "/Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-compile-rates/B1_2_om080jogani_20260928T183535557157Z_B1.2/card-b.json",
+  "carrier": "falcon",
+  "compare_report": "/Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-compile-rates/B1_2_om080jogani_20260928T183535557157Z_B1.2/compare-1.json",
+  "contract_file": "falcon-freight.md",
+  "run_dir": "/Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-compile-rates/B1_2_om080jogani_20260928T183535557157Z_B1.2"
+}

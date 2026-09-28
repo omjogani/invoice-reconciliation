@@ -1,0 +1,17 @@
+[
+  {
+    "batch_id": "B01",
+    "batch_path": "/Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/batches/B01.json",
+    "repo_root": "/Users/omjogani/Projects/stage2-kit"
+  },
+  {
+    "batch_id": "B02",
+    "batch_path": "/Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/batches/B02.json",
+    "repo_root": "/Users/omjogani/Projects/stage2-kit"
+  },
+  {
+    "batch_id": "B03",
+    "batch_path": "/Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/batches/B03.json",
+    "repo_root": "/Users/omjogani/Projects/stage2-kit"
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "agree": true,
+  "card_a": "/Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-compile-rates/B1_1_om080jogani_20260928T183535232416Z_B1.1/card-a.json",
+  "card_b": "/Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-compile-rates/B1_1_om080jogani_20260928T183535232416Z_B1.1/card-b.json",
+  "carrier": "alpine",
+  "contract_file": "alpine-express.md",
+  "differences": [],
+  "problems_a": [],
+  "problems_b": []
+}
