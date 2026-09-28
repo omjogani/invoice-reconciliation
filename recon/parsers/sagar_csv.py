@@ -60,8 +60,9 @@ def parse(path: Path, text: str, sha256: str) -> tuple[dict, list[dict]]:
             lines.append(make_line(
                 doc_id=doc_id, doc_type="invoice", carrier=CARRIER, position=position,
                 consignment_ref=row["cnote_no"], billed_total=parse_amount(row["total_rs"]),
-                billed_components=[{"label": "freight_rs", "amount": parse_amount(row["freight_rs"])},
-                                   {"label": "chill_prem_rs", "amount": parse_amount(row["chill_prem_rs"])}],
+                billed_components=[{"label": "freight_rs", "kind": "freight", "amount": parse_amount(row["freight_rs"])},
+                                   {"label": "chill_prem_rs", "kind": "surcharge",
+                                    "amount": parse_amount(row["chill_prem_rs"])}],
                 printed={"booking_date": row["booking_dt"], "weight_kg": row["wt_kg"],
                          "distance_km": row["dist_km"]},
                 source={"file": path.name, "line": n},

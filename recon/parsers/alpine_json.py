@@ -64,9 +64,9 @@ def parse(path: Path, text: str, sha256: str) -> tuple[dict, list[dict]]:
             raise ParseError(f"{path.name}: line {position} has sl={row['sl']}")
         chargeable, rate, handling = D(row["chargeable_weight_kg"]), D(row["rate_per_kg"]), D(row["handling_fee"])
         components = [{"label": "freight (chargeable_weight_kg x rate_per_kg)",
-                       "amount": q2(chargeable * rate), "derived": True}]
+                       "kind": "freight", "amount": q2(chargeable * rate), "derived": True}]
         if handling != 0:
-            components.append({"label": "handling_fee", "amount": handling})
+            components.append({"label": "handling_fee", "kind": "accessorial", "amount": handling})
         lines.append(make_line(
             doc_id=doc_id, doc_type="invoice", carrier=CARRIER, position=position,
             consignment_ref=row["consignment_no"], billed_total=D(row["line_amount"]),

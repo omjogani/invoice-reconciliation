@@ -80,7 +80,8 @@ class FalconTextTest(unittest.TestCase):
         second = lines[1]
         self.assertEqual(second["billed_total"], Decimal("22704.00"))
         self.assertEqual(second["billed_components"][0], {"label": "Detention charge at consignee",
-                                                           "amount": Decimal("1200.00")})
+                                                           "kind": "accessorial", "amount": Decimal("1200.00")})
+        self.assertEqual(second["billed_components"][1]["kind"], "freight")
         self.assertEqual(second["printed"]["service_level"], "express")
         self.assertEqual(second["printed"]["distance_km"], "800")
         self.assertEqual(second["source"], {"file": "x.txt", "line": 11})
@@ -118,6 +119,7 @@ class AlpineJsonTest(unittest.TestCase):
         self.assertEqual(freight["amount"], Decimal("589.88"))  # 71.5 x 8.25 = 589.875, half-up
         self.assertTrue(freight["derived"])
         self.assertEqual(handling["amount"], Decimal("150"))
+        self.assertEqual((freight["kind"], handling["kind"]), ("freight", "accessorial"))
         self.assertEqual(len(lines[0]["billed_components"]), 1)  # no zero handling component
 
 
@@ -131,6 +133,7 @@ class SagarCsvTest(unittest.TestCase):
         self.assertEqual(lines[1]["billed_total"], Decimal("570.00"))
         self.assertEqual([c["amount"] for c in lines[1]["billed_components"]],
                          [Decimal("530.00"), Decimal("0.00")])
+        self.assertEqual([c["kind"] for c in lines[1]["billed_components"]], ["freight", "surcharge"])
         self.assertEqual(lines[1]["source"]["line"], 3)
 
     def test_credit_note(self):

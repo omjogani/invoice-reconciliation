@@ -54,6 +54,26 @@ def _cmd_approve_rate_card(args: argparse.Namespace) -> int:
     return 0
 
 
+def _cmd_reconcile(args: argparse.Namespace) -> int:
+    from recon.model import read_json, read_jsonl, write_json
+    from recon.reconcile import ReconcileError, reconcile
+
+    work = Path(args.work)
+    try:
+        result = reconcile(read_json(work / "documents.json"), read_jsonl(work / "lines.jsonl"),
+                           read_json(args.shipments), read_json(args.cards))
+    except ReconcileError as exc:
+        print(f"reconcile failed: {exc}", file=sys.stderr)
+        return 2
+    write_json(args.out, result)
+    counts: dict[str, int] = {}
+    for line in result["lines"]:
+        counts[line["disposition"]] = counts.get(line["disposition"], 0) + 1
+    print(json.dumps({"lines": len(result["lines"]), "by_disposition": counts,
+                      "invoice_findings": len(result["invoice_findings"])}, sort_keys=True))
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="recon")
     sub = parser.add_subparsers(dest="command", required=True)
@@ -72,6 +92,13 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--store", default="rate-cards/approved", help="snapshot directory")
     p.add_argument("--replace", action="store_true", help="supersede an existing snapshot")
     p.set_defaults(func=_cmd_approve_rate_card)
+
+    p = sub.add_parser("reconcile", help="match, price and check every line (deterministic)")
+    p.add_argument("--work", required=True, help="directory holding documents.json and lines.jsonl")
+    p.add_argument("--shipments", required=True, help="shipments.json (ground truth)")
+    p.add_argument("--cards", required=True, help="JSON object {carrier: approved rate card}")
+    p.add_argument("--out", required=True, help="reconciled.json to write")
+    p.set_defaults(func=_cmd_reconcile)
 
     args = parser.parse_args(argv)
     return args.func(args)

@@ -103,7 +103,11 @@ def parse(path: Path, text: str, sha256: str) -> tuple[dict, list[dict]]:
             current["route"] = m.groupdict()
             continue
         if m := _COMPONENT.match(line):
-            current["components"].append({"label": m["label"].strip(),
+            label = m["label"].strip()
+            # Falcon prints freight (with fuel folded in) as one "Freight ..." line;
+            # anything else on a consignment is an accessorial charge.
+            kind = "freight" if "freight" in label.lower() else "accessorial"
+            current["components"].append({"label": label, "kind": kind,
                                           "amount": parse_amount(m["amount"].replace(" ", ""))})
             continue
         if doc_type == "credit_note":
