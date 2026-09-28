@@ -81,8 +81,16 @@ def _band_problems(path: str, bands: list[dict]) -> list[str]:
     return problems
 
 
+def strip_metadata(card: Any) -> Any:
+    """Drop worker metadata (``_session_id``) that is not part of the card."""
+    if isinstance(card, dict):
+        return {k: v for k, v in card.items() if not k.startswith("_")}
+    return card
+
+
 def check_card(card: Any, contract: Contract, carrier: str) -> list[str]:
     """Return every reason this card cannot be trusted (empty list = passes)."""
+    card = strip_metadata(card)
     problems = schema_problems(card)
     if problems:
         return problems

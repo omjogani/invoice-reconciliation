@@ -34,6 +34,9 @@ class SnapshotStore:
 
     def approve(self, card: dict, *, approved_by: str, approved_at: str, source_run: str,
                 replace: bool = False) -> Path:
+        from recon.ratecard import strip_metadata
+
+        card = strip_metadata(card)
         path = self.path_for(card["carrier"], card["contract_sha256"])
         if path.exists() and not replace:
             raise FileExistsError(f"{path} already exists; pass replace=True to supersede it")

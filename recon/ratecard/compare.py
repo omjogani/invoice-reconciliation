@@ -19,7 +19,8 @@ _DECIMAL = re.compile(r"^-?\d+(\.\d+)?$")
 
 def _canon(value: Any) -> Any:
     if isinstance(value, dict):
-        return {k: _canon(v) for k, v in sorted(value.items()) if k not in _IGNORED_KEYS}
+        return {k: _canon(v) for k, v in sorted(value.items())
+                if k not in _IGNORED_KEYS and not k.startswith("_")}
     if isinstance(value, list):
         return [_canon(v) for v in value]
     if isinstance(value, str) and _DECIMAL.match(value):
