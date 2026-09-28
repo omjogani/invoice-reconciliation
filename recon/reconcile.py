@@ -516,3 +516,27 @@ def _clause_no(ref: str) -> int:
 def reconcile(documents: list[dict], lines: list[dict], shipments: list[dict], cards: dict[str, dict]) -> dict:
     return Reconciler(documents, lines, shipments, cards).run()
 
+
+
+def load_reconciled(data: dict) -> dict:
+    """Restore exact Decimals in a reconciled.json read back from disk (amounts are stored as strings)."""
+    def dec(v):
+        return None if v is None else D(v)
+
+    for rec in data["lines"]:
+        for k in ("billed_total", "contract_amount", "expected", "delta", "base_expected"):
+            rec[k] = dec(rec.get(k))
+        for f in rec["findings"]:
+            f["amount"] = dec(f["amount"])
+        for a in rec["adjustments"]:
+            a["amount"] = dec(a["amount"])
+        for c in ((rec.get("pricing") or {}).get("candidates") or []):
+            c["amount"] = dec(c["amount"])
+    for f in data["invoice_findings"]:
+        f["amount_impact"] = dec(f["amount_impact"])
+    for s in data["documents"].values():
+        s["billed_discount"] = dec(s["billed_discount"])
+        s["expected_discount"] = dec(s["expected_discount"])
+        if s["discount_range"]:
+            s["discount_range"] = {k: dec(v) for k, v in s["discount_range"].items()}
+    return data

@@ -74,6 +74,137 @@ def _cmd_reconcile(args: argparse.Namespace) -> int:
     return 0
 
 
+def _contracts(carriers_config: str) -> dict[str, Path]:
+    from recon.model import read_json
+
+    root = Path(carriers_config).resolve().parents[1]
+    return {c["carrier"]: root / c["contract"] for c in read_json(carriers_config)["carriers"]}
+
+
+def _flowstate_var(name: str | None, value) -> None:
+    if name:
+        print(f"FLOWSTATE_OUTPUT_{name}=" + json.dumps(value, sort_keys=True))
+
+
+def _cmd_plan_review(args: argparse.Namespace) -> int:
+    from recon.model import read_json, write_json
+    from recon.reconcile import load_reconciled
+    from recon.review import plan_review
+
+    reconciled = load_reconciled(read_json(args.reconciled))
+    batches = plan_review(reconciled, _contracts(args.carriers), args.as_of, args.batch_size)
+    out = Path(args.out_dir)
+    jobs = []
+    for batch in batches:
+        path = out / f"{batch['batch_id']}.json"
+        write_json(path, batch)
+        jobs.append({"batch_id": batch["batch_id"], "batch_path": str(path.resolve()), "carrier": batch["carrier"],
+                     "item_count": str(len(batch["items"]))})
+    write_json(out / "jobs.json", jobs)
+    _flowstate_var(args.flowstate_var, jobs)
+    _flowstate_var(args.flowstate_count_var, "none" if not jobs else "some")
+    print(json.dumps({"batches": len(batches), "items": sum(len(b["items"]) for b in batches)}), file=sys.stderr)
+    return 0
+
+
+def _load_batches(batches_dir: str) -> list[dict]:
+    from recon.model import read_json
+
+    return [read_json(p) for p in sorted(Path(batches_dir).glob("B*.json"))]
+
+
+def _load_reviews(reviews_arg: str) -> dict[str, dict]:
+    """``--reviews`` is a JSON file mapping batch_id → review output path."""
+    from recon.model import read_json
+
+    mapping = read_json(reviews_arg)
+    return {batch_id: read_json(path) for batch_id, path in mapping.items()}
+
+
+def _cmd_review_check(args: argparse.Namespace) -> int:
+    from recon.model import write_json
+    from recon.review import check_review
+
+    reviews = _load_reviews(args.reviews)
+    failed = {}
+    for batch in _load_batches(args.batches_dir):
+        output = reviews.get(batch["batch_id"])
+        problems = ["no review output for this batch"] if output is None else check_review(batch, output)
+        if problems:
+            failed[batch["batch_id"]] = problems
+    write_json(Path(args.feedback), failed)
+    if failed:
+        for batch_id, problems in failed.items():
+            print(f"{batch_id}:\n  " + "\n  ".join(problems), file=sys.stderr)
+        return 2
+    print(json.dumps({"batches_checked": len(reviews)}))
+    return 0
+
+
+def _cmd_assemble(args: argparse.Namespace) -> int:
+    from recon.model import read_json, write_json
+    from recon.reconcile import load_reconciled
+    from recon.report import assemble, memo_files
+
+    reconciled = load_reconciled(read_json(args.reconciled))
+    batches = _load_batches(args.batches_dir)
+    items = {i["item_id"]: i for b in batches for i in b["items"]}
+    reviews = {}
+    for output in _load_reviews(args.reviews).values():
+        for r in output["items"]:
+            reviews[r["item_id"]] = r
+    report = assemble(reconciled, read_json(Path(args.work) / "documents.json"), reviews)
+    out = Path(args.out_dir)
+    write_json(out / "reconciliation-report.json", report)
+    memo_dir = out / "memos"
+    memo_dir.mkdir(parents=True, exist_ok=True)
+    for old in memo_dir.glob("*.md"):
+        old.unlink()
+    for name, text in memo_files(reconciled, reviews, items).items():
+        (memo_dir / name).write_text(text, encoding="utf-8")
+    print(json.dumps(report["summary"], sort_keys=True))
+    return 0
+
+
+def _cmd_validate_report(args: argparse.Namespace) -> int:
+    from recon.model import read_json, read_jsonl
+    from recon.reconcile import load_reconciled
+    from recon.report import validate_report
+
+    run = Path(args.out_dir)
+    report = read_json(run / "reconciliation-report.json")
+    items = {i["item_id"]: i for b in _load_batches(args.batches_dir) for i in b["items"]}
+    memos = {p.name: p.read_text(encoding="utf-8") for p in sorted((run / "memos").glob("*.md"))}
+    problems = validate_report(report, parsed_lines=read_jsonl(Path(args.work) / "lines.jsonl"),
+                               documents=read_json(Path(args.work) / "documents.json"),
+                               reconciled=load_reconciled(read_json(args.reconciled)), items=items, memos=memos)
+    if problems:
+        print("report failed validation:\n  " + "\n  ".join(problems), file=sys.stderr)
+        return 2
+    print(json.dumps({"valid": True, "lines": len(report["lines"]), "memos": len(memos)}))
+    return 0
+
+
+def _cmd_publish(args: argparse.Namespace) -> int:
+    from recon.model import read_json
+    from recon.publish import publish
+
+    manifest = read_json(args.manifest) if args.manifest else {}
+    print(json.dumps(publish(Path(args.source), Path(args.target), manifest), sort_keys=True))
+    return 0
+
+
+def _cmd_diff_runs(args: argparse.Namespace) -> int:
+    from recon.publish import diff_runs
+
+    differences = diff_runs(Path(args.a), Path(args.b))
+    if differences:
+        print("runs differ:\n  " + "\n  ".join(differences), file=sys.stderr)
+        return 1
+    print(json.dumps({"identical": True}))
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="recon")
     sub = parser.add_subparsers(dest="command", required=True)
@@ -99,6 +230,48 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--cards", required=True, help="JSON object {carrier: approved rate card}")
     p.add_argument("--out", required=True, help="reconciled.json to write")
     p.set_defaults(func=_cmd_reconcile)
+
+    p = sub.add_parser("plan-review", help="batch non-accept items for review agents")
+    p.add_argument("--reconciled", required=True)
+    p.add_argument("--carriers", default="config/carriers.json")
+    p.add_argument("--as-of", required=True, help="ISO date memos judge deadlines against")
+    p.add_argument("--batch-size", type=int, default=12)
+    p.add_argument("--out-dir", required=True)
+    p.add_argument("--flowstate-var", help="also print FLOWSTATE_OUTPUT_<name>=<jobs>")
+    p.add_argument("--flowstate-count-var", help="also print FLOWSTATE_OUTPUT_<name>=none|some")
+    p.set_defaults(func=_cmd_plan_review)
+
+    p = sub.add_parser("review-check", help="enforce the reviewer contract (D7) on every batch")
+    p.add_argument("--batches-dir", required=True)
+    p.add_argument("--reviews", required=True, help="JSON file mapping batch_id to review output path")
+    p.add_argument("--feedback", required=True, help="where to write per-batch problems")
+    p.set_defaults(func=_cmd_review_check)
+
+    p = sub.add_parser("assemble", help="build the report and memos from reconciliation and reviews")
+    p.add_argument("--reconciled", required=True)
+    p.add_argument("--work", required=True, help="directory holding documents.json")
+    p.add_argument("--batches-dir", required=True)
+    p.add_argument("--reviews", required=True)
+    p.add_argument("--out-dir", required=True)
+    p.set_defaults(func=_cmd_assemble)
+
+    p = sub.add_parser("validate-report", help="schema and invariant checks on an assembled report")
+    p.add_argument("--out-dir", required=True, help="directory holding reconciliation-report.json and memos/")
+    p.add_argument("--work", required=True)
+    p.add_argument("--reconciled", required=True)
+    p.add_argument("--batches-dir", required=True)
+    p.set_defaults(func=_cmd_validate_report)
+
+    p = sub.add_parser("publish", help="copy a validated report and memos to the repository root")
+    p.add_argument("--source", required=True)
+    p.add_argument("--target", default=".")
+    p.add_argument("--manifest", help="JSON file with run metadata to record")
+    p.set_defaults(func=_cmd_publish)
+
+    p = sub.add_parser("diff-runs", help="compare amounts, dispositions and membership of two runs")
+    p.add_argument("a")
+    p.add_argument("b")
+    p.set_defaults(func=_cmd_diff_runs)
 
     args = parser.parse_args(argv)
     return args.func(args)
