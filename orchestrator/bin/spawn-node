@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Spawn the worker for one agent node: node-config + render-prompt + agentctl spawn,
+# parsed with the venv, refusing empty prompts, recorded in <run-dir>/spawn-ledger.jsonl.
+set -euo pipefail
+ORCH_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+PY="$ORCH_ROOT/.venv/bin/python"
+[ -x "$PY" ] || { echo "spawn-node: run orchestrator/setup.sh first" >&2; exit 1; }
+exec "$PY" "$ORCH_ROOT/lib/spawn_node.py" "$@"
