@@ -1,0 +1,10 @@
+{
+  "agree": true,
+  "card_a": "/Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-compile-rates/B1_2_om080jogani_20260928T190034476253Z_B1.2/card-a.json",
+  "card_b": "/Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-compile-rates/B1_2_om080jogani_20260928T190034476253Z_B1.2/card-b.json",
+  "carrier": "falcon",
+  "contract_file": "falcon-freight.md",
+  "differences": [],
+  "problems_a": [],
+  "problems_b": []
+}

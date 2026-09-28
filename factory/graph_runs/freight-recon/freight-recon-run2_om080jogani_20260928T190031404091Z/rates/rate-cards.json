@@ -1,0 +1,279 @@
+{
+  "alpine": {
+    "accessorials": [
+      {
+        "amount": "150.00",
+        "clause": "§4",
+        "label": "protected handling",
+        "quote": "Consignments booked as fragile are handled under the Carrier's protected-handling process at ₹150.00 per consignment, in addition to freight.",
+        "when": {
+          "special_handling": "fragile"
+        }
+      }
+    ],
+    "carrier": "alpine",
+    "chargeable_weight": {
+      "clause": "§1",
+      "minimum_kg": "25",
+      "quote": "which is the higher of the consignment's actual weight and the minimum chargeable weight of 25 kg"
+    },
+    "contract_file": "alpine-express.md",
+    "contract_sha256": "caa39649f701795356f6545c0a6c86ea12b2037dc96080027bdf8f17801e6001",
+    "credit_notes": null,
+    "dispute_window": null,
+    "freight": {
+      "components": [
+        {
+          "bands": [
+            {
+              "max_inclusive": false,
+              "max_kg": "50",
+              "min_inclusive": true,
+              "min_kg": null,
+              "rate": "9.50"
+            },
+            {
+              "max_inclusive": true,
+              "max_kg": null,
+              "min_inclusive": false,
+              "min_kg": "50",
+              "rate": "8.25"
+            }
+          ],
+          "basis": "per_kg",
+          "clause": "§2",
+          "label": "freight",
+          "quote": "consignments under 50 kg: ₹9.50 per kg of chargeable weight ... consignments over 50 kg: ₹8.25 per kg of chargeable weight",
+          "weight_basis": "chargeable"
+        }
+      ]
+    },
+    "invoice_discounts": [
+      {
+        "clause": "§5",
+        "count_basis": "tendered",
+        "kind": "volume",
+        "pct": "5",
+        "period": "calendar_month",
+        "quote": "In any calendar month in which the Customer tenders more than 12 consignments, the Carrier will apply a 5% discount to the invoice total for that month's invoice.",
+        "threshold_gt": 12
+      }
+    ],
+    "non_pricing": [
+      {
+        "clause": "§6",
+        "summary": "The Carrier invoices monthly; payment is due 30 days from invoice date."
+      },
+      {
+        "clause": "§7",
+        "summary": "Rate revisions require 60 days' written notice and take effect from the first day of the following calendar month."
+      }
+    ],
+    "other_accessorials": {
+      "allowed": false,
+      "clause": "§1",
+      "quote": "Freight is charged on chargeable weight"
+    },
+    "service_levels": {
+      "allowed": [
+        "standard"
+      ],
+      "clause": "§3",
+      "quote": "All bookings travel on standard service. Express products are not offered under this agreement."
+    },
+    "surcharges": [],
+    "unmatched_lines": null,
+    "unsupported": []
+  },
+  "falcon": {
+    "accessorials": [
+      {
+        "amount": "250.00",
+        "clause": "§4",
+        "label": "Residential delivery",
+        "quote": "Residential delivery (consignee address is a residence, or the booking is flagged residential): ₹250.00 flat per consignment.",
+        "when": {
+          "special_handling": "residential"
+        }
+      }
+    ],
+    "carrier": "falcon",
+    "chargeable_weight": null,
+    "contract_file": "falcon-freight.md",
+    "contract_sha256": "6e37557aad7f22da8103e960de6807385088ff0f4bca6fe8da22726998233ca0",
+    "credit_notes": {
+      "allowed": true,
+      "clause": "§8",
+      "must_cover_full": false,
+      "quote": "The Carrier may issue credit notes correcting earlier invoices. A credit note references the original consignment note number and states the invoice it corrects."
+    },
+    "dispute_window": {
+      "clause": "§7",
+      "days": 45,
+      "from": "invoice_date",
+      "quote": "Billing disputes must be raised within 45 days of invoice date. Disputed line items are payable only on resolution; undisputed items remain due."
+    },
+    "freight": {
+      "components": [
+        {
+          "bands": [
+            {
+              "max_inclusive": true,
+              "max_kg": "500",
+              "min_inclusive": false,
+              "min_kg": null,
+              "rate": "18.00"
+            },
+            {
+              "max_inclusive": true,
+              "max_kg": "2000",
+              "min_inclusive": true,
+              "min_kg": "501",
+              "rate": "24.00"
+            }
+          ],
+          "basis": "per_km",
+          "clause": "§1",
+          "label": "Base freight per km by billed weight",
+          "quote": "Base freight is charged per kilometre of the booked lane distance, according to the consignment's billed weight: - up to and including 500 kg: ₹18.00 per km - 501 kg to 2,000 kg: ₹24.00 per km",
+          "weight_basis": "billed"
+        }
+      ]
+    },
+    "invoice_discounts": [],
+    "non_pricing": [
+      {
+        "clause": "§6",
+        "summary": "Invoicing is fortnightly and payment is due 30 days from invoice date; timing terms with no effect on price calculation."
+      }
+    ],
+    "other_accessorials": {
+      "allowed": false,
+      "clause": "§5",
+      "quote": "No other accessorial charges are payable under this agreement. Any service outside this schedule requires the Customer's written agreement in advance, evidenced by a rate confirmation referencing this agreement."
+    },
+    "service_levels": {
+      "allowed": [
+        "standard",
+        "express"
+      ],
+      "clause": "§2",
+      "quote": "Express service, where booked, carries a premium of 15% of the base freight."
+    },
+    "surcharges": [
+      {
+        "base": "freight",
+        "clause": "§2",
+        "label": "Express service premium",
+        "pct": "15",
+        "quote": "Express service, where booked, carries a premium of 15% of the base freight.",
+        "when": {
+          "service_level": "express"
+        }
+      },
+      {
+        "base": "freight_and_prior_surcharges",
+        "clause": "§3",
+        "label": "Fuel surcharge",
+        "pct": "12",
+        "quote": "A fuel surcharge of 12% applies to the freight charge (base freight plus express premium, where applicable).",
+        "when": {
+          "always": true
+        }
+      }
+    ],
+    "unmatched_lines": null,
+    "unsupported": []
+  },
+  "sagar": {
+    "accessorials": [],
+    "carrier": "sagar",
+    "chargeable_weight": null,
+    "contract_file": "sagar-roadlines.md",
+    "contract_sha256": "43c3f2dfc4e0eade16e79d4924f4b83c8748dc1a06dfaf3bc2694369aaa5ad95",
+    "credit_notes": {
+      "allowed": true,
+      "clause": "§6",
+      "must_cover_full": true,
+      "quote": "The Carrier may issue credit notes correcting earlier invoices. A credit note references the original c-note number and the invoice it corrects, and must cover the full corrected amount."
+    },
+    "dispute_window": null,
+    "freight": {
+      "components": [
+        {
+          "bands": [
+            {
+              "max_inclusive": false,
+              "max_kg": null,
+              "min_inclusive": false,
+              "min_kg": null,
+              "rate": "6.00"
+            }
+          ],
+          "basis": "per_kg",
+          "clause": "§1",
+          "label": "Weight component",
+          "quote": "a weight component of ₹6.00 per kg of billed weight",
+          "weight_basis": "billed"
+        },
+        {
+          "bands": [
+            {
+              "max_inclusive": false,
+              "max_kg": null,
+              "min_inclusive": false,
+              "min_kg": null,
+              "rate": "2.00"
+            }
+          ],
+          "basis": "per_km",
+          "clause": "§1",
+          "label": "Distance component",
+          "quote": "a distance component of ₹2.00 per km of the booked lane distance",
+          "weight_basis": "billed"
+        }
+      ]
+    },
+    "invoice_discounts": [],
+    "non_pricing": [
+      {
+        "clause": "§4",
+        "summary": "Carrier invoices as trips are pooled, typically fortnightly; payment is due 21 days from invoice date."
+      },
+      {
+        "clause": "§5",
+        "summary": "The c-note number on each invoice line is the Carrier's reference and must correspond to a Customer booking."
+      }
+    ],
+    "other_accessorials": {
+      "allowed": false,
+      "clause": "§1",
+      "quote": "Freight per consignment is the sum of:"
+    },
+    "service_levels": {
+      "allowed": [
+        "standard"
+      ],
+      "clause": "§2",
+      "quote": "Only standard service is offered under this agreement."
+    },
+    "surcharges": [
+      {
+        "base": "freight",
+        "clause": "§3",
+        "label": "Cold chain premium",
+        "pct": "20",
+        "quote": "Consignments booked as cold chain travel in refrigerated vehicles and carry a premium of 20% on the freight charge (the sum of the weight and distance components).",
+        "when": {
+          "special_handling": "cold_chain"
+        }
+      }
+    ],
+    "unmatched_lines": {
+      "clause": "§5",
+      "payable": false,
+      "quote": "Lines that cannot be matched to a booking are not payable until reconciled."
+    },
+    "unsupported": []
+  }
+}

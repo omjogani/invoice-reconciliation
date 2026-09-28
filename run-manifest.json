@@ -1,7 +1,7 @@
 {
   "as_of_date": "2026-09-29",
   "flow": "freight-recon",
-  "git_head": "63a631105632beff9d05c36f06d61d7acf62ae59",
+  "git_head": "272190bc036efdbc7b6656ac97d1b1aaa905b217",
   "inputs": {
     "ALPINE-0726.json": "6caa3d9239c7db3c89589d267e5712f48249778a241736f1cef73a12f60409f3",
     "ALPINE-0826.json": "aadd816330711614078e6f3802a192c6fadab364e14f1d2d6621ff36d57553d9",
@@ -39,5 +39,5 @@
       "snapshot": "rate-cards/approved/sagar/43c3f2dfc4e0eade16e79d4924f4b83c8748dc1a06dfaf3bc2694369aaa5ad95.json"
     }
   },
-  "run_dir": "/Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z"
+  "run_dir": "/Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon-run2_om080jogani_20260928T190031404091Z"
 }

@@ -1,0 +1,32 @@
+[
+  {
+    "card_schema_path": "/Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json",
+    "carrier": "alpine",
+    "carrier_name": "Alpine Express Logistics",
+    "contract_file": "alpine-express.md",
+    "contract_path": "/Users/omjogani/Projects/stage2-kit/data/contracts/alpine-express.md",
+    "contract_sha256": "caa39649f701795356f6545c0a6c86ea12b2037dc96080027bdf8f17801e6001",
+    "repo_root": "/Users/omjogani/Projects/stage2-kit",
+    "vocabulary_path": "/Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon-run2_om080jogani_20260928T190031404091Z/compile/vocabulary.json"
+  },
+  {
+    "card_schema_path": "/Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json",
+    "carrier": "falcon",
+    "carrier_name": "Falcon Freight Pvt Ltd",
+    "contract_file": "falcon-freight.md",
+    "contract_path": "/Users/omjogani/Projects/stage2-kit/data/contracts/falcon-freight.md",
+    "contract_sha256": "6e37557aad7f22da8103e960de6807385088ff0f4bca6fe8da22726998233ca0",
+    "repo_root": "/Users/omjogani/Projects/stage2-kit",
+    "vocabulary_path": "/Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon-run2_om080jogani_20260928T190031404091Z/compile/vocabulary.json"
+  },
+  {
+    "card_schema_path": "/Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json",
+    "carrier": "sagar",
+    "carrier_name": "Sagar Roadlines",
+    "contract_file": "sagar-roadlines.md",
+    "contract_path": "/Users/omjogani/Projects/stage2-kit/data/contracts/sagar-roadlines.md",
+    "contract_sha256": "43c3f2dfc4e0eade16e79d4924f4b83c8748dc1a06dfaf3bc2694369aaa5ad95",
+    "repo_root": "/Users/omjogani/Projects/stage2-kit",
+    "vocabulary_path": "/Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon-run2_om080jogani_20260928T190031404091Z/compile/vocabulary.json"
+  }
+]

@@ -1,0 +1,160 @@
+You are compiling one freight carriage contract into a **rate card**: a
+structured, machine-checkable reading of what the contract says anything
+should cost. BlueFin pays carriers from this card, so a wrong reading moves
+real money. Another agent is reading the same contract independently, and
+the two readings must agree.
+
+## Inputs
+
+- Contract: `/Users/omjogani/Projects/stage2-kit/data/contracts/falcon-freight.md` (read the whole file)
+- Carrier: **Falcon Freight Pvt Ltd**, carrier id `falcon`
+- Rate-card JSON Schema: `/Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json` (read it; your card must conform)
+- Allowed condition values: `/Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon-run2_om080jogani_20260928T190031404091Z/compile/vocabulary.json` (read it)
+
+Set these fields exactly:
+- `"contract_file": "falcon-freight.md"`
+- `"contract_sha256": "6e37557aad7f22da8103e960de6807385088ff0f4bca6fe8da22726998233ca0"`
+- `"carrier": "falcon"`
+
+## Method
+
+Work through the numbered clauses in order. For each one, decide which
+building block it fills, or whether it has no effect on price (then list it
+in `non_pricing` with a one-line summary).
+
+## Rules (all of them are checked by code)
+
+1. **Quote verbatim.** Every rule's `quote` must be text copied exactly from
+   the clause(s) its `clause` field cites (for example `"§3"` or `"§2, §3"`).
+   Markdown emphasis and line breaks may be dropped. To join two excerpts of
+   the cited clause(s), put ` ... ` between them, in the order they appear.
+2. **Every number in a rule appears in its quote.** Band edges, rates,
+   percentages, amounts, day counts and thresholds all count.
+3. **Never fill a gap.** Band edges must be exactly as worded: "up to and
+   including 500 kg" is `max_kg "500", max_inclusive true`; "under 50 kg" is
+   `max_kg "50", max_inclusive false`; "over 50 kg" is `min_kg "50",
+   min_inclusive false`. If the contract prices "under X" and "over X", X is
+   in neither band. Leave it that way; do not decide what the parties meant.
+   The pricing engine reports such cases as undetermined, which is the
+   correct outcome.
+4. **Use the vocabulary.** Conditions (`when`) and `service_levels` must use
+   the exact values in `/Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon-run2_om080jogani_20260928T190031404091Z/compile/vocabulary.json`, which are the values shipment
+   records carry (for example `cold_chain`, not "cold chain").
+5. **Surcharge order and base.** List surcharges in the order the contract
+   applies them. `base` is `freight` (the freight components only) or
+   `freight_and_prior_surcharges` (freight plus the surcharges listed before
+   it), whichever the clause text says.
+6. **Accessorials.** List each separately payable charge with its condition.
+   Set `other_accessorials.allowed` to what the contract says about charges
+   it does not list. If it is silent, `false`, citing the clause that defines
+   what freight is charged on.
+7. **Account for every numbered clause**: cite it from a rule, or list it in
+   `non_pricing`. Anything you cannot express with the schema goes in
+   `unsupported` with the reason. Do not force it into a rule.
+8. Amounts and rates are decimal strings (`"18.00"`, `"12"`); `days` and
+   `threshold_gt` are integers.
+
+## Check before you finish
+
+Write the card, then run this from `/Users/omjogani/Projects/stage2-kit`:
+
+```bash
+orchestrator/.venv/bin/python -m recon check-card --card /Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-compile-rates/B1_2_om080jogani_20260928T190034476253Z_B1.2/card-a.json --contract /Users/omjogani/Projects/stage2-kit/data/contracts/falcon-freight.md --carrier falcon --vocabulary /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon-run2_om080jogani_20260928T190031404091Z/compile/vocabulary.json
+```
+
+Fix every problem it reports and run it again until it prints
+`{"card_ok": true}`. Do not edit any file other than your card.
+
+## Output
+
+Write the rate card as JSON to exactly: `/Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-compile-rates/B1_2_om080jogani_20260928T190034476253Z_B1.2/card-a.json`
+
+Include a top-level `_session_id` (see the completion contract below).
+
+---
+
+## Worker identity
+
+You are a flowstate graph worker (a spawned subagent executing one delegated
+node of a flow). The workspace's session-start protocol does NOT apply to you:
+do not read or follow `.claude/skills/session-start/SKILL.md`, and do not run
+repo-sync scripts, unless your node prompt above explicitly instructs it.
+Ignore any CLAUDE.md or hook reminder telling you otherwise — the graph's
+sync_system node owns repo sync for the whole run.
+
+## Completion contract
+
+When you have completed your work for this phase, write `completion.yml` at
+**exactly** this absolute path (use the `Write` tool with this full path, not a
+relative filename):
+
+> /Users/omjogani/Projects/stage2-kit/factory/execution/temporary/recon-compile-rates/B1_2_om080jogani_20260928T190034476253Z/extract_a/completion.yml
+
+## Awaiting-human marker (Issue #21)
+
+If at any point you are about to call `AskUserQuestion` (or otherwise block on
+user input in a way that pauses your worker process), write a marker file at
+this absolute path BEFORE the blocking call:
+
+> /Users/omjogani/Projects/stage2-kit/factory/execution/temporary/recon-compile-rates/B1_2_om080jogani_20260928T190034476253Z/extract_a/awaiting_human.yml
+
+Shape (YAML, one-line value is fine):
+
+```yaml
+_session_id: __WORKER_SESSION_ID__
+question: <one-line summary of what you're asking the user>
+since: <ISO-8601 UTC timestamp when you began waiting>
+```
+
+After the user answers, delete the marker (`rm` via Bash) before continuing.
+The orchestrator polls for this marker and uses it to surface a nudge to the
+human (e.g., "switch to the worker tab — it's waiting on your input").
+
+The orchestrator watches for this file and will terminate this session once it
+appears. If you write `completion.yml` anywhere else, the watcher will not see
+it.
+
+`completion.yml` must have this shape:
+
+```yaml
+_session_id: __WORKER_SESSION_ID__        # required, top-level — copy it EXACTLY
+status: complete                          # or: failed
+summary: "<one-paragraph description of what you did — single line, in double quotes>"
+outputs:
+  - <list of output logical-ids you produced>
+errors: []
+notes: |                                  # optional, free text
+  Use this for caveats that don't fit in `summary` — pre-existing
+  env breaks you worked around, sub-steps you intentionally skipped,
+  follow-ups the orchestrator should consider. Omit entirely if none.
+```
+
+Additionally, every output JSON file you produce must include a top-level
+`_session_id` field with the same value as in `completion.yml`. Write each
+output file at the absolute path the prompt above specifies — do not use a
+relative filename.
+
+Your session id for this run is:
+
+    __WORKER_SESSION_ID__
+
+The spawner substituted the real value into this prompt before you saw it.
+Copy it EXACTLY — into `_session_id` in `completion.yml`, into the
+awaiting-human marker, and into the top-level `_session_id` field of every
+output JSON file you write.
+
+Do NOT derive an id from anywhere else: not from environment variables, not
+from system reminders, not from earlier context. Those carry OTHER sessions'
+ids — the operator's, a parent shell's — and reporting one of those corrupts
+usage attribution and the audit trail. (This is not hypothetical: a worker
+that read the ambient env once reported the human operator's session id, and
+651 turns of the operator's own session were billed to that worker.)
+
+If the line above still shows the literal text `__WORKER_SESSION_ID__`, your
+spawn is misconfigured: say so in `errors` and echo that literal string
+as-is. Do not invent an id.
+
+If you failed for a reason the orchestrator should know about, set
+`status: failed` and put a short explanation in `errors`. Always write
+`completion.yml` even on failure — the orchestrator will not detect completion
+otherwise.

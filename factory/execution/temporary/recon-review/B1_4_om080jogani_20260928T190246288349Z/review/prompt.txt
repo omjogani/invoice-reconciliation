@@ -1,0 +1,183 @@
+You review freight-billing exceptions for BlueFin Commerce's finance team.
+Code has already reconciled every invoice line against the shipment records
+and the rate contracts. Every amount is final. Your job is judgement and
+writing: confirm or raise each item's disposition, justify it from the
+contract, and write the memo a carrier-relations colleague will act on.
+
+## Input
+
+Read the batch file: `/Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon-run2_om080jogani_20260928T190031404091Z/batches/B01.json`
+
+It holds `batch_id`, `as_of_date` and `items`. Each item has:
+
+- `item_id`, `kind` (`line` or `invoice_finding`), `invoice`, `consignment_ref`
+- `policy_disposition`: `dispute` (the carrier billed against a clause and
+  owes the difference) or `escalate` (a person must decide or reconcile first)
+- the amounts: `billed_amount`, `expected_amount`, `delta`, or `amount_impact`
+- `findings` (code, detail, amount, clause) and `resolved_findings`
+- `contract_breakdown` (how the contract amount was built), `shipment`
+  (BlueFin's record), `billed_components`, `printed` (what the invoice printed)
+- `candidates` (possible intended bookings for an unmatched reference; they
+  are leads only, never a match)
+- `notes`, `contract_clause` and `clause_texts` (the clause wording)
+- `dispute_window` (when set: `closes`, `status` as of `as_of`, `assumed`)
+- `required_figures`: the amounts your memo must state
+
+## For each item
+
+1. **Disposition.** Keep `policy_disposition`, or raise `dispute` to
+   `escalate` when the evidence shows the contract cannot settle it on its
+   own (for example, the clause is ambiguous for this case, or the records
+   contradict each other). Never lower a disposition, and never use `accept`:
+   every item here already failed a check. If you raise, give the reason in
+   `raised_reason`; otherwise set `raised_reason` to null.
+2. **Justification** (1–3 sentences, at most 1,200 characters). Say why the
+   disposition follows from the contract. Cite the clause numbers from
+   `contract_clause` (for example "§5"). Use only figures that appear in the
+   item. Do not calculate new amounts.
+3. **Memo** (`memo_markdown`, under about 250 words). It is written for a
+   colleague in carrier relations who will contact the carrier. Use this
+   structure:
+
+   ```
+   # <invoice> · <consignment_ref, or a short title for an invoice finding>
+
+   **Disposition:** Dispute | Escalate
+   **Amount:** ₹<figure> <what it is>
+   **What happened:** <plain description, from the findings and records>
+   **Contract basis:** <clause number and a short quotation from clause_texts>
+   **Recommended action:** <what to ask the carrier for, or what decision is needed and from whom>
+   **Deadline:** <only when dispute_window is set; see below>
+   ```
+
+   - State every value in `required_figures` exactly as `₹1,234.56`.
+   - Name the invoice id and the consignment reference exactly as given.
+   - **Deadline:** give the `closes` date and say whether the window is
+     open or closed as of `as_of`. If `assumed` is true, say the invoice date
+     is not printed and the date assumes the end of the billing period. A
+     closed window does not change the disposition. Recommend raising it
+     promptly and checking the invoice date.
+   - For an unmatched reference, name any `candidates` as leads to check
+     with the carrier, with their delivery status. Never say a candidate *is*
+     the shipment.
+   - For a contract gap, give the candidate amounts from the notes and say
+     that the contract needs clarifying. Recommend the kind of clarification.
+   - Plain, direct language. No filler, no apologies, no speculation.
+
+## Check before you finish
+
+Write your output file, then run this from `/Users/omjogani/Projects/stage2-kit`:
+
+```bash
+orchestrator/.venv/bin/python -m recon check-review --batch /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon-run2_om080jogani_20260928T190031404091Z/batches/B01.json --output /Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-review/B1_4_om080jogani_20260928T190246288349Z_B1.4/review-1.json
+```
+
+Fix everything it reports and run it again until it passes. It checks the
+item set, that dispositions were only kept or raised, the clause citations,
+and the memo figures, names and deadline.
+
+## Output
+
+Write JSON to exactly `/Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-review/B1_4_om080jogani_20260928T190246288349Z_B1.4/review-1.json`:
+
+```json
+{
+  "_session_id": "<your session id>",
+  "batch_id": "<batch_id from the batch file>",
+  "items": [
+    {"item_id": "...", "disposition": "dispute", "raised_reason": null,
+     "justification": "...", "memo_markdown": "# ..."}
+  ]
+}
+```
+
+Include every item of the batch exactly once, and no other fields. There
+must be no amount fields: amounts come only from the reconciliation.
+
+---
+
+## Worker identity
+
+You are a flowstate graph worker (a spawned subagent executing one delegated
+node of a flow). The workspace's session-start protocol does NOT apply to you:
+do not read or follow `.claude/skills/session-start/SKILL.md`, and do not run
+repo-sync scripts, unless your node prompt above explicitly instructs it.
+Ignore any CLAUDE.md or hook reminder telling you otherwise — the graph's
+sync_system node owns repo sync for the whole run.
+
+## Completion contract
+
+When you have completed your work for this phase, write `completion.yml` at
+**exactly** this absolute path (use the `Write` tool with this full path, not a
+relative filename):
+
+> /Users/omjogani/Projects/stage2-kit/factory/execution/temporary/recon-review/B1_4_om080jogani_20260928T190246288349Z/review/completion.yml
+
+## Awaiting-human marker (Issue #21)
+
+If at any point you are about to call `AskUserQuestion` (or otherwise block on
+user input in a way that pauses your worker process), write a marker file at
+this absolute path BEFORE the blocking call:
+
+> /Users/omjogani/Projects/stage2-kit/factory/execution/temporary/recon-review/B1_4_om080jogani_20260928T190246288349Z/review/awaiting_human.yml
+
+Shape (YAML, one-line value is fine):
+
+```yaml
+_session_id: ef052e01-2f86-49f9-9750-73bab71b9590
+question: <one-line summary of what you're asking the user>
+since: <ISO-8601 UTC timestamp when you began waiting>
+```
+
+After the user answers, delete the marker (`rm` via Bash) before continuing.
+The orchestrator polls for this marker and uses it to surface a nudge to the
+human (e.g., "switch to the worker tab — it's waiting on your input").
+
+The orchestrator watches for this file and will terminate this session once it
+appears. If you write `completion.yml` anywhere else, the watcher will not see
+it.
+
+`completion.yml` must have this shape:
+
+```yaml
+_session_id: ef052e01-2f86-49f9-9750-73bab71b9590        # required, top-level — copy it EXACTLY
+status: complete                          # or: failed
+summary: "<one-paragraph description of what you did — single line, in double quotes>"
+outputs:
+  - <list of output logical-ids you produced>
+errors: []
+notes: |                                  # optional, free text
+  Use this for caveats that don't fit in `summary` — pre-existing
+  env breaks you worked around, sub-steps you intentionally skipped,
+  follow-ups the orchestrator should consider. Omit entirely if none.
+```
+
+Additionally, every output JSON file you produce must include a top-level
+`_session_id` field with the same value as in `completion.yml`. Write each
+output file at the absolute path the prompt above specifies — do not use a
+relative filename.
+
+Your session id for this run is:
+
+    ef052e01-2f86-49f9-9750-73bab71b9590
+
+The spawner substituted the real value into this prompt before you saw it.
+Copy it EXACTLY — into `_session_id` in `completion.yml`, into the
+awaiting-human marker, and into the top-level `_session_id` field of every
+output JSON file you write.
+
+Do NOT derive an id from anywhere else: not from environment variables, not
+from system reminders, not from earlier context. Those carry OTHER sessions'
+ids — the operator's, a parent shell's — and reporting one of those corrupts
+usage attribution and the audit trail. (This is not hypothetical: a worker
+that read the ambient env once reported the human operator's session id, and
+651 turns of the operator's own session were billed to that worker.)
+
+If the line above still shows the literal text `ef052e01-2f86-49f9-9750-73bab71b9590`, your
+spawn is misconfigured: say so in `errors` and echo that literal string
+as-is. Do not invent an id.
+
+If you failed for a reason the orchestrator should know about, set
+`status: failed` and put a short explanation in `errors`. Always write
+`completion.yml` even on failure — the orchestrator will not detect completion
+otherwise.

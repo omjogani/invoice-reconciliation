@@ -1,0 +1,48 @@
+{
+  "_session_id": "0bcabe06-52c6-4636-824f-341d1041ca5d",
+  "batch_id": "B02",
+  "items": [
+    {
+      "disposition": "dispute",
+      "item_id": "FALCON-2026-07A#11",
+      "justification": "Detention charge at consignee (₹1,200.00) is not a charge permitted under the rate card; §5 states no other accessorial charges are payable absent a written rate confirmation, and none is referenced here. The freight and fuel surcharge under §1 and §3 match the contract amount, so the dispute is limited to the detention charge.",
+      "memo_markdown": "# FALCON-2026-07A · FF-8011\n\n**Disposition:** Dispute\n**Amount:** ₹1,200.00 detention charge at consignee, billed but not permitted under the contract\n**What happened:** The invoice includes a ₹1,200.00 detention charge at consignee alongside freight and fuel surcharge that otherwise match the contract. The rate card does not list detention as a chargeable accessorial.\n**Contract basis:** §5 — \"No other accessorial charges are payable under this agreement. Any service outside this schedule requires the Customer's written agreement in advance, evidenced by a rate confirmation referencing this agreement.\"\n**Recommended action:** Ask Falcon to credit the ₹1,200.00 detention charge, or to produce a written rate confirmation authorizing it under §5.\n**Deadline:** The §7 dispute window closes 2026-08-28 and is closed as of 2026-09-29. The invoice date is not printed; the deadline assumes the end of the billing period (2026-07-14). Raise this promptly and check the actual invoice date, since a closed window does not change the disposition.",
+      "raised_reason": null
+    },
+    {
+      "disposition": "dispute",
+      "item_id": "FALCON-2026-07B#8",
+      "justification": "FF-8003 is billed twice — once on FALCON-2026-07A and again on FALCON-2026-07B with identical shipment details — and §1 entitles the carrier to charge a booking once. The shipment also falls outside FALCON-2026-07B's billing period, confirming this line does not belong on this invoice.",
+      "memo_markdown": "# FALCON-2026-07B · FF-8003\n\n**Disposition:** Dispute\n**Amount:** ₹7,392.00 duplicate freight charge\n**What happened:** FF-8003 was shipped 2026-07-04 and delivered 2026-07-06, inside the FALCON-2026-07A billing period, where it is already billed on line 3 with identical shipment details. FALCON-2026-07B bills the same booking again, ₹7,392.00, and falls outside its own billing period (2026-07-15 to 2026-07-30).\n**Contract basis:** §1 — base freight is charged per the booked lane distance and billed weight; a single booking is charged once under the rate card.\n**Recommended action:** Ask Falcon to void or credit this line in full, since the booking is already invoiced on FALCON-2026-07A.\n**Deadline:** The §7 dispute window closes 2026-09-13 and is closed as of 2026-09-29. The invoice date is not printed; the deadline assumes the end of the billing period (2026-07-30). Raise this promptly and check the actual invoice date, since a closed window does not change the disposition.",
+      "raised_reason": null
+    },
+    {
+      "disposition": "dispute",
+      "item_id": "FALCON-2026-08B#4",
+      "justification": "Billed freight of ₹4,968.00 exceeds the contract amount computed from the §1 per-km rate for the 501–2,000 kg band plus the §3 fuel surcharge, leaving a ₹129.60 difference.",
+      "memo_markdown": "# FALCON-2026-08B · FF-8057\n\n**Disposition:** Dispute\n**Amount:** ₹129.60 overbilled freight\n**What happened:** The invoice billed ₹4,968.00 for this consignment; the contract amount, computed from the §1 per-km rate for the 501–2,000 kg band plus the §3 fuel surcharge, is lower, leaving a ₹129.60 difference.\n**Contract basis:** §1 — \"501 kg to 2,000 kg: ₹24.00 per km\"; §3 — \"A fuel surcharge of 12% applies to the freight charge.\"\n**Recommended action:** Ask Falcon to credit the ₹129.60 overbilled amount.\n**Deadline:** The §7 dispute window closes 2026-10-14 and is open as of 2026-09-29. The invoice date is not printed; the deadline assumes the end of the billing period (2026-08-30). Raise this promptly and check the actual invoice date.",
+      "raised_reason": null
+    },
+    {
+      "disposition": "dispute",
+      "item_id": "FALCON-2026-08B#14",
+      "justification": "Detention charge at consignee (₹1,200.00) is not a charge permitted under §5's closed accessorial list, and no written rate confirmation is on file authorizing it. Freight, fuel surcharge, and the residential accessorial under §1, §3, and §4 otherwise match the contract amount.",
+      "memo_markdown": "# FALCON-2026-08B · FF-8067\n\n**Disposition:** Dispute\n**Amount:** ₹1,200.00 detention charge at consignee, billed but not permitted under the contract\n**What happened:** The invoice includes a ₹1,200.00 detention charge at consignee. Freight, fuel surcharge, and the residential delivery accessorial otherwise match the contract, but detention is not a chargeable accessorial under the rate card.\n**Contract basis:** §5 — \"No other accessorial charges are payable under this agreement. Any service outside this schedule requires the Customer's written agreement in advance, evidenced by a rate confirmation referencing this agreement.\"\n**Recommended action:** Ask Falcon to credit the ₹1,200.00 detention charge, or to produce a written rate confirmation authorizing it under §5.\n**Deadline:** The §7 dispute window closes 2026-10-14 and is open as of 2026-09-29. The invoice date is not printed; the deadline assumes the end of the billing period (2026-08-30). Raise this promptly and check the actual invoice date.",
+      "raised_reason": null
+    },
+    {
+      "disposition": "dispute",
+      "item_id": "FALCON-2026-09A#7",
+      "justification": "Billed freight of ₹14,878.00 exceeds the contract amount computed from §1 (per-km rate for the 501–2,000 kg band), §3 (fuel surcharge), and §4 (residential accessorial), leaving a ₹381.60 difference.",
+      "memo_markdown": "# FALCON-2026-09A · FF-8078\n\n**Disposition:** Dispute\n**Amount:** ₹381.60 overbilled freight\n**What happened:** The invoice billed ₹14,878.00 for this consignment; the contract amount, computed from the §1 per-km rate for the 501–2,000 kg band, the §3 fuel surcharge, and the §4 residential accessorial, is lower, leaving a ₹381.60 difference.\n**Contract basis:** §1 — \"501 kg to 2,000 kg: ₹24.00 per km\"; §3 — \"A fuel surcharge of 12% applies to the freight charge\"; §4 — \"Residential delivery ... ₹250.00 flat per consignment.\"\n**Recommended action:** Ask Falcon to credit the ₹381.60 overbilled amount.\n**Deadline:** The §7 dispute window closes 2026-10-29 and is open as of 2026-09-29. The invoice date is not printed; the deadline assumes the end of the billing period (2026-09-14). Raise this promptly and check the actual invoice date.",
+      "raised_reason": null
+    },
+    {
+      "disposition": "dispute",
+      "item_id": "FALCON-2026-09A#12",
+      "justification": "FF-8055 is billed twice — once on FALCON-2026-08B and again on FALCON-2026-09A with identical shipment details — and §1 entitles the carrier to charge a booking once. The shipment also falls outside FALCON-2026-09A's billing period, confirming this line does not belong on this invoice.",
+      "memo_markdown": "# FALCON-2026-09A · FF-8055\n\n**Disposition:** Dispute\n**Amount:** ₹4,838.40 duplicate freight charge\n**What happened:** FF-8055 was shipped 2026-08-18 and delivered 2026-08-20, inside the FALCON-2026-08B billing period, where it is already billed on line 2 with identical shipment details. FALCON-2026-09A bills the same booking again, ₹4,838.40, and falls outside its own billing period (2026-09-01 to 2026-09-14).\n**Contract basis:** §1 — base freight is charged per the booked lane distance and billed weight; a single booking is charged once under the rate card.\n**Recommended action:** Ask Falcon to void or credit this line in full, since the booking is already invoiced on FALCON-2026-08B.\n**Deadline:** The §7 dispute window closes 2026-10-29 and is open as of 2026-09-29. The invoice date is not printed; the deadline assumes the end of the billing period (2026-09-14). Raise this promptly and check the actual invoice date.",
+      "raised_reason": null
+    }
+  ]
+}
