@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Compile result",
+  "type": "object",
+  "required": ["carrier", "contract_file", "agreed", "card_a", "card_b", "compare_report", "run_dir"],
+  "properties": {
+    "carrier": {"type": "string"},
+    "contract_file": {"type": "string"},
+    "agreed": {"type": "boolean"},
+    "card_a": {"type": "string"},
+    "card_b": {"type": "string"},
+    "compare_report": {"type": "string"},
+    "run_dir": {"type": "string"}
+  }
+}

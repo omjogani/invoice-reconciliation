@@ -1,0 +1,65 @@
+// factory/flows/recon-compile-rates/recon-compile-rates.dot
+// Child flow, one run per contract (decision D1). Two agents read the same
+// contract independently; a script gate checks both cards and compares them;
+// on any problem or disagreement each agent gets one revision round with the
+// gate report. finalize records the final pair for the parent's rates_check.
+
+digraph recon_compile_rates {
+  graph [label="Compile one contract into a rate card (two extractions + agreement gate)"]
+
+  start       [shape=Mdiamond]
+
+  extract     [runner=fork, description="Two independent extractions of the same contract."]
+
+  extract_a   [shape=box, prompt_template="prompts/extract-a.md", working_dir="{_run_artefact_dir}",
+               output_schema="extract_a_outputs", model="sonnet", autonomy="full",
+               description="Extraction A: clause-by-clause reading of the contract into a rate card."]
+
+  extract_b   [shape=box, prompt_template="prompts/extract-b.md", working_dir="{_run_artefact_dir}",
+               output_schema="extract_b_outputs", model="sonnet", autonomy="full",
+               description="Extraction B: edge cases and silences first, then the rate card."]
+
+  extracted   [runner=join, description="Both extractions written."]
+
+  compare     [shape=box, runner=script, script="scripts/compare.sh", working_dir="{_run_artefact_dir}",
+               output_schema="compare_outputs",
+               description="Gate: both cards pass every rate-card check and read the contract the same way."]
+
+  revise      [runner=fork, description="One revision round, each agent given the gate report."]
+
+  revise_a    [shape=box, prompt_template="prompts/revise-a.md", working_dir="{_run_artefact_dir}",
+               output_schema="revise_a_outputs", model="sonnet", autonomy="full",
+               description="Extraction A reconsiders its card against the gate report."]
+
+  revise_b    [shape=box, prompt_template="prompts/revise-b.md", working_dir="{_run_artefact_dir}",
+               output_schema="revise_b_outputs", model="sonnet", autonomy="full",
+               description="Extraction B reconsiders its card against the gate report."]
+
+  revised     [runner=join, description="Both revisions written."]
+
+  compare_2   [shape=box, runner=script, script="scripts/compare.sh", working_dir="{_run_artefact_dir}",
+               output_schema="compare_2_outputs",
+               description="Gate on the revised cards. The result is recorded either way; the parent decides."]
+
+  finalize    [shape=box, runner=script, script="scripts/finalize.sh", working_dir="{_run_artefact_dir}",
+               output_schema="finalize_outputs",
+               description="Record the final pair of cards and whether they agreed."]
+
+  done        [shape=Msquare]
+
+  start     -> extract
+  extract   -> extract_a
+  extract   -> extract_b
+  extract_a -> extracted
+  extract_b -> extracted
+  extracted -> compare
+  compare   -> finalize  [condition="agree == yes", label="cards valid and in agreement"]
+  compare   -> revise    [condition="agree == no",  label="problems or disagreement: one revision round"]
+  revise    -> revise_a
+  revise    -> revise_b
+  revise_a  -> revised
+  revise_b  -> revised
+  revised   -> compare_2
+  compare_2 -> finalize
+  finalize  -> done
+}

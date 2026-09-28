@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Fallback parse",
+  "description": "Canonical records for documents no parser recognised. recon merge-fallback validates each record and ties each document out before use.",
+  "type": "object",
+  "required": ["documents", "lines"],
+  "properties": {
+    "documents": {"type": "array", "items": {"type": "object", "required": ["doc_id", "doc_type", "carrier", "source_file", "format", "printed_total"]}},
+    "lines": {"type": "array", "items": {"type": "object", "required": ["doc_id", "doc_type", "carrier", "position", "consignment_ref", "billed_total"]}}
+  }
+}
