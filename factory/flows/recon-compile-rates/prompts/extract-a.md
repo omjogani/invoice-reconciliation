@@ -59,7 +59,7 @@ in `non_pricing` with a one-line summary).
 Write the card, then run this from `{repo_root}`:
 
 ```bash
-orchestrator/.venv/bin/python -m recon check-card --card {card_a} --contract {contract_path} --carrier {carrier} --vocabulary {vocabulary_path}
+orchestrator/.venv/bin/python -m recon check-card --card {repo_root}/{_run_artefact_dir}/card-a.json --contract {contract_path} --carrier {carrier} --vocabulary {vocabulary_path}
 ```
 
 Fix every problem it reports and run it again until it prints
@@ -67,6 +67,6 @@ Fix every problem it reports and run it again until it prints
 
 ## Output
 
-Write the rate card as JSON to exactly: `{card_a}`
+Write the rate card as JSON to exactly: `{repo_root}/{_run_artefact_dir}/card-a.json`
 
 Include a top-level `_session_id` (see the completion contract below).

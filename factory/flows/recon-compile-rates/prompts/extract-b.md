@@ -52,12 +52,12 @@ Express what you found with the schema's building blocks:
 From `{repo_root}` run:
 
 ```bash
-orchestrator/.venv/bin/python -m recon check-card --card {card_b} --contract {contract_path} --carrier {carrier} --vocabulary {vocabulary_path}
+orchestrator/.venv/bin/python -m recon check-card --card {repo_root}/{_run_artefact_dir}/card-b.json --contract {contract_path} --carrier {carrier} --vocabulary {vocabulary_path}
 ```
 
 Repeat until it prints `{"card_ok": true}`. Edit only your own card.
 
 ## Output
 
-Write the card as JSON to exactly: `{card_b}`, with a top-level
+Write the card as JSON to exactly: `{repo_root}/{_run_artefact_dir}/card-b.json`, with a top-level
 `_session_id` as the completion contract below describes.

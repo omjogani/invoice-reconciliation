@@ -31,10 +31,10 @@ every clause accounted for.
 Check your revised card from `{repo_root}`:
 
 ```bash
-orchestrator/.venv/bin/python -m recon check-card --card {card_b_rev} --contract {contract_path} --carrier {carrier} --vocabulary {vocabulary_path}
+orchestrator/.venv/bin/python -m recon check-card --card {repo_root}/{_run_artefact_dir}/card-b-revised.json --contract {contract_path} --carrier {carrier} --vocabulary {vocabulary_path}
 ```
 
 ## Output
 
-Write your complete revised card (not a diff) to exactly: `{card_b_rev}`,
+Write your complete revised card (not a diff) to exactly: `{repo_root}/{_run_artefact_dir}/card-b-revised.json`,
 with a top-level `_session_id` as the completion contract below describes.
