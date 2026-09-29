@@ -9,10 +9,10 @@ You ARE the orchestrator. The flow's structure lives in a DOT file; the two
 CLIs translate it into state and actions; the decisions between actions
 belong to you.
 
-> **This is a minimal skill** — just enough machinery to progress a
-> flowstate graph. It specifies the CLI protocol faithfully but not much
-> beyond it, and likely needs additional improvements; extend it as you
-> see fit.
+> Started from the kit's minimal skill. Extended for the freight
+> reconciliation with a spawn helper (2e), a mandatory failure policy ("When
+> things fail"), and a verified procedure for driving `dynamic_fanout`
+> children. The changes are listed in DESIGN.md.
 
 ## Tools
 
@@ -114,6 +114,25 @@ instead, a placeholder variable is unset — `flowstate set-var` it, then
 
 ### 2e. Spawn the worker
 
+Use the helper. It reads `node-config` and `render-prompt` with the venv's
+YAML parser, refuses an empty or unrendered prompt, calls `agentctl spawn`
+with the node's harness, model and autonomy, and appends the spawn to
+`<run-dir>/spawn-ledger.jsonl`:
+
+```bash
+orchestrator/bin/spawn-node "<target>" --run-dir "$run_dir" [--session "<tmux_session>"]
+```
+
+Pass `--session` with the `tmux_session` from your first spawn when the
+worker belongs to a subflow child run, so every worker of the run shares one
+tmux session. The output is the usual agentctl envelope.
+
+Do not pipe envelopes through the system `python3` to extract the prompt
+yourself: it may lack PyYAML, the extraction then fails silently and the
+worker starts with an empty prompt (this happened during exploration).
+
+The underlying call, for reference or when the helper is unavailable:
+
 ```bash
 orchestrator/bin/agentctl spawn \
   --harness "<node_config.harness or claude-code>" \
@@ -183,14 +202,31 @@ successful validation, if the node declares `pauses_at_min` and the run's
 supervision is at or above it, pause: show the user the node's result and
 the current variables, and wait for confirmation before advancing.
 
-## When things fail
+## When things fail — the failure policy
 
-The protocol above stops at three junctures: **validation failed**,
-**worker stalled**, **worker died** (plus `blocked` gates). This skill does
-not specify what to do there — handle them as you judge best, and extend
-this skill if you find that useful. (`flowstate event --kind <k> --node <n>
---message <m>` appends to the run's event log, if you want a record of what
-you did.)
+Follow this policy; do not improvise around it. Record **every** decision
+below with `flowstate event --kind <kind> --node <node> --message "<what and
+why>"` (repeatable `-d key=value` for data), so the run log explains the run.
+
+**Important:** a worker is ended by its wrapper the moment its
+`completion.yml` appears. After `finish` reports `validate.passed: false`
+the worker is already gone. Do not `agentctl send` to it; retry by
+respawning, as below.
+
+| Situation | Action | Limit, then |
+|---|---|---|
+| `finish` → `validate.passed: false` | Write `validate.feedback` (plus any gate or check output that explains it) to `<temp_dir>/feedback-<n>.txt`, log `--kind validation_retry`, then `orchestrator/bin/spawn-node <node> --run-dir <dir> --retry-feedback <file> [--session …]`, `wait`, `finish` again | 2 retries per node. Then log `validation_exhausted`, stop the run and show the human the feedback history. Never `advance --force` past a failed validation. |
+| `wait` → `stalled` | `tmux capture-pane -p -t <session>:<window-index>` (resolve the index with `tmux list-windows`). A dialog (for example workspace trust) → answer it with `agentctl send`, log `dialog_answered`, `wait` again. A worker that is still thinking (spinner, recent transcript writes) → `wait` again. | Nothing on screen and no transcript growth for two more waits → `agentctl kill`, log `stall_respawn`, respawn with `--prompt-file <temp_dir>/prompt.raw.txt`. One respawn; a second stall stops the run. |
+| `wait` → `died` | `tail -40` the worker transcript (`evidence.agent_session_id`). `spawn_failed: true` or a transient error → log `died_respawn` and respawn once from `prompt.raw.txt`. | A second death stops the run with the transcript tail shown to the human. |
+| `wait` → `awaiting_human` | Relay the question to the human verbatim; send the answer with `agentctl send`; log `human_answer`. | — |
+| `advance` → `blocked` (gate failed) | Read `payload.reason`. Gates in these flows are deterministic: re-running without a change cannot help. Log `gate_blocked` and show the human the reason. | Stop. |
+| `advance` → `error` from a script node | Scripts are deterministic too. Show the human stderr (`payload.reason`), log `script_error`. | Stop; never hand-write the script's outputs. |
+| `advance` → `choice_needed` | Every condition in these flows is resolvable; this means a variable is missing. Check `flowstate vars`, log `choice_needed`, and surface it. | Stop rather than guess a branch. |
+| A `runner=orchestrator` hold node | Execute its rendered prompt yourself. It tells you what to show the human and which command records their decision. Never approve on the human's behalf. | — |
+
+"Stop the run" means: leave the state as it is (the CLIs can resume it),
+kill the run's tmux sessions, and report to the human what failed, what you
+tried, and where the evidence is.
 
 ## Parallel branches (fan-out flows)
 
@@ -211,6 +247,33 @@ Inside an inline fork arm, every `set-var` MUST carry `--node
 "<branch_node>"` so the write lands in branch scope. Joins fire
 automatically once all branches land; `flowstate status` shows per-branch
 state.
+
+### Driving `dynamic_fanout` children, step by step
+
+This loop was verified end to end on this engine:
+
+1. `flowstate advance --run-dir "$run_dir" --node <fanout>` registers the
+   branches and returns `next_startable_branches` (already capped by
+   `max_concurrent`).
+2. For each id: `flowstate start-branch --run-dir "$run_dir" --node <fanout>
+   --branch <id>` → `payload.subflow_run_dir` is the child's run dir.
+3. Drive each child with the normal loop against the **child's** run dir:
+   `flowstate advance --run-dir <child>`, `spawn-node <node> --run-dir
+   <child> --session <tmux_session>` for its agent nodes (for a `fork`
+   inside the child, use the envelope's `active_phases` and
+   `advance --node <arm>`), and `finish <node> --run-dir <child>
+   --agent-id <id>`. Round-robin `agentctl wait <id> --max-seconds 60`
+   across live workers.
+4. When a child reaches `kind: end`, flowstate pushes its declared outputs
+   into the parent and fires the join's reducer. Nothing to call.
+5. Re-run step 1. It returns more `next_startable_branches` (a rolling
+   window) or `fanout '<name>' complete; advanced to '<template>'`.
+6. Then `flowstate advance --run-dir "$run_dir"` passes through the
+   template and join into the next node.
+
+Engine limitation: a `join` wired straight into the end node crashes the
+advance envelope (it builds a node config for the end node). The flows here
+always put a script node after a join; keep it that way in new flows.
 
 ## Step 3 — Done
 

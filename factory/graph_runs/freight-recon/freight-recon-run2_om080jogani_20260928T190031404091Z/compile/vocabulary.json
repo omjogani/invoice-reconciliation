@@ -1,0 +1,12 @@
+{
+  "note": "Rate-card conditions must use exactly these values; they are the values shipment records carry.",
+  "service_level": [
+    "express",
+    "standard"
+  ],
+  "special_handling": [
+    "cold_chain",
+    "fragile",
+    "residential"
+  ]
+}

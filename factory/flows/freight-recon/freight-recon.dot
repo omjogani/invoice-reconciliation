@@ -1,0 +1,111 @@
+// factory/flows/freight-recon/freight-recon.dot
+// Freight billing reconciliation. Scripts (inline, deterministic) own every
+// amount; agents compile contracts (child flow recon-compile-rates) and
+// review exceptions (child flow recon-review); a gate sits on every hand-off.
+// Two end nodes: `done` (report validated and published) and `halted` (a
+// human declined or could not approve the rate cards; nothing is published).
+
+digraph freight_recon {
+  graph [label="Freight billing reconciliation"]
+
+  start          [shape=Mdiamond]
+
+  ingest         [shape=box, runner=script, script="scripts/ingest.sh", working_dir="{_run_artefact_dir}",
+                  output_schema="ingest_outputs",
+                  description="Inventory and fingerprint every billing document, parse known formats, tie each out."]
+
+  parse_fallback [shape=box, prompt_template="prompts/parse-fallback.md", working_dir="{_run_artefact_dir}",
+                  output_schema="fallback_outputs", model="sonnet", autonomy="full",
+                  description="Agent parses documents in unknown formats into canonical records."]
+
+  merge_fallback [shape=box, runner=script, script="scripts/merge_fallback.sh", working_dir="{_run_artefact_dir}",
+                  output_schema="merge_fallback_outputs",
+                  description="Gate: fallback records validated and tied out like any parser's output."]
+
+  plan_compile   [shape=box, runner=script, script="scripts/plan_compile.sh", working_dir="{_run_artefact_dir}",
+                  output_schema="plan_compile_outputs",
+                  description="One contract-compilation job per carrier, plus the condition vocabulary."]
+
+  compile_fan    [runner=dynamic_fanout, source="compile_jobs", template="compile_t", max_concurrent=3,
+                  description="Compile each contract in its own child run."]
+
+  compile_t      [runner=subflow, flow="recon-compile-rates", outputs="{compile_result: compile_result}",
+                  description="Template: two extractions, agreement gate, one revision round."]
+
+  compile_join   [runner=join, reducer_script="scripts/collect_compile.py", summary_var="compile_results",
+                  description="Collect each contract's compile result."]
+
+  rates_check    [shape=box, runner=script, script="scripts/rates_check.sh", working_dir="{_run_artefact_dir}",
+                  output_schema="rates_check_outputs",
+                  description="Gate (D1): card checks, agreement, approved snapshot per contract hash."]
+
+  rates_hold     [shape=box, runner=orchestrator, prompt_template="prompts/rates-hold.md",
+                  output_schema="rates_hold_outputs",
+                  description="A human approves new rate cards or stops the run. Never approved by an agent."]
+
+  rates_recheck  [shape=box, runner=script, script="scripts/rates_check.sh", working_dir="{_run_artefact_dir}",
+                  output_schema="rates_recheck_outputs",
+                  description="Gate again after the human's decision."]
+
+  reconcile      [shape=box, runner=script, script="scripts/reconcile.sh", working_dir="{_run_artefact_dir}",
+                  output_schema="reconcile_outputs",
+                  description="Match, price and check every line; duplicates, credits, discounts, deadlines."]
+
+  plan_review    [shape=box, runner=script, script="scripts/plan_review.sh", working_dir="{_run_artefact_dir}",
+                  output_schema="plan_review_outputs",
+                  description="Batch the non-accept items for review, one carrier per batch."]
+
+  review_fan     [runner=dynamic_fanout, source="review_jobs", template="review_t", max_concurrent=4,
+                  description="Review each batch in its own child run."]
+
+  review_t       [runner=subflow, flow="recon-review", outputs="{review_output: review_output}",
+                  description="Template: review agent, reviewer-contract gate, two retries."]
+
+  review_join    [runner=join, reducer_script="scripts/collect_reviews.py", summary_var="review_outputs",
+                  description="Collect each batch's settled review."]
+
+  review_check   [shape=box, runner=script, script="scripts/review_check.sh", working_dir="{_run_artefact_dir}",
+                  output_schema="review_check_outputs",
+                  description="Gate (D7): every batch settled and passing the reviewer contract."]
+
+  assemble       [shape=box, runner=script, script="scripts/assemble.sh", working_dir="{_run_artefact_dir}",
+                  output_schema="assemble_outputs",
+                  description="Build reconciliation-report.json and memos; every total computed in code."]
+
+  validate_report [shape=box, runner=script, script="scripts/validate_report.sh", working_dir="{_run_artefact_dir}",
+                  output_schema="validate_outputs",
+                  description="Gate: schema, exactly-once, amount invariants, dispute-once, memo coverage."]
+
+  publish        [shape=box, runner=script, script="scripts/publish.sh", working_dir="{_run_artefact_dir}",
+                  output_schema="publish_outputs",
+                  description="Copy the validated report and memos to the repository root with a run manifest."]
+
+  done           [shape=Msquare]
+  halted         [shape=Msquare]
+
+  start          -> ingest
+  ingest         -> plan_compile   [condition="unknown_state == none", label="all formats known"]
+  ingest         -> parse_fallback [condition="unknown_state == some", label="unknown format(s)"]
+  parse_fallback -> merge_fallback
+  merge_fallback -> plan_compile
+  plan_compile   -> compile_fan
+  compile_fan    -> compile_t
+  compile_t      -> compile_join
+  compile_join   -> rates_check
+  rates_check    -> reconcile      [condition="rates_verdict == ok", label="cards approved"]
+  rates_check    -> rates_hold     [condition="rates_verdict == needs_approval || rates_verdict == hold", label="human needed"]
+  rates_hold     -> rates_recheck  [condition="rates_decision == recheck", label="human approved; check again"]
+  rates_hold     -> halted         [condition="rates_decision == stop", label="human stopped the run"]
+  rates_recheck  -> reconcile      [condition="rates_verdict == ok", label="cards approved"]
+  rates_recheck  -> halted         [condition="rates_verdict == needs_approval || rates_verdict == hold", label="still not approved"]
+  reconcile      -> plan_review
+  plan_review    -> review_fan     [condition="review_state == some", label="exceptions to review"]
+  plan_review    -> review_check   [condition="review_state == none", label="nothing to review"]
+  review_fan     -> review_t
+  review_t       -> review_join
+  review_join    -> review_check
+  review_check   -> assemble
+  assemble       -> validate_report
+  validate_report -> publish
+  publish        -> done
+}

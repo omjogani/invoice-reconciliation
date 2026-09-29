@@ -1,0 +1,414 @@
+metadata:
+  run_id: f9772ae5-6972-4ddd-a7ce-6632cf4cc8e2
+  userid: om080jogani
+  orchestrator_session_id: null
+  orchestrator_harness: null
+  orchestrator_identity_source: self_reported
+  flow: recon-compile-rates
+  flow_dot: factory/flows/recon-compile-rates/recon-compile-rates.dot
+  flow_dir: factory/flows/recon-compile-rates
+  repo_root: /Users/omjogani/Projects/stage2-kit
+  supervision: afk
+  run_descriptor: B1_3
+  timestamp: 20260928T190036535494Z
+  started_at: '2026-09-28T19:00:36Z'
+  completed_at: '2026-09-28T19:02:21Z'
+  state: completed
+  parent_run:
+    flow: freight-recon
+    run_dir: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon-run2_om080jogani_20260928T190031404091Z
+    fanout_node: compile_fan
+    branch_id: B1.3
+current:
+  phase: done
+  phases:
+  - done
+  nodes:
+    start:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-28T19:00:36Z'
+      completed_at: '2026-09-28T19:00:36Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    extract:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-28T19:00:36Z'
+      completed_at: '2026-09-28T19:00:36Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches:
+      - branch_id: B1.1
+        status: in_progress
+        subflow_run_dir: null
+        inline_root_node: extract_a
+        failure_reason: null
+      - branch_id: B1.2
+        status: in_progress
+        subflow_run_dir: null
+        inline_root_node: extract_b
+        failure_reason: null
+      join_history: []
+    extract_a:
+      status: done
+      agent_id: null
+      agent_session_id: 9c965873-ee4a-49b1-8632-727f58b12047
+      started_at: '2026-09-28T19:00:36Z'
+      completed_at: '2026-09-28T19:02:20Z'
+      validation_passed: true
+      validation_checked_at: '2026-09-28T19:02:20Z'
+      validation_feedback: null
+      summary: "Compiled the Sagar Roadlines contract into a rate card covering the\
+        \ per-kg weight and per-km distance freight components (\xA71), standard-only\
+        \ service level (\xA72), the 20% cold-chain surcharge on freight (\xA73),\
+        \ credit note rules (\xA76) and unmatched-line non-payability (\xA75), with\
+        \ \xA74 and the c-note reference sentence of \xA75 recorded as non-pricing;\
+        \ check-card reports card_ok: true."
+      notes: null
+      usage: null
+      harness: claude-code
+      prior_attempts: []
+      branch_id: B1.1
+      branches: []
+      join_history: []
+    extract_b:
+      status: done
+      agent_id: null
+      agent_session_id: 95a8ef01-b4e3-4353-a983-5349b86eddaf
+      started_at: '2026-09-28T19:00:36Z'
+      completed_at: '2026-09-28T19:02:21Z'
+      validation_passed: true
+      validation_checked_at: '2026-09-28T19:02:21Z'
+      validation_feedback: null
+      summary: "Read sagar-roadlines.md adversarially clause by clause and wrote card-b.json\
+        \ covering the weight (\u20B96.00/kg billed) and distance (\u20B92.00/km)\
+        \ freight components, standard-only service level, 20% cold-chain surcharge\
+        \ on freight, no accessorials/discounts/chargeable-weight-minimum/dispute-window\
+        \ (all silent in the contract), unmatched lines not payable, and full-cover\
+        \ credit notes; check-card returned {\"card_ok\": true}."
+      notes: null
+      usage: null
+      harness: claude-code
+      prior_attempts: []
+      branch_id: B1.2
+      branches: []
+      join_history: []
+    extracted:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-28T19:02:20Z'
+      completed_at: '2026-09-28T19:02:21Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: null
+      branches: []
+      join_history: []
+    compare:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-28T19:02:21Z'
+      completed_at: '2026-09-28T19:02:21Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: null
+      branches: []
+      join_history: []
+    finalize:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-28T19:02:21Z'
+      completed_at: '2026-09-28T19:02:21Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    done:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-28T19:02:21Z'
+      completed_at: '2026-09-28T19:02:21Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+orchestrator_usage: null
+branch_scopes:
+  B1:
+    branch_id: B1
+    variables:
+      card_a: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-compile-rates/B1_3_om080jogani_20260928T190036535494Z_B1.3/card-a.json
+      card_b: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-compile-rates/B1_3_om080jogani_20260928T190036535494Z_B1.3/card-b.json
+      card_a_rev: null
+      card_b_rev: null
+      compare_report: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-compile-rates/B1_3_om080jogani_20260928T190036535494Z_B1.3/compare-1.json
+      compare_report_2: null
+      agree: 'yes'
+      compile_result: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-compile-rates/B1_3_om080jogani_20260928T190036535494Z_B1.3/compile-result.json
+      card_schema_path: /Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json
+      carrier: sagar
+      carrier_name: Sagar Roadlines
+      contract_file: sagar-roadlines.md
+      contract_path: /Users/omjogani/Projects/stage2-kit/data/contracts/sagar-roadlines.md
+      contract_sha256: 43c3f2dfc4e0eade16e79d4924f4b83c8748dc1a06dfaf3bc2694369aaa5ad95
+      repo_root: /Users/omjogani/Projects/stage2-kit
+      vocabulary_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon-run2_om080jogani_20260928T190031404091Z/compile/vocabulary.json
+      _userid: om080jogani
+      _timestamp: 20260928T190036535494Z
+      _run_descriptor: B1_3
+      _flow_stem: recon-compile-rates
+      _run_artefact_dir: factory/graph_runs/recon-compile-rates/B1_3_om080jogani_20260928T190036535494Z_B1.3
+      _supervision: afk
+      _supervision_instructions: ''
+      _branches:
+      - branch_id: B1.1
+        source_node: extract_a
+        status: done
+      - branch_id: B1.2
+        source_node: extract_b
+        status: done
+    parent_node: null
+    seed:
+      card_a: null
+      card_b: null
+      card_a_rev: null
+      card_b_rev: null
+      compare_report: null
+      compare_report_2: null
+      agree: null
+      compile_result: null
+      card_schema_path: /Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json
+      carrier: sagar
+      carrier_name: Sagar Roadlines
+      contract_file: sagar-roadlines.md
+      contract_path: /Users/omjogani/Projects/stage2-kit/data/contracts/sagar-roadlines.md
+      contract_sha256: 43c3f2dfc4e0eade16e79d4924f4b83c8748dc1a06dfaf3bc2694369aaa5ad95
+      repo_root: /Users/omjogani/Projects/stage2-kit
+      vocabulary_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon-run2_om080jogani_20260928T190031404091Z/compile/vocabulary.json
+      _userid: om080jogani
+      _timestamp: 20260928T190036535494Z
+      _run_descriptor: B1_3
+      _flow_stem: recon-compile-rates
+      _run_artefact_dir: factory/graph_runs/recon-compile-rates/B1_3_om080jogani_20260928T190036535494Z_B1.3
+      _supervision: afk
+      _supervision_instructions: ''
+    next_child: 2
+  B1.1:
+    branch_id: B1.1
+    variables:
+      card_a: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-compile-rates/B1_3_om080jogani_20260928T190036535494Z_B1.3/card-a.json
+      card_b: null
+      card_a_rev: null
+      card_b_rev: null
+      compare_report: null
+      compare_report_2: null
+      agree: null
+      compile_result: null
+      card_schema_path: /Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json
+      carrier: sagar
+      carrier_name: Sagar Roadlines
+      contract_file: sagar-roadlines.md
+      contract_path: /Users/omjogani/Projects/stage2-kit/data/contracts/sagar-roadlines.md
+      contract_sha256: 43c3f2dfc4e0eade16e79d4924f4b83c8748dc1a06dfaf3bc2694369aaa5ad95
+      repo_root: /Users/omjogani/Projects/stage2-kit
+      vocabulary_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon-run2_om080jogani_20260928T190031404091Z/compile/vocabulary.json
+      _userid: om080jogani
+      _timestamp: 20260928T190036535494Z
+      _run_descriptor: B1_3
+      _flow_stem: recon-compile-rates
+      _run_artefact_dir: factory/graph_runs/recon-compile-rates/B1_3_om080jogani_20260928T190036535494Z_B1.3
+      _supervision: afk
+      _supervision_instructions: ''
+    parent_node: extract
+    seed:
+      card_a: null
+      card_b: null
+      card_a_rev: null
+      card_b_rev: null
+      compare_report: null
+      compare_report_2: null
+      agree: null
+      compile_result: null
+      card_schema_path: /Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json
+      carrier: sagar
+      carrier_name: Sagar Roadlines
+      contract_file: sagar-roadlines.md
+      contract_path: /Users/omjogani/Projects/stage2-kit/data/contracts/sagar-roadlines.md
+      contract_sha256: 43c3f2dfc4e0eade16e79d4924f4b83c8748dc1a06dfaf3bc2694369aaa5ad95
+      repo_root: /Users/omjogani/Projects/stage2-kit
+      vocabulary_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon-run2_om080jogani_20260928T190031404091Z/compile/vocabulary.json
+      _userid: om080jogani
+      _timestamp: 20260928T190036535494Z
+      _run_descriptor: B1_3
+      _flow_stem: recon-compile-rates
+      _run_artefact_dir: factory/graph_runs/recon-compile-rates/B1_3_om080jogani_20260928T190036535494Z_B1.3
+      _supervision: afk
+      _supervision_instructions: ''
+    next_child: 0
+  B1.2:
+    branch_id: B1.2
+    variables:
+      card_a: null
+      card_b: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-compile-rates/B1_3_om080jogani_20260928T190036535494Z_B1.3/card-b.json
+      card_a_rev: null
+      card_b_rev: null
+      compare_report: null
+      compare_report_2: null
+      agree: null
+      compile_result: null
+      card_schema_path: /Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json
+      carrier: sagar
+      carrier_name: Sagar Roadlines
+      contract_file: sagar-roadlines.md
+      contract_path: /Users/omjogani/Projects/stage2-kit/data/contracts/sagar-roadlines.md
+      contract_sha256: 43c3f2dfc4e0eade16e79d4924f4b83c8748dc1a06dfaf3bc2694369aaa5ad95
+      repo_root: /Users/omjogani/Projects/stage2-kit
+      vocabulary_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon-run2_om080jogani_20260928T190031404091Z/compile/vocabulary.json
+      _userid: om080jogani
+      _timestamp: 20260928T190036535494Z
+      _run_descriptor: B1_3
+      _flow_stem: recon-compile-rates
+      _run_artefact_dir: factory/graph_runs/recon-compile-rates/B1_3_om080jogani_20260928T190036535494Z_B1.3
+      _supervision: afk
+      _supervision_instructions: ''
+    parent_node: extract
+    seed:
+      card_a: null
+      card_b: null
+      card_a_rev: null
+      card_b_rev: null
+      compare_report: null
+      compare_report_2: null
+      agree: null
+      compile_result: null
+      card_schema_path: /Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json
+      carrier: sagar
+      carrier_name: Sagar Roadlines
+      contract_file: sagar-roadlines.md
+      contract_path: /Users/omjogani/Projects/stage2-kit/data/contracts/sagar-roadlines.md
+      contract_sha256: 43c3f2dfc4e0eade16e79d4924f4b83c8748dc1a06dfaf3bc2694369aaa5ad95
+      repo_root: /Users/omjogani/Projects/stage2-kit
+      vocabulary_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon-run2_om080jogani_20260928T190031404091Z/compile/vocabulary.json
+      _userid: om080jogani
+      _timestamp: 20260928T190036535494Z
+      _run_descriptor: B1_3
+      _flow_stem: recon-compile-rates
+      _run_artefact_dir: factory/graph_runs/recon-compile-rates/B1_3_om080jogani_20260928T190036535494Z_B1.3
+      _supervision: afk
+      _supervision_instructions: ''
+    next_child: 0
+events:
+- t: '2026-09-28T19:00:36Z'
+  kind: run_started
+  by: om080jogani
+- t: '2026-09-28T19:00:36Z'
+  kind: node_entered
+  node: extract
+- t: '2026-09-28T19:00:36Z'
+  kind: fork_fanned_out
+  node: extract
+  branches:
+  - extract_a
+  - extract_b
+  branch_ids:
+  - B1.1
+  - B1.2
+- t: '2026-09-28T19:02:20Z'
+  kind: validation_passed
+  node: extract_a
+  agent_session_id: 9c965873-ee4a-49b1-8632-727f58b12047
+- t: '2026-09-28T19:02:20Z'
+  kind: join_arrival
+  join: extracted
+  from: extract_a
+  arrived:
+  - extract_a
+- t: '2026-09-28T19:02:21Z'
+  kind: validation_passed
+  node: extract_b
+  agent_session_id: 95a8ef01-b4e3-4353-a983-5349b86eddaf
+- t: '2026-09-28T19:02:21Z'
+  kind: join_arrival
+  join: extracted
+  from: extract_b
+  arrived:
+  - extract_a
+  - extract_b
+- t: '2026-09-28T19:02:21Z'
+  kind: join_fired
+  join: extracted
+  downstream: compare
+  errored_branches: []
+- t: '2026-09-28T19:02:21Z'
+  kind: script_node_ran
+  node: compare
+  exit_code: 0
+- t: '2026-09-28T19:02:21Z'
+  kind: validation_passed
+  node: compare
+  agent_session_id: null
+- t: '2026-09-28T19:02:21Z'
+  kind: branch_auto_resolved
+  node: compare
+  chose: finalize
+- t: '2026-09-28T19:02:21Z'
+  kind: node_entered
+  node: finalize
+- t: '2026-09-28T19:02:21Z'
+  kind: script_node_ran
+  node: finalize
+  exit_code: 0
+- t: '2026-09-28T19:02:21Z'
+  kind: validation_passed
+  node: finalize
+  agent_session_id: null
+- t: '2026-09-28T19:02:21Z'
+  kind: run_completed

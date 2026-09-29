@@ -1,0 +1,50 @@
+// factory/flows/recon-review/recon-review.dot
+// Child flow, one run per review batch (decision D7). An agent reviews the
+// batch's exceptions and writes justifications and memos; a script gate
+// enforces the reviewer contract; on rejection the agent gets the gate's
+// feedback, at most twice. finalize settles on the latest passing attempt or
+// records the failure, which stops the parent at review_check.
+
+digraph recon_review {
+  graph [label="Review one batch of exceptions (reviewer contract gate, two retries)"]
+
+  start     [shape=Mdiamond]
+
+  review    [shape=box, prompt_template="prompts/review.md", working_dir="{_run_artefact_dir}",
+             output_schema="review_outputs", model="sonnet", autonomy="full",
+             description="Review each exception: keep or raise the disposition, justify it, write the memo."]
+
+  check_1   [shape=box, runner=script, script="scripts/check.sh", working_dir="{_run_artefact_dir}",
+             output_schema="check_1_outputs", description="Gate: the reviewer contract (D7) on attempt 1."]
+
+  retry_1   [shape=box, prompt_template="prompts/retry-1.md", working_dir="{_run_artefact_dir}",
+             output_schema="retry_1_outputs", model="sonnet", autonomy="full",
+             description="Second attempt, with the gate's feedback."]
+
+  check_2   [shape=box, runner=script, script="scripts/check.sh", working_dir="{_run_artefact_dir}",
+             output_schema="check_2_outputs", description="Gate on attempt 2."]
+
+  retry_2   [shape=box, prompt_template="prompts/retry-2.md", working_dir="{_run_artefact_dir}",
+             output_schema="retry_2_outputs", model="sonnet", autonomy="full",
+             description="Third and last attempt, with the gate's feedback."]
+
+  check_3   [shape=box, runner=script, script="scripts/check.sh", working_dir="{_run_artefact_dir}",
+             output_schema="check_3_outputs", description="Gate on attempt 3."]
+
+  finalize  [shape=box, runner=script, script="scripts/finalize.sh", working_dir="{_run_artefact_dir}",
+             output_schema="finalize_outputs",
+             description="Latest passing attempt becomes the batch's review, or a failure record."]
+
+  done      [shape=Msquare]
+
+  start   -> review
+  review  -> check_1
+  check_1 -> finalize [condition="review_ok == yes", label="passed"]
+  check_1 -> retry_1  [condition="review_ok == no",  label="rejected: retry with feedback"]
+  retry_1 -> check_2
+  check_2 -> finalize [condition="review_ok == yes", label="passed"]
+  check_2 -> retry_2  [condition="review_ok == no",  label="rejected: last retry"]
+  retry_2 -> check_3
+  check_3 -> finalize
+  finalize -> done
+}

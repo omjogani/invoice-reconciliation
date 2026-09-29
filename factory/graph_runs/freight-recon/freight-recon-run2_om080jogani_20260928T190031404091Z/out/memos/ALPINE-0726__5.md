@@ -1,0 +1,7 @@
+# ALPINE-0726 · AE-3005
+
+**Disposition:** Escalate
+**Amount:** ₹475.00 billed freight charge
+**What happened:** The shipment's chargeable weight is exactly 50.0 kg. The contract's rate bands in §2 are "under 50 kg" and "over 50 kg," so a weight of exactly 50 kg falls in neither band and the invoice cannot be settled against the contract as written.
+**Contract basis:** §2 — "consignments under 50 kg: ₹9.50 per kg of chargeable weight - consignments over 50 kg: ₹8.25 per kg of chargeable weight."
+**Recommended action:** Ask the contract owner to clarify which band applies at exactly 50 kg (or whether the contract needs an explicit boundary rule). The candidate amounts are ₹475.00 at ₹9.50/kg (under-50 band) or ₹412.50 at ₹8.25/kg (over-50 band); do not treat either as confirmed until the gap is resolved.

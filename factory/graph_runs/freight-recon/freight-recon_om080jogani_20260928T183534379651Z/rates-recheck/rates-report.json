@@ -1,0 +1,29 @@
+{
+  "contracts": [
+    {
+      "carrier": "alpine",
+      "contract": "alpine-express.md",
+      "contract_sha256": "caa39649f701795356f6545c0a6c86ea12b2037dc96080027bdf8f17801e6001",
+      "differences": [],
+      "reasons": [],
+      "verdict": "ok"
+    },
+    {
+      "carrier": "falcon",
+      "contract": "falcon-freight.md",
+      "contract_sha256": "6e37557aad7f22da8103e960de6807385088ff0f4bca6fe8da22726998233ca0",
+      "differences": [],
+      "reasons": [],
+      "verdict": "ok"
+    },
+    {
+      "carrier": "sagar",
+      "contract": "sagar-roadlines.md",
+      "contract_sha256": "43c3f2dfc4e0eade16e79d4924f4b83c8748dc1a06dfaf3bc2694369aaa5ad95",
+      "differences": [],
+      "reasons": [],
+      "verdict": "ok"
+    }
+  ],
+  "verdict": "ok"
+}

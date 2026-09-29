@@ -1,0 +1,94 @@
+# Companion schema for freight-recon.dot.
+output_schemas:
+  ingest_outputs:
+    files:
+      - {name: documents, path: "{_run_artefact_dir}/work/documents.json", definition: null}
+      - {name: lines, path: "{_run_artefact_dir}/work/lines.jsonl", definition: null}
+      - {name: inventory, path: "{_run_artefact_dir}/work/inventory.json", definition: null}
+    sets_variables: {documents_path: documents, lines_path: lines, inventory_path: inventory}
+    required_variables: [unknown_state]
+  fallback_outputs:
+    files:
+      - {name: fallback, path: "{_run_artefact_dir}/work/fallback.json", definition: fallback-parse}
+    sets_variables: {fallback_path: fallback}
+  merge_fallback_outputs:
+    files:
+      - {name: merged, path: "{_run_artefact_dir}/work/fallback-merged.json", definition: null}
+    sets_variables: {fallback_merged_path: merged}
+  plan_compile_outputs:
+    files:
+      - {name: compile_plan, path: "{_run_artefact_dir}/compile/compile-jobs.json", definition: null}
+    sets_variables: {compile_plan_path: compile_plan}
+    required_variables: [compile_jobs]
+  rates_check_outputs:
+    files:
+      - {name: rates_report, path: "{_run_artefact_dir}/rates/rates-report.json", definition: null}
+    sets_variables: {rates_report: rates_report}
+    required_variables: [rates_verdict]
+  rates_hold_outputs:
+    files: []
+    required_variables: [rates_decision]
+  rates_recheck_outputs:
+    files:
+      - {name: rates_report_2, path: "{_run_artefact_dir}/rates-recheck/rates-report.json", definition: null}
+    sets_variables: {rates_report_2: rates_report_2}
+    required_variables: [rates_verdict]
+  reconcile_outputs:
+    files:
+      - {name: reconciled, path: "{_run_artefact_dir}/reconciled.json", definition: null}
+    sets_variables: {reconciled_path: reconciled}
+  plan_review_outputs:
+    files:
+      - {name: review_plan, path: "{_run_artefact_dir}/batches/jobs.json", definition: null}
+    sets_variables: {review_plan_path: review_plan}
+    required_variables: [review_state]
+  review_check_outputs:
+    files:
+      - {name: reviews_map, path: "{_run_artefact_dir}/reviews.json", definition: null}
+    sets_variables: {reviews_map: reviews_map}
+  assemble_outputs:
+    files:
+      - {name: report, path: "{_run_artefact_dir}/out/reconciliation-report.json", definition: report}
+    sets_variables: {report_path: report}
+  validate_outputs:
+    files:
+      - {name: validation, path: "{_run_artefact_dir}/out/validation.json", definition: null}
+    sets_variables: {validation_path: validation}
+  publish_outputs:
+    files:
+      - {name: manifest, path: "{_run_artefact_dir}/run-manifest.json", definition: null}
+    sets_variables: {manifest_path: manifest}
+
+variables:
+  # Seeded at bootstrap (paths relative to the repository root).
+  invoices_dir: {type: path}
+  shipments_path: {type: path}
+  carriers_config: {type: path}
+  approved_store: {type: path}
+  as_of_date: {type: string}
+  publish_dir: {type: path}
+  # Produced by the flow.
+  documents_path: {type: path}
+  lines_path: {type: path}
+  inventory_path: {type: path}
+  unknown_state: {type: string}
+  fallback_path: {type: path}
+  fallback_merged_path: {type: path}
+  compile_plan_path: {type: path}
+  compile_jobs: {type: list}
+  compile_result: {type: path}
+  compile_results: {type: dict}
+  rates_report: {type: path}
+  rates_report_2: {type: path}
+  rates_verdict: {type: string}
+  rates_decision: {type: string}
+  reconciled_path: {type: path}
+  review_plan_path: {type: path}
+  review_jobs: {type: list}
+  review_state: {type: string}
+  review_output: {type: path}
+  review_outputs: {type: dict}
+  reviews_map: {type: path}
+  report_path: {type: path}
+  validation_path: {type: path}
+  manifest_path: {type: path}

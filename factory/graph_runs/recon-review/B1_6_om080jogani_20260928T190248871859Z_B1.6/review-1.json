@@ -1,0 +1,62 @@
+{
+  "_session_id": "a884cb6f-2ed2-4dc3-b3c5-572bfc3d0319",
+  "batch_id": "B03",
+  "items": [
+    {
+      "item_id": "SAGAR-AUG-1#6",
+      "disposition": "dispute",
+      "raised_reason": null,
+      "justification": "Contract freight for SG-7056 under §1 is ₹1,680.00, and the carrier's ₹1,940.00 billing was only partially corrected by credit note SAGAR-CN-01. §6 requires a credit note to cover the full corrected amount, so the ₹104.00 remaining open is disputable.",
+      "memo_markdown": "# SAGAR-AUG-1 · SG-7056\n\n**Disposition:** Dispute\n**Amount:** ₹104.00 balance remaining after a partial credit\n**What happened:** The carrier billed ₹1,940.00 for SG-7056 against a contract amount of ₹1,680.00, an overbill of ₹260.00. Credit note SAGAR-CN-01 corrected only ₹156.00 of that overbill, leaving ₹104.00 open.\n**Contract basis:** §6: \"The Carrier may issue credit notes correcting earlier invoices... and must cover the full corrected amount.\" The partial credit does not satisfy this.\n**Recommended action:** Ask the carrier to issue a further credit note for the outstanding ₹104.00 to fully correct SAGAR-AUG-1."
+    },
+    {
+      "item_id": "SAGAR-AUG-1#19",
+      "disposition": "escalate",
+      "raised_reason": null,
+      "justification": "SG-7969 does not match any BlueFin booking, and §5 makes lines that cannot be matched to a booking not payable until reconciled. This requires a person to confirm the correct reference before the ₹836.00 can be resolved, so it is escalated rather than disputed outright.",
+      "memo_markdown": "# SAGAR-AUG-1 · SG-7969\n\n**Disposition:** Escalate\n**Amount:** ₹836.00 billed on an unmatched reference\n**What happened:** The invoice line quotes consignment reference SG-7969 (booking date 2026-08-07, 110 kg, 88 km), but no BlueFin booking carries that reference.\n**Contract basis:** §5: \"Lines that cannot be matched to a booking are not payable until reconciled.\"\n**Recommended action:** Ask the carrier to confirm the correct reference for this line. A possible lead: SG-7069 (shipment SH-4295, in_transit), which matches the same date, weight, and distance but is not a confirmed match — check with the carrier before treating it as one. A person must decide whether this is a typo or a separate, unbilled shipment."
+    },
+    {
+      "item_id": "SAGAR-AUG-2#11",
+      "disposition": "dispute",
+      "raised_reason": null,
+      "justification": "The billed components for SG-7086 sum to ₹390.00, matching the §1 contract amount, but the invoice printed a line total of ₹430.00 — a ₹40.00 arithmetic error the carrier owes back.",
+      "memo_markdown": "# SAGAR-AUG-2 · SG-7086\n\n**Disposition:** Dispute\n**Amount:** ₹40.00 arithmetic error\n**What happened:** The invoice's own components for SG-7086 (freight ₹390.00) sum to ₹390.00, matching the contract amount, but the line was billed at ₹430.00.\n**Contract basis:** §1: freight is \"a weight component of ₹6.00 per kg... and a distance component of ₹2.00 per km,\" which computes to ₹390.00 here.\n**Recommended action:** Ask the carrier to correct the line total to ₹390.00 and credit the ₹40.00 difference."
+    },
+    {
+      "item_id": "SAGAR-JUL-1#3",
+      "disposition": "dispute",
+      "raised_reason": null,
+      "justification": "The billed components for SG-7003 sum to ₹530.00, matching the §1 contract amount, but the invoice printed a line total of ₹570.00 — a ₹40.00 arithmetic error the carrier owes back.",
+      "memo_markdown": "# SAGAR-JUL-1 · SG-7003\n\n**Disposition:** Dispute\n**Amount:** ₹40.00 arithmetic error\n**What happened:** The invoice's own components for SG-7003 sum to ₹530.00, matching the contract amount, but the line was billed at ₹570.00.\n**Contract basis:** §1: freight is \"a weight component of ₹6.00 per kg... and a distance component of ₹2.00 per km,\" which computes to ₹530.00 here.\n**Recommended action:** Ask the carrier to correct the line total to ₹530.00 and credit the ₹40.00 difference."
+    },
+    {
+      "item_id": "SAGAR-JUL-1#9",
+      "disposition": "dispute",
+      "raised_reason": null,
+      "justification": "Contract freight for SG-7009 under §1 is ₹1,480.00, but the carrier billed ₹1,680.00, a ₹200.00 overcharge disputable under the contract's per-kg and per-km rates.",
+      "memo_markdown": "# SAGAR-JUL-1 · SG-7009\n\n**Disposition:** Dispute\n**Amount:** ₹200.00 overbilled against contract\n**What happened:** The carrier billed ₹1,680.00 for SG-7009, but the contract amount under §1 is ₹1,480.00 (weight ₹1,200.00 plus distance ₹280.00).\n**Contract basis:** §1: freight is \"a weight component of ₹6.00 per kg... and a distance component of ₹2.00 per km.\"\n**Recommended action:** Ask the carrier to rebill at ₹1,480.00 and credit the ₹200.00 overcharge."
+    },
+    {
+      "item_id": "SAGAR-SEP-1#14",
+      "disposition": "dispute",
+      "raised_reason": null,
+      "justification": "Contract freight for SG-7114 under §1 is ₹460.00, but the carrier billed ₹505.00, a ₹45.00 overcharge disputable under the contract's per-kg and per-km rates.",
+      "memo_markdown": "# SAGAR-SEP-1 · SG-7114\n\n**Disposition:** Dispute\n**Amount:** ₹45.00 overbilled against contract\n**What happened:** The carrier billed ₹505.00 for SG-7114, but the contract amount under §1 is ₹460.00 (weight ₹270.00 plus distance ₹190.00).\n**Contract basis:** §1: freight is \"a weight component of ₹6.00 per kg... and a distance component of ₹2.00 per km.\"\n**Recommended action:** Ask the carrier to rebill at ₹460.00 and credit the ₹45.00 overcharge."
+    },
+    {
+      "item_id": "SAGAR-SEP-1#22",
+      "disposition": "escalate",
+      "raised_reason": null,
+      "justification": "SG-7922 does not match any BlueFin booking, and §5 makes lines that cannot be matched to a booking not payable until reconciled. This requires a person to confirm the correct reference before the ₹870.00 can be resolved, so it is escalated rather than disputed outright.",
+      "memo_markdown": "# SAGAR-SEP-1 · SG-7922\n\n**Disposition:** Escalate\n**Amount:** ₹870.00 billed on an unmatched reference\n**What happened:** The invoice line quotes consignment reference SG-7922 (booking date 2026-09-10, 130 kg, 45 km), but no BlueFin booking carries that reference.\n**Contract basis:** §5: \"Lines that cannot be matched to a booking are not payable until reconciled.\"\n**Recommended action:** Ask the carrier to confirm the correct reference for this line. A possible lead: SG-7122 (shipment SH-4348, in_transit), which matches the same date, weight, and distance but is not a confirmed match — check with the carrier before treating it as one. A person must decide whether this is a typo or a separate, unbilled shipment."
+    },
+    {
+      "item_id": "SAGAR-SEP-2#8",
+      "disposition": "dispute",
+      "raised_reason": null,
+      "justification": "The billed components for SG-7133 (freight plus the §3 cold-chain premium) sum to ₹708.00 under §1 and §3, but the invoice printed a line total of ₹748.00 — a ₹40.00 arithmetic error the carrier owes back.",
+      "memo_markdown": "# SAGAR-SEP-2 · SG-7133\n\n**Disposition:** Dispute\n**Amount:** ₹40.00 arithmetic error\n**What happened:** SG-7133 was a cold-chain shipment. Its own components (freight ₹590.00 plus a cold-chain premium of ₹118.00) sum to ₹708.00, matching the contract amount, but the line was billed at ₹748.00.\n**Contract basis:** §1 sets freight at \"₹6.00 per kg... and ₹2.00 per km\"; §3 adds \"a premium of 20% on the freight charge\" for cold chain, together totaling ₹708.00.\n**Recommended action:** Ask the carrier to correct the line total to ₹708.00 and credit the ₹40.00 difference."
+    }
+  ]
+}

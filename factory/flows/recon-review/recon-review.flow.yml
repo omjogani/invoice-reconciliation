@@ -1,0 +1,48 @@
+# Companion schema for recon-review.dot.
+output_schemas:
+  review_outputs:
+    files:
+      - {name: review_1, path: "{_run_artefact_dir}/review-1.json", definition: review-output}
+    sets_variables: {review_1: review_1}
+  check_1_outputs:
+    files:
+      - {name: feedback_1, path: "{_run_artefact_dir}/feedback-1.txt", definition: null}
+    sets_variables: {feedback_1: feedback_1}
+    required_variables: [review_ok]
+  retry_1_outputs:
+    files:
+      - {name: review_2, path: "{_run_artefact_dir}/review-2.json", definition: review-output}
+    sets_variables: {review_2: review_2}
+  check_2_outputs:
+    files:
+      - {name: feedback_2, path: "{_run_artefact_dir}/feedback-2.txt", definition: null}
+    sets_variables: {feedback_2: feedback_2}
+    required_variables: [review_ok]
+  retry_2_outputs:
+    files:
+      - {name: review_3, path: "{_run_artefact_dir}/review-3.json", definition: review-output}
+    sets_variables: {review_3: review_3}
+  check_3_outputs:
+    files:
+      - {name: feedback_3, path: "{_run_artefact_dir}/feedback-3.txt", definition: null}
+    sets_variables: {feedback_3: feedback_3}
+    required_variables: [review_ok]
+  finalize_outputs:
+    files:
+      - {name: review_output, path: "{_run_artefact_dir}/review-final.json", definition: null}
+    sets_variables: {review_output: review_output}
+
+variables:
+  # Seeded from the parent's review job.
+  batch_id: {type: string}
+  batch_path: {type: path}
+  repo_root: {type: path}
+  # Produced here.
+  review_1: {type: path}
+  review_2: {type: path}
+  review_3: {type: path}
+  feedback_1: {type: path}
+  feedback_2: {type: path}
+  feedback_3: {type: path}
+  review_ok: {type: string}
+  review_output: {type: path}

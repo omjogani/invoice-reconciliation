@@ -1,0 +1,652 @@
+{
+  "as_of_date": "2026-09-29",
+  "batch_id": "B03",
+  "carrier": "sagar",
+  "items": [
+    {
+      "billed_amount": "1940.00",
+      "billed_components": [
+        {
+          "amount": "1940.00",
+          "kind": "freight",
+          "label": "freight_rs"
+        },
+        {
+          "amount": "0.00",
+          "kind": "surcharge",
+          "label": "chill_prem_rs"
+        }
+      ],
+      "candidates": [],
+      "carrier": "sagar",
+      "clause_texts": {
+        "§1": "Freight per consignment is the sum of: - a **weight component of ₹6.00 per kg** of billed weight, and - a **distance component of ₹2.00 per km** of the booked lane distance.",
+        "§6": "The Carrier may issue **credit notes** correcting earlier invoices. A credit note references the original c-note number and the invoice it corrects, and must cover the full corrected amount."
+      },
+      "consignment_ref": "SG-7056",
+      "contract_breakdown": {
+        "accessorials": [],
+        "components": [
+          {
+            "amount": "1560.00",
+            "band": "all weights",
+            "basis": "per_kg",
+            "label": "Weight component",
+            "quantity": "260.00",
+            "rate": "6.00"
+          },
+          {
+            "amount": "120.00",
+            "band": "all weights",
+            "basis": "per_km",
+            "label": "Distance component",
+            "quantity": "60.00",
+            "rate": "2.00"
+          }
+        ],
+        "contract_amount": "1680.00",
+        "surcharges": []
+      },
+      "contract_clause": "sagar-roadlines.md §1, §6",
+      "delta": "104.00",
+      "dispute_window": null,
+      "expected_amount": "1836.00",
+      "findings": [
+        {
+          "amount": "104.00",
+          "clause": "§6",
+          "code": "PARTIAL_CREDIT",
+          "detail": "overbilled ₹260.00; credited ₹156.00 on SAGAR-CN-01; ₹104.00 still open; the contract requires a credit note to cover the full corrected amount"
+        }
+      ],
+      "invoice": "SAGAR-AUG-1",
+      "item_id": "SAGAR-AUG-1#6",
+      "kind": "line",
+      "memo_file": "SAGAR-AUG-1__6.md",
+      "notes": [
+        "Overbilled ₹260.00 against the contract; SAGAR-CN-01 credits ₹156.00. Expected amount on this line is the contract amount plus the credit issued separately, so the line's delta is what remains open after the credit."
+      ],
+      "policy_disposition": "dispute",
+      "printed": {
+        "booking_date": "2026-08-07",
+        "distance_km": "60",
+        "weight_kg": "260"
+      },
+      "required_figures": [
+        "104.00"
+      ],
+      "resolved_findings": [
+        {
+          "code": "RATE_MISMATCH",
+          "detail": "billed ₹1,940.00 against a contract amount of ₹1,680.00",
+          "resolved_by": "credited on SAGAR-CN-01"
+        }
+      ],
+      "shipment": {
+        "billed_weight_kg": 260,
+        "carrier_consignment_ref": "SG-7056",
+        "delivered_at": "2026-08-09",
+        "delivery_status": "delivered",
+        "distance_km": 60,
+        "service_level": "standard",
+        "ship_date": "2026-08-07",
+        "shipment_id": "SH-4282",
+        "special_handling": []
+      },
+      "shipment_id": "SH-4282"
+    },
+    {
+      "billed_amount": "836.00",
+      "billed_components": [
+        {
+          "amount": "836.00",
+          "kind": "freight",
+          "label": "freight_rs"
+        },
+        {
+          "amount": "0.00",
+          "kind": "surcharge",
+          "label": "chill_prem_rs"
+        }
+      ],
+      "candidates": [
+        {
+          "billed_elsewhere": [],
+          "billed_weight_kg": 110,
+          "consignment_ref": "SG-7069",
+          "delivery_status": "in_transit",
+          "distance_km": 88,
+          "profile_match": true,
+          "ship_date": "2026-08-07",
+          "shipment_id": "SH-4295"
+        }
+      ],
+      "carrier": "sagar",
+      "clause_texts": {
+        "§5": "The consignment note (c-note) number quoted on each invoice line is the Carrier's reference and must correspond to a Customer booking. Lines that cannot be matched to a booking are not payable until reconciled."
+      },
+      "consignment_ref": "SG-7969",
+      "contract_breakdown": null,
+      "contract_clause": "sagar-roadlines.md §5",
+      "delta": null,
+      "dispute_window": null,
+      "expected_amount": null,
+      "findings": [
+        {
+          "amount": null,
+          "clause": "§5",
+          "code": "UNMATCHED_REF",
+          "detail": "SG-7969 matches no sagar booking; the contract makes unmatched lines not payable until reconciled"
+        }
+      ],
+      "invoice": "SAGAR-AUG-1",
+      "item_id": "SAGAR-AUG-1#19",
+      "kind": "line",
+      "memo_file": "SAGAR-AUG-1__19.md",
+      "notes": [
+        "Possible intended booking: SG-7069 (SH-4295), same date, weight and distance, reference one character different; delivery status in_transit; not billed on any invoice in this run. Not used as a match."
+      ],
+      "policy_disposition": "escalate",
+      "printed": {
+        "booking_date": "2026-08-07",
+        "distance_km": "88",
+        "weight_kg": "110"
+      },
+      "required_figures": [
+        "836.00"
+      ],
+      "resolved_findings": [],
+      "shipment": null,
+      "shipment_id": null
+    },
+    {
+      "billed_amount": "430.00",
+      "billed_components": [
+        {
+          "amount": "390.00",
+          "kind": "freight",
+          "label": "freight_rs"
+        },
+        {
+          "amount": "0.00",
+          "kind": "surcharge",
+          "label": "chill_prem_rs"
+        }
+      ],
+      "candidates": [],
+      "carrier": "sagar",
+      "clause_texts": {
+        "§1": "Freight per consignment is the sum of: - a **weight component of ₹6.00 per kg** of billed weight, and - a **distance component of ₹2.00 per km** of the booked lane distance."
+      },
+      "consignment_ref": "SG-7086",
+      "contract_breakdown": {
+        "accessorials": [],
+        "components": [
+          {
+            "amount": "270.00",
+            "band": "all weights",
+            "basis": "per_kg",
+            "label": "Weight component",
+            "quantity": "45.00",
+            "rate": "6.00"
+          },
+          {
+            "amount": "120.00",
+            "band": "all weights",
+            "basis": "per_km",
+            "label": "Distance component",
+            "quantity": "60.00",
+            "rate": "2.00"
+          }
+        ],
+        "contract_amount": "390.00",
+        "surcharges": []
+      },
+      "contract_clause": "sagar-roadlines.md §1",
+      "delta": "40.00",
+      "dispute_window": null,
+      "expected_amount": "390.00",
+      "findings": [
+        {
+          "amount": "40.00",
+          "clause": null,
+          "code": "ARITHMETIC_ERROR",
+          "detail": "line total ₹430.00 but its components sum to ₹390.00"
+        }
+      ],
+      "invoice": "SAGAR-AUG-2",
+      "item_id": "SAGAR-AUG-2#11",
+      "kind": "line",
+      "memo_file": "SAGAR-AUG-2__11.md",
+      "notes": [],
+      "policy_disposition": "dispute",
+      "printed": {
+        "booking_date": "2026-08-27",
+        "distance_km": "60",
+        "weight_kg": "45"
+      },
+      "required_figures": [
+        "40.00"
+      ],
+      "resolved_findings": [],
+      "shipment": {
+        "billed_weight_kg": 45,
+        "carrier_consignment_ref": "SG-7086",
+        "delivered_at": "2026-08-28",
+        "delivery_status": "delivered",
+        "distance_km": 60,
+        "service_level": "standard",
+        "ship_date": "2026-08-27",
+        "shipment_id": "SH-4312",
+        "special_handling": []
+      },
+      "shipment_id": "SH-4312"
+    },
+    {
+      "billed_amount": "570.00",
+      "billed_components": [
+        {
+          "amount": "530.00",
+          "kind": "freight",
+          "label": "freight_rs"
+        },
+        {
+          "amount": "0.00",
+          "kind": "surcharge",
+          "label": "chill_prem_rs"
+        }
+      ],
+      "candidates": [],
+      "carrier": "sagar",
+      "clause_texts": {
+        "§1": "Freight per consignment is the sum of: - a **weight component of ₹6.00 per kg** of billed weight, and - a **distance component of ₹2.00 per km** of the booked lane distance."
+      },
+      "consignment_ref": "SG-7003",
+      "contract_breakdown": {
+        "accessorials": [],
+        "components": [
+          {
+            "amount": "360.00",
+            "band": "all weights",
+            "basis": "per_kg",
+            "label": "Weight component",
+            "quantity": "60.00",
+            "rate": "6.00"
+          },
+          {
+            "amount": "170.00",
+            "band": "all weights",
+            "basis": "per_km",
+            "label": "Distance component",
+            "quantity": "85.00",
+            "rate": "2.00"
+          }
+        ],
+        "contract_amount": "530.00",
+        "surcharges": []
+      },
+      "contract_clause": "sagar-roadlines.md §1",
+      "delta": "40.00",
+      "dispute_window": null,
+      "expected_amount": "530.00",
+      "findings": [
+        {
+          "amount": "40.00",
+          "clause": null,
+          "code": "ARITHMETIC_ERROR",
+          "detail": "line total ₹570.00 but its components sum to ₹530.00"
+        }
+      ],
+      "invoice": "SAGAR-JUL-1",
+      "item_id": "SAGAR-JUL-1#3",
+      "kind": "line",
+      "memo_file": "SAGAR-JUL-1__3.md",
+      "notes": [],
+      "policy_disposition": "dispute",
+      "printed": {
+        "booking_date": "2026-07-04",
+        "distance_km": "85",
+        "weight_kg": "60"
+      },
+      "required_figures": [
+        "40.00"
+      ],
+      "resolved_findings": [],
+      "shipment": {
+        "billed_weight_kg": 60,
+        "carrier_consignment_ref": "SG-7003",
+        "delivered_at": "2026-07-06",
+        "delivery_status": "delivered",
+        "distance_km": 85,
+        "service_level": "standard",
+        "ship_date": "2026-07-04",
+        "shipment_id": "SH-4229",
+        "special_handling": []
+      },
+      "shipment_id": "SH-4229"
+    },
+    {
+      "billed_amount": "1680.00",
+      "billed_components": [
+        {
+          "amount": "1680.00",
+          "kind": "freight",
+          "label": "freight_rs"
+        },
+        {
+          "amount": "0.00",
+          "kind": "surcharge",
+          "label": "chill_prem_rs"
+        }
+      ],
+      "candidates": [],
+      "carrier": "sagar",
+      "clause_texts": {
+        "§1": "Freight per consignment is the sum of: - a **weight component of ₹6.00 per kg** of billed weight, and - a **distance component of ₹2.00 per km** of the booked lane distance."
+      },
+      "consignment_ref": "SG-7009",
+      "contract_breakdown": {
+        "accessorials": [],
+        "components": [
+          {
+            "amount": "1200.00",
+            "band": "all weights",
+            "basis": "per_kg",
+            "label": "Weight component",
+            "quantity": "200.00",
+            "rate": "6.00"
+          },
+          {
+            "amount": "280.00",
+            "band": "all weights",
+            "basis": "per_km",
+            "label": "Distance component",
+            "quantity": "140.00",
+            "rate": "2.00"
+          }
+        ],
+        "contract_amount": "1480.00",
+        "surcharges": []
+      },
+      "contract_clause": "sagar-roadlines.md §1",
+      "delta": "200.00",
+      "dispute_window": null,
+      "expected_amount": "1480.00",
+      "findings": [
+        {
+          "amount": "200.00",
+          "clause": "§1",
+          "code": "RATE_MISMATCH",
+          "detail": "billed ₹1,680.00 against a contract amount of ₹1,480.00"
+        }
+      ],
+      "invoice": "SAGAR-JUL-1",
+      "item_id": "SAGAR-JUL-1#9",
+      "kind": "line",
+      "memo_file": "SAGAR-JUL-1__9.md",
+      "notes": [],
+      "policy_disposition": "dispute",
+      "printed": {
+        "booking_date": "2026-07-10",
+        "distance_km": "140",
+        "weight_kg": "200"
+      },
+      "required_figures": [
+        "200.00"
+      ],
+      "resolved_findings": [],
+      "shipment": {
+        "billed_weight_kg": 200,
+        "carrier_consignment_ref": "SG-7009",
+        "delivered_at": "2026-07-12",
+        "delivery_status": "delivered",
+        "distance_km": 140,
+        "service_level": "standard",
+        "ship_date": "2026-07-10",
+        "shipment_id": "SH-4235",
+        "special_handling": []
+      },
+      "shipment_id": "SH-4235"
+    },
+    {
+      "billed_amount": "505.00",
+      "billed_components": [
+        {
+          "amount": "505.00",
+          "kind": "freight",
+          "label": "freight_rs"
+        },
+        {
+          "amount": "0.00",
+          "kind": "surcharge",
+          "label": "chill_prem_rs"
+        }
+      ],
+      "candidates": [],
+      "carrier": "sagar",
+      "clause_texts": {
+        "§1": "Freight per consignment is the sum of: - a **weight component of ₹6.00 per kg** of billed weight, and - a **distance component of ₹2.00 per km** of the booked lane distance."
+      },
+      "consignment_ref": "SG-7114",
+      "contract_breakdown": {
+        "accessorials": [],
+        "components": [
+          {
+            "amount": "270.00",
+            "band": "all weights",
+            "basis": "per_kg",
+            "label": "Weight component",
+            "quantity": "45.00",
+            "rate": "6.00"
+          },
+          {
+            "amount": "190.00",
+            "band": "all weights",
+            "basis": "per_km",
+            "label": "Distance component",
+            "quantity": "95.00",
+            "rate": "2.00"
+          }
+        ],
+        "contract_amount": "460.00",
+        "surcharges": []
+      },
+      "contract_clause": "sagar-roadlines.md §1",
+      "delta": "45.00",
+      "dispute_window": null,
+      "expected_amount": "460.00",
+      "findings": [
+        {
+          "amount": "45.00",
+          "clause": "§1",
+          "code": "RATE_MISMATCH",
+          "detail": "billed ₹505.00 against a contract amount of ₹460.00"
+        }
+      ],
+      "invoice": "SAGAR-SEP-1",
+      "item_id": "SAGAR-SEP-1#14",
+      "kind": "line",
+      "memo_file": "SAGAR-SEP-1__14.md",
+      "notes": [],
+      "policy_disposition": "dispute",
+      "printed": {
+        "booking_date": "2026-09-02",
+        "distance_km": "95",
+        "weight_kg": "45"
+      },
+      "required_figures": [
+        "45.00"
+      ],
+      "resolved_findings": [],
+      "shipment": {
+        "billed_weight_kg": 45,
+        "carrier_consignment_ref": "SG-7114",
+        "delivered_at": "2026-09-04",
+        "delivery_status": "delivered",
+        "distance_km": 95,
+        "service_level": "standard",
+        "ship_date": "2026-09-02",
+        "shipment_id": "SH-4340",
+        "special_handling": []
+      },
+      "shipment_id": "SH-4340"
+    },
+    {
+      "billed_amount": "870.00",
+      "billed_components": [
+        {
+          "amount": "870.00",
+          "kind": "freight",
+          "label": "freight_rs"
+        },
+        {
+          "amount": "0.00",
+          "kind": "surcharge",
+          "label": "chill_prem_rs"
+        }
+      ],
+      "candidates": [
+        {
+          "billed_elsewhere": [],
+          "billed_weight_kg": 130,
+          "consignment_ref": "SG-7122",
+          "delivery_status": "in_transit",
+          "distance_km": 45,
+          "profile_match": true,
+          "ship_date": "2026-09-10",
+          "shipment_id": "SH-4348"
+        }
+      ],
+      "carrier": "sagar",
+      "clause_texts": {
+        "§5": "The consignment note (c-note) number quoted on each invoice line is the Carrier's reference and must correspond to a Customer booking. Lines that cannot be matched to a booking are not payable until reconciled."
+      },
+      "consignment_ref": "SG-7922",
+      "contract_breakdown": null,
+      "contract_clause": "sagar-roadlines.md §5",
+      "delta": null,
+      "dispute_window": null,
+      "expected_amount": null,
+      "findings": [
+        {
+          "amount": null,
+          "clause": "§5",
+          "code": "UNMATCHED_REF",
+          "detail": "SG-7922 matches no sagar booking; the contract makes unmatched lines not payable until reconciled"
+        }
+      ],
+      "invoice": "SAGAR-SEP-1",
+      "item_id": "SAGAR-SEP-1#22",
+      "kind": "line",
+      "memo_file": "SAGAR-SEP-1__22.md",
+      "notes": [
+        "Possible intended booking: SG-7122 (SH-4348), same date, weight and distance, reference one character different; delivery status in_transit; not billed on any invoice in this run. Not used as a match."
+      ],
+      "policy_disposition": "escalate",
+      "printed": {
+        "booking_date": "2026-09-10",
+        "distance_km": "45",
+        "weight_kg": "130"
+      },
+      "required_figures": [
+        "870.00"
+      ],
+      "resolved_findings": [],
+      "shipment": null,
+      "shipment_id": null
+    },
+    {
+      "billed_amount": "748.00",
+      "billed_components": [
+        {
+          "amount": "590.00",
+          "kind": "freight",
+          "label": "freight_rs"
+        },
+        {
+          "amount": "118.00",
+          "kind": "surcharge",
+          "label": "chill_prem_rs"
+        }
+      ],
+      "candidates": [],
+      "carrier": "sagar",
+      "clause_texts": {
+        "§1": "Freight per consignment is the sum of: - a **weight component of ₹6.00 per kg** of billed weight, and - a **distance component of ₹2.00 per km** of the booked lane distance.",
+        "§3": "Consignments booked as **cold chain** travel in refrigerated vehicles and carry a **premium of 20% on the freight charge** (the sum of the weight and distance components)."
+      },
+      "consignment_ref": "SG-7133",
+      "contract_breakdown": {
+        "accessorials": [],
+        "components": [
+          {
+            "amount": "270.00",
+            "band": "all weights",
+            "basis": "per_kg",
+            "label": "Weight component",
+            "quantity": "45.00",
+            "rate": "6.00"
+          },
+          {
+            "amount": "320.00",
+            "band": "all weights",
+            "basis": "per_km",
+            "label": "Distance component",
+            "quantity": "160.00",
+            "rate": "2.00"
+          }
+        ],
+        "contract_amount": "708.00",
+        "surcharges": [
+          {
+            "amount": "118.00",
+            "base": "590.00",
+            "label": "Cold chain premium",
+            "pct": "20.00"
+          }
+        ]
+      },
+      "contract_clause": "sagar-roadlines.md §1, §3",
+      "delta": "40.00",
+      "dispute_window": null,
+      "expected_amount": "708.00",
+      "findings": [
+        {
+          "amount": "40.00",
+          "clause": null,
+          "code": "ARITHMETIC_ERROR",
+          "detail": "line total ₹748.00 but its components sum to ₹708.00"
+        }
+      ],
+      "invoice": "SAGAR-SEP-2",
+      "item_id": "SAGAR-SEP-2#8",
+      "kind": "line",
+      "memo_file": "SAGAR-SEP-2__8.md",
+      "notes": [],
+      "policy_disposition": "dispute",
+      "printed": {
+        "booking_date": "2026-09-24",
+        "distance_km": "160",
+        "weight_kg": "45"
+      },
+      "required_figures": [
+        "40.00"
+      ],
+      "resolved_findings": [],
+      "shipment": {
+        "billed_weight_kg": 45,
+        "carrier_consignment_ref": "SG-7133",
+        "delivered_at": "2026-09-26",
+        "delivery_status": "delivered",
+        "distance_km": 160,
+        "service_level": "standard",
+        "ship_date": "2026-09-24",
+        "shipment_id": "SH-4359",
+        "special_handling": [
+          "cold_chain"
+        ]
+      },
+      "shipment_id": "SH-4359"
+    }
+  ]
+}

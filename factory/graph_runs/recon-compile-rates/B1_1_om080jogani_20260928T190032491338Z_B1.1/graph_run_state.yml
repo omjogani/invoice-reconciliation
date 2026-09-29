@@ -1,0 +1,421 @@
+metadata:
+  run_id: e0509158-eff4-4985-b8fd-58fcf37e9071
+  userid: om080jogani
+  orchestrator_session_id: null
+  orchestrator_harness: null
+  orchestrator_identity_source: self_reported
+  flow: recon-compile-rates
+  flow_dot: factory/flows/recon-compile-rates/recon-compile-rates.dot
+  flow_dir: factory/flows/recon-compile-rates
+  repo_root: /Users/omjogani/Projects/stage2-kit
+  supervision: afk
+  run_descriptor: B1_1
+  timestamp: 20260928T190032491338Z
+  started_at: '2026-09-28T19:00:32Z'
+  completed_at: '2026-09-28T19:01:54Z'
+  state: completed
+  parent_run:
+    flow: freight-recon
+    run_dir: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon-run2_om080jogani_20260928T190031404091Z
+    fanout_node: compile_fan
+    branch_id: B1.1
+current:
+  phase: done
+  phases:
+  - done
+  nodes:
+    start:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-28T19:00:32Z'
+      completed_at: '2026-09-28T19:00:32Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    extract:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-28T19:00:32Z'
+      completed_at: '2026-09-28T19:00:32Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches:
+      - branch_id: B1.1
+        status: in_progress
+        subflow_run_dir: null
+        inline_root_node: extract_a
+        failure_reason: null
+      - branch_id: B1.2
+        status: in_progress
+        subflow_run_dir: null
+        inline_root_node: extract_b
+        failure_reason: null
+      join_history: []
+    extract_a:
+      status: done
+      agent_id: null
+      agent_session_id: 4a8e8a41-3cf9-48d8-965a-aae39e3d8484
+      started_at: '2026-09-28T19:00:32Z'
+      completed_at: '2026-09-28T19:01:33Z'
+      validation_passed: true
+      validation_checked_at: '2026-09-28T19:01:33Z'
+      validation_feedback: null
+      summary: "Compiled alpine-express.md into a rate card covering chargeable-weight\
+        \ freight bands (\xA71-\xA72), standard-only service level (\xA73), the fragile-handling\
+        \ accessorial (\xA74), the volume discount (\xA75), and filed payment/rate-revision\
+        \ clauses (\xA76-\xA77) as non-pricing; check-card reports card_ok: true."
+      notes: null
+      usage: null
+      harness: claude-code
+      prior_attempts: []
+      branch_id: B1.1
+      branches: []
+      join_history: []
+    extract_b:
+      status: done
+      agent_id: null
+      agent_session_id: e6cebd9d-5200-4a2e-8b24-5d797e0baed3
+      started_at: '2026-09-28T19:00:32Z'
+      completed_at: '2026-09-28T19:01:53Z'
+      validation_passed: true
+      validation_checked_at: '2026-09-28T19:01:53Z'
+      validation_feedback: null
+      summary: "Read the Alpine Express contract adversarially, mapped all 7 clauses\
+        \ to rate-card fields (freight bands with an explicit gap at exactly 50 kg\
+        \ since the contract says 'under'/'over' without covering the boundary, the\
+        \ 25 kg chargeable-weight floor, standard-only service levels, the \u20B9\
+        150 fragile accessorial, the >12-consignment 5% volume discount, and payment/notice\
+        \ clauses as non_pricing), left credit_notes/unmatched_lines/dispute_window\
+        \ null since the contract is silent on them, and wrote card-b.json which passes\
+        \ check-card."
+      notes: "Deliberately left a pricing gap at chargeable weight == 50 kg: \xA7\
+        2 says\n\"under 50 kg\" gets \u20B99.50/kg and \"over 50 kg\" gets \u20B9\
+        8.25/kg, so 50 kg\nexactly is covered by neither band (min_inclusive=false\
+        \ on the upper\nband, max_inclusive=false on the lower band). This matches\
+        \ the approved\n\"50 kg null+escalate\" design decision rather than widening\
+        \ either band.\ncredit_notes, unmatched_lines, and dispute_window are all\
+        \ null \u2014 the\ncontract has no clauses addressing credit notes, unmatched\
+        \ invoice\nlines, or a dispute deadline.\n"
+      usage: null
+      harness: claude-code
+      prior_attempts: []
+      branch_id: B1.2
+      branches: []
+      join_history: []
+    extracted:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-28T19:01:33Z'
+      completed_at: '2026-09-28T19:01:54Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: null
+      branches: []
+      join_history: []
+    compare:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-28T19:01:54Z'
+      completed_at: '2026-09-28T19:01:54Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: null
+      branches: []
+      join_history: []
+    finalize:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-28T19:01:54Z'
+      completed_at: '2026-09-28T19:01:54Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    done:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-28T19:01:54Z'
+      completed_at: '2026-09-28T19:01:54Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+orchestrator_usage: null
+branch_scopes:
+  B1:
+    branch_id: B1
+    variables:
+      card_a: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-compile-rates/B1_1_om080jogani_20260928T190032491338Z_B1.1/card-a.json
+      card_b: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-compile-rates/B1_1_om080jogani_20260928T190032491338Z_B1.1/card-b.json
+      card_a_rev: null
+      card_b_rev: null
+      compare_report: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-compile-rates/B1_1_om080jogani_20260928T190032491338Z_B1.1/compare-1.json
+      compare_report_2: null
+      agree: 'yes'
+      compile_result: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-compile-rates/B1_1_om080jogani_20260928T190032491338Z_B1.1/compile-result.json
+      card_schema_path: /Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json
+      carrier: alpine
+      carrier_name: Alpine Express Logistics
+      contract_file: alpine-express.md
+      contract_path: /Users/omjogani/Projects/stage2-kit/data/contracts/alpine-express.md
+      contract_sha256: caa39649f701795356f6545c0a6c86ea12b2037dc96080027bdf8f17801e6001
+      repo_root: /Users/omjogani/Projects/stage2-kit
+      vocabulary_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon-run2_om080jogani_20260928T190031404091Z/compile/vocabulary.json
+      _userid: om080jogani
+      _timestamp: 20260928T190032491338Z
+      _run_descriptor: B1_1
+      _flow_stem: recon-compile-rates
+      _run_artefact_dir: factory/graph_runs/recon-compile-rates/B1_1_om080jogani_20260928T190032491338Z_B1.1
+      _supervision: afk
+      _supervision_instructions: ''
+      _branches:
+      - branch_id: B1.1
+        source_node: extract_a
+        status: done
+      - branch_id: B1.2
+        source_node: extract_b
+        status: done
+    parent_node: null
+    seed:
+      card_a: null
+      card_b: null
+      card_a_rev: null
+      card_b_rev: null
+      compare_report: null
+      compare_report_2: null
+      agree: null
+      compile_result: null
+      card_schema_path: /Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json
+      carrier: alpine
+      carrier_name: Alpine Express Logistics
+      contract_file: alpine-express.md
+      contract_path: /Users/omjogani/Projects/stage2-kit/data/contracts/alpine-express.md
+      contract_sha256: caa39649f701795356f6545c0a6c86ea12b2037dc96080027bdf8f17801e6001
+      repo_root: /Users/omjogani/Projects/stage2-kit
+      vocabulary_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon-run2_om080jogani_20260928T190031404091Z/compile/vocabulary.json
+      _userid: om080jogani
+      _timestamp: 20260928T190032491338Z
+      _run_descriptor: B1_1
+      _flow_stem: recon-compile-rates
+      _run_artefact_dir: factory/graph_runs/recon-compile-rates/B1_1_om080jogani_20260928T190032491338Z_B1.1
+      _supervision: afk
+      _supervision_instructions: ''
+    next_child: 2
+  B1.1:
+    branch_id: B1.1
+    variables:
+      card_a: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-compile-rates/B1_1_om080jogani_20260928T190032491338Z_B1.1/card-a.json
+      card_b: null
+      card_a_rev: null
+      card_b_rev: null
+      compare_report: null
+      compare_report_2: null
+      agree: null
+      compile_result: null
+      card_schema_path: /Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json
+      carrier: alpine
+      carrier_name: Alpine Express Logistics
+      contract_file: alpine-express.md
+      contract_path: /Users/omjogani/Projects/stage2-kit/data/contracts/alpine-express.md
+      contract_sha256: caa39649f701795356f6545c0a6c86ea12b2037dc96080027bdf8f17801e6001
+      repo_root: /Users/omjogani/Projects/stage2-kit
+      vocabulary_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon-run2_om080jogani_20260928T190031404091Z/compile/vocabulary.json
+      _userid: om080jogani
+      _timestamp: 20260928T190032491338Z
+      _run_descriptor: B1_1
+      _flow_stem: recon-compile-rates
+      _run_artefact_dir: factory/graph_runs/recon-compile-rates/B1_1_om080jogani_20260928T190032491338Z_B1.1
+      _supervision: afk
+      _supervision_instructions: ''
+    parent_node: extract
+    seed:
+      card_a: null
+      card_b: null
+      card_a_rev: null
+      card_b_rev: null
+      compare_report: null
+      compare_report_2: null
+      agree: null
+      compile_result: null
+      card_schema_path: /Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json
+      carrier: alpine
+      carrier_name: Alpine Express Logistics
+      contract_file: alpine-express.md
+      contract_path: /Users/omjogani/Projects/stage2-kit/data/contracts/alpine-express.md
+      contract_sha256: caa39649f701795356f6545c0a6c86ea12b2037dc96080027bdf8f17801e6001
+      repo_root: /Users/omjogani/Projects/stage2-kit
+      vocabulary_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon-run2_om080jogani_20260928T190031404091Z/compile/vocabulary.json
+      _userid: om080jogani
+      _timestamp: 20260928T190032491338Z
+      _run_descriptor: B1_1
+      _flow_stem: recon-compile-rates
+      _run_artefact_dir: factory/graph_runs/recon-compile-rates/B1_1_om080jogani_20260928T190032491338Z_B1.1
+      _supervision: afk
+      _supervision_instructions: ''
+    next_child: 0
+  B1.2:
+    branch_id: B1.2
+    variables:
+      card_a: null
+      card_b: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-compile-rates/B1_1_om080jogani_20260928T190032491338Z_B1.1/card-b.json
+      card_a_rev: null
+      card_b_rev: null
+      compare_report: null
+      compare_report_2: null
+      agree: null
+      compile_result: null
+      card_schema_path: /Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json
+      carrier: alpine
+      carrier_name: Alpine Express Logistics
+      contract_file: alpine-express.md
+      contract_path: /Users/omjogani/Projects/stage2-kit/data/contracts/alpine-express.md
+      contract_sha256: caa39649f701795356f6545c0a6c86ea12b2037dc96080027bdf8f17801e6001
+      repo_root: /Users/omjogani/Projects/stage2-kit
+      vocabulary_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon-run2_om080jogani_20260928T190031404091Z/compile/vocabulary.json
+      _userid: om080jogani
+      _timestamp: 20260928T190032491338Z
+      _run_descriptor: B1_1
+      _flow_stem: recon-compile-rates
+      _run_artefact_dir: factory/graph_runs/recon-compile-rates/B1_1_om080jogani_20260928T190032491338Z_B1.1
+      _supervision: afk
+      _supervision_instructions: ''
+    parent_node: extract
+    seed:
+      card_a: null
+      card_b: null
+      card_a_rev: null
+      card_b_rev: null
+      compare_report: null
+      compare_report_2: null
+      agree: null
+      compile_result: null
+      card_schema_path: /Users/omjogani/Projects/stage2-kit/recon/ratecard/schema.json
+      carrier: alpine
+      carrier_name: Alpine Express Logistics
+      contract_file: alpine-express.md
+      contract_path: /Users/omjogani/Projects/stage2-kit/data/contracts/alpine-express.md
+      contract_sha256: caa39649f701795356f6545c0a6c86ea12b2037dc96080027bdf8f17801e6001
+      repo_root: /Users/omjogani/Projects/stage2-kit
+      vocabulary_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon-run2_om080jogani_20260928T190031404091Z/compile/vocabulary.json
+      _userid: om080jogani
+      _timestamp: 20260928T190032491338Z
+      _run_descriptor: B1_1
+      _flow_stem: recon-compile-rates
+      _run_artefact_dir: factory/graph_runs/recon-compile-rates/B1_1_om080jogani_20260928T190032491338Z_B1.1
+      _supervision: afk
+      _supervision_instructions: ''
+    next_child: 0
+events:
+- t: '2026-09-28T19:00:32Z'
+  kind: run_started
+  by: om080jogani
+- t: '2026-09-28T19:00:32Z'
+  kind: node_entered
+  node: extract
+- t: '2026-09-28T19:00:32Z'
+  kind: fork_fanned_out
+  node: extract
+  branches:
+  - extract_a
+  - extract_b
+  branch_ids:
+  - B1.1
+  - B1.2
+- t: '2026-09-28T19:01:33Z'
+  kind: validation_passed
+  node: extract_a
+  agent_session_id: 4a8e8a41-3cf9-48d8-965a-aae39e3d8484
+- t: '2026-09-28T19:01:33Z'
+  kind: join_arrival
+  join: extracted
+  from: extract_a
+  arrived:
+  - extract_a
+- t: '2026-09-28T19:01:53Z'
+  kind: validation_passed
+  node: extract_b
+  agent_session_id: e6cebd9d-5200-4a2e-8b24-5d797e0baed3
+- t: '2026-09-28T19:01:54Z'
+  kind: join_arrival
+  join: extracted
+  from: extract_b
+  arrived:
+  - extract_a
+  - extract_b
+- t: '2026-09-28T19:01:54Z'
+  kind: join_fired
+  join: extracted
+  downstream: compare
+  errored_branches: []
+- t: '2026-09-28T19:01:54Z'
+  kind: script_node_ran
+  node: compare
+  exit_code: 0
+- t: '2026-09-28T19:01:54Z'
+  kind: validation_passed
+  node: compare
+  agent_session_id: null
+- t: '2026-09-28T19:01:54Z'
+  kind: branch_auto_resolved
+  node: compare
+  chose: finalize
+- t: '2026-09-28T19:01:54Z'
+  kind: node_entered
+  node: finalize
+- t: '2026-09-28T19:01:54Z'
+  kind: script_node_ran
+  node: finalize
+  exit_code: 0
+- t: '2026-09-28T19:01:54Z'
+  kind: validation_passed
+  node: finalize
+  agent_session_id: null
+- t: '2026-09-28T19:01:54Z'
+  kind: run_completed

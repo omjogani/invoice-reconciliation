@@ -1,0 +1,65 @@
+{
+  "_session_id": "688ee7fb-dfa3-4ff1-a0d7-40bfdce391e5",
+  "contract_file": "alpine-express.md",
+  "contract_sha256": "caa39649f701795356f6545c0a6c86ea12b2037dc96080027bdf8f17801e6001",
+  "carrier": "alpine",
+  "freight": {
+    "components": [
+      {
+        "basis": "per_kg",
+        "weight_basis": "chargeable",
+        "bands": [
+          {"min_kg": null, "min_inclusive": true, "max_kg": "50", "max_inclusive": false, "rate": "9.50"},
+          {"min_kg": "50", "min_inclusive": false, "max_kg": null, "max_inclusive": true, "rate": "8.25"}
+        ],
+        "label": "freight",
+        "clause": "§2",
+        "quote": "consignments under 50 kg: ₹9.50 per kg of chargeable weight ... consignments over 50 kg: ₹8.25 per kg of chargeable weight"
+      }
+    ]
+  },
+  "chargeable_weight": {
+    "minimum_kg": "25",
+    "clause": "§1",
+    "quote": "which is the higher of the consignment's actual weight and the minimum chargeable weight of 25 kg"
+  },
+  "service_levels": {
+    "allowed": ["standard"],
+    "clause": "§3",
+    "quote": "All bookings travel on standard service. Express products are not offered under this agreement."
+  },
+  "surcharges": [],
+  "accessorials": [
+    {
+      "amount": "150.00",
+      "when": {"special_handling": "fragile"},
+      "label": "protected handling",
+      "clause": "§4",
+      "quote": "Consignments booked as fragile are handled under the Carrier's protected-handling process at ₹150.00 per consignment, in addition to freight."
+    }
+  ],
+  "other_accessorials": {
+    "allowed": false,
+    "clause": "§1",
+    "quote": "Freight is charged on chargeable weight"
+  },
+  "invoice_discounts": [
+    {
+      "kind": "volume",
+      "period": "calendar_month",
+      "count_basis": "tendered",
+      "threshold_gt": 12,
+      "pct": "5",
+      "clause": "§5",
+      "quote": "In any calendar month in which the Customer tenders more than 12 consignments, the Carrier will apply a 5% discount to the invoice total for that month's invoice."
+    }
+  ],
+  "credit_notes": null,
+  "unmatched_lines": null,
+  "dispute_window": null,
+  "non_pricing": [
+    {"clause": "§6", "summary": "The Carrier invoices monthly; payment is due 30 days from invoice date."},
+    {"clause": "§7", "summary": "Rate revisions require 60 days' written notice and take effect from the first day of the following calendar month."}
+  ],
+  "unsupported": []
+}

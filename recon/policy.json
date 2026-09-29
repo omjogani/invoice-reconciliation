@@ -1,0 +1,30 @@
+{
+  "_comment": "Finding code -> default disposition. A line's disposition is the most severe disposition among its unresolved findings (escalate > dispute > accept). 'monetary' findings carry an amount that explains part of the line's delta.",
+  "codes": {
+    "UNMATCHED_REF":             {"disposition": "escalate", "monetary": false, "summary": "reference matches no booking for this carrier"},
+    "CARRIER_MISMATCH":          {"disposition": "escalate", "monetary": false, "summary": "reference belongs to another carrier's booking"},
+    "NOT_DELIVERED":             {"disposition": "escalate", "monetary": false, "summary": "shipment is not recorded as delivered"},
+    "CONTRACT_GAP":              {"disposition": "escalate", "monetary": false, "summary": "the contract does not price this case"},
+    "OUT_OF_CARD":               {"disposition": "escalate", "monetary": false, "summary": "outside the contract's rate card"},
+    "SERVICE_NOT_OFFERED":       {"disposition": "escalate", "monetary": false, "summary": "service level not offered under the contract"},
+    "ARITHMETIC_ERROR":          {"disposition": "dispute",  "monetary": true,  "summary": "line total disagrees with its own components"},
+    "UNAUTHORISED_ACCESSORIAL":  {"disposition": "dispute",  "monetary": true,  "summary": "charge not payable under the contract"},
+    "ACCESSORIAL_NOT_APPLICABLE":{"disposition": "dispute",  "monetary": true,  "summary": "contract charge billed where its condition does not apply"},
+    "RATE_MISMATCH":             {"disposition": "dispute",  "monetary": true,  "summary": "billed amount differs from the contract amount"},
+    "UNDERBILLED":               {"disposition": "accept",   "monetary": true,  "summary": "billed below the contract amount"},
+    "DUPLICATE_BILLING":         {"disposition": "dispute",  "monetary": true,  "summary": "consignment already billed on another invoice"},
+    "DUPLICATE_MISMATCH":        {"disposition": "escalate", "monetary": false, "summary": "consignment billed again with different details"},
+    "CREDIT_APPLIED":            {"disposition": "accept",   "monetary": false, "summary": "credit note corrects an overbill on the original line"},
+    "PARTIAL_CREDIT":            {"disposition": "dispute",  "monetary": true,  "summary": "credit note does not cover the full overbill"},
+    "CREDIT_EXCEEDS":            {"disposition": "escalate", "monetary": false, "summary": "credit exceeds the overbill it corrects"},
+    "CREDIT_WITHOUT_OVERBILL":   {"disposition": "escalate", "monetary": false, "summary": "credit against a line that was not overbilled"},
+    "CREDIT_UNREFERENCED":       {"disposition": "escalate", "monetary": false, "summary": "credit note references an unknown invoice or line"},
+    "CREDIT_NOT_PROVIDED_FOR":   {"disposition": "escalate", "monetary": false, "summary": "contract has no credit-note provision"},
+    "CREDIT_ON_UNDETERMINED":    {"disposition": "escalate", "monetary": false, "summary": "credit against a line whose contract amount is undetermined"},
+    "OUT_OF_PERIOD":             {"disposition": "accept",   "monetary": false, "summary": "shipped outside the invoice's billing period"},
+    "RECORD_MISMATCH":           {"disposition": "accept",   "monetary": false, "summary": "printed attributes differ from the shipment record"},
+    "MISSING_DISCOUNT":          {"disposition": "dispute",  "monetary": true,  "summary": "volume discount due but not applied in full"},
+    "DISCOUNT_UNDETERMINED":     {"disposition": "escalate", "monetary": false, "summary": "discount shortfall depends on undetermined lines"},
+    "DISCOUNT_PERIOD_AMBIGUOUS": {"disposition": "escalate", "monetary": false, "summary": "cannot tell which invoice carries the month's discount"}
+  }
+}

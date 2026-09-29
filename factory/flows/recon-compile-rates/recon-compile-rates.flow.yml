@@ -1,0 +1,52 @@
+# Companion schema for recon-compile-rates.dot.
+output_schemas:
+  extract_a_outputs:
+    files:
+      - {name: card_a, path: "{_run_artefact_dir}/card-a.json", definition: rate-card}
+    sets_variables: {card_a: card_a}
+  extract_b_outputs:
+    files:
+      - {name: card_b, path: "{_run_artefact_dir}/card-b.json", definition: rate-card}
+    sets_variables: {card_b: card_b}
+  compare_outputs:
+    files:
+      - {name: compare_report, path: "{_run_artefact_dir}/compare-1.json", definition: null}
+    sets_variables: {compare_report: compare_report}
+    required_variables: [agree]
+  revise_a_outputs:
+    files:
+      - {name: card_a_rev, path: "{_run_artefact_dir}/card-a-revised.json", definition: rate-card}
+    sets_variables: {card_a_rev: card_a_rev}
+  revise_b_outputs:
+    files:
+      - {name: card_b_rev, path: "{_run_artefact_dir}/card-b-revised.json", definition: rate-card}
+    sets_variables: {card_b_rev: card_b_rev}
+  compare_2_outputs:
+    files:
+      - {name: compare_report_2, path: "{_run_artefact_dir}/compare-2.json", definition: null}
+    sets_variables: {compare_report_2: compare_report_2}
+    required_variables: [agree]
+  finalize_outputs:
+    files:
+      - {name: compile_result, path: "{_run_artefact_dir}/compile-result.json", definition: compile-result}
+    sets_variables: {compile_result: compile_result}
+
+variables:
+  # Seeded from the parent's compile job.
+  carrier: {type: string}
+  carrier_name: {type: string}
+  contract_path: {type: path}
+  contract_file: {type: string}
+  contract_sha256: {type: string}
+  card_schema_path: {type: path}
+  vocabulary_path: {type: path}
+  repo_root: {type: path}
+  # Produced here.
+  card_a: {type: path}
+  card_b: {type: path}
+  card_a_rev: {type: path}
+  card_b_rev: {type: path}
+  compare_report: {type: path}
+  compare_report_2: {type: path}
+  agree: {type: string}
+  compile_result: {type: path}

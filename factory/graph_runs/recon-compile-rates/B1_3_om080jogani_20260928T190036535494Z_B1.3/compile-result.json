@@ -1,0 +1,9 @@
+{
+  "agreed": true,
+  "card_a": "/Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-compile-rates/B1_3_om080jogani_20260928T190036535494Z_B1.3/card-a.json",
+  "card_b": "/Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-compile-rates/B1_3_om080jogani_20260928T190036535494Z_B1.3/card-b.json",
+  "carrier": "sagar",
+  "compare_report": "/Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-compile-rates/B1_3_om080jogani_20260928T190036535494Z_B1.3/compare-1.json",
+  "contract_file": "sagar-roadlines.md",
+  "run_dir": "/Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-compile-rates/B1_3_om080jogani_20260928T190036535494Z_B1.3"
+}

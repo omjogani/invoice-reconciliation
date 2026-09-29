@@ -1,0 +1,43 @@
+{
+  "as_of_date": "2026-09-29",
+  "flow": "freight-recon",
+  "git_head": "272190bc036efdbc7b6656ac97d1b1aaa905b217",
+  "inputs": {
+    "ALPINE-0726.json": "6caa3d9239c7db3c89589d267e5712f48249778a241736f1cef73a12f60409f3",
+    "ALPINE-0826.json": "aadd816330711614078e6f3802a192c6fadab364e14f1d2d6621ff36d57553d9",
+    "ALPINE-0926.json": "fc87fb3ac4e7ef40e3d5150b17d66184a58e7b665a291949265a5decf54f8371",
+    "FALCON-2026-07A.txt": "a6fd4d0aa9183d1d2056ddf72852c99743b8b4d8951645d7db55e0389a8c53fd",
+    "FALCON-2026-07B.txt": "b9c3e94f945dc6c0616c255b6794cc9586fad156e0b2dc510104f1a81f35a5ef",
+    "FALCON-2026-08A.txt": "cbb45b3f4d96d8b721846e3915a836552643eb68161cced08d9f3d09e22eee65",
+    "FALCON-2026-08B.txt": "2399ea51d0320a3e2c5fd51e8ee57c3b8e9a73d6a3361fb64f2b811811c8cb07",
+    "FALCON-2026-09A.txt": "230cfbbfe96f4b3553e9406fd3a19065ac61fe9c43e517aeef9ef3becdf9d0a1",
+    "FALCON-2026-09B.txt": "48dabd9157ec7e074a0b8856061bc59fcff0156df1b3909e819039afd7bb95d9",
+    "FALCON-CN-01.txt": "665f47549d16c4ceaeebc9c26d465bc281a5ad67e11e2388e9ae118af1c3ae98",
+    "SAGAR-AUG-1.csv": "0fc64d9d7a6df6288c52ed5463b4b5d9eb413b416782bda1f9265fdf81d425c8",
+    "SAGAR-AUG-2.csv": "dfcd68b41fc37f5ebbde62fd7011886f2d61627fd62640fbe743a4fa258a903c",
+    "SAGAR-CN-01.csv": "78cf91337209cead12b9c40c00d314daa749668f6808b5cc0600aaeeb1c48e37",
+    "SAGAR-JUL-1.csv": "0a399c565061ce59af6100c280593cc7faeb85d8bcbbca68a293426e56ad83d0",
+    "SAGAR-JUL-2.csv": "0c9f3b771ff821a5f72c7b582d7cb9845ca719e1fad7de34c99034b663380ae9",
+    "SAGAR-SEP-1.csv": "085bc4248dae18d3abebda2acc30c8e37f5476f3166f017938ab88c88e770a80",
+    "SAGAR-SEP-2.csv": "72d05bb6e9dd600666d2fed21b96222ddbf2938c483e707e18bd28b4181a6205"
+  },
+  "memo_count": 17,
+  "rate_cards": {
+    "alpine": {
+      "contract_file": "alpine-express.md",
+      "contract_sha256": "caa39649f701795356f6545c0a6c86ea12b2037dc96080027bdf8f17801e6001",
+      "snapshot": "rate-cards/approved/alpine/caa39649f701795356f6545c0a6c86ea12b2037dc96080027bdf8f17801e6001.json"
+    },
+    "falcon": {
+      "contract_file": "falcon-freight.md",
+      "contract_sha256": "6e37557aad7f22da8103e960de6807385088ff0f4bca6fe8da22726998233ca0",
+      "snapshot": "rate-cards/approved/falcon/6e37557aad7f22da8103e960de6807385088ff0f4bca6fe8da22726998233ca0.json"
+    },
+    "sagar": {
+      "contract_file": "sagar-roadlines.md",
+      "contract_sha256": "43c3f2dfc4e0eade16e79d4924f4b83c8748dc1a06dfaf3bc2694369aaa5ad95",
+      "snapshot": "rate-cards/approved/sagar/43c3f2dfc4e0eade16e79d4924f4b83c8748dc1a06dfaf3bc2694369aaa5ad95.json"
+    }
+  },
+  "run_dir": "/Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon-run2_om080jogani_20260928T190031404091Z"
+}

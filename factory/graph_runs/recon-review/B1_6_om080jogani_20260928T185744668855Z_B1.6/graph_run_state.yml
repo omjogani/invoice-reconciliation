@@ -1,0 +1,197 @@
+metadata:
+  run_id: e6db3f62-ac43-49d6-b0d1-0268bffc9c41
+  userid: om080jogani
+  orchestrator_session_id: null
+  orchestrator_harness: null
+  orchestrator_identity_source: self_reported
+  flow: recon-review
+  flow_dot: factory/flows/recon-review/recon-review.dot
+  flow_dir: factory/flows/recon-review
+  repo_root: /Users/omjogani/Projects/stage2-kit
+  supervision: afk
+  run_descriptor: B1_6
+  timestamp: 20260928T185744668855Z
+  started_at: '2026-09-28T18:57:44Z'
+  completed_at: '2026-09-28T18:59:28Z'
+  state: completed
+  parent_run:
+    flow: freight-recon
+    run_dir: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z
+    fanout_node: review_fan
+    branch_id: B1.6
+current:
+  phase: done
+  phases:
+  - done
+  nodes:
+    start:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-28T18:57:44Z'
+      completed_at: '2026-09-28T18:57:44Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    review:
+      status: done
+      agent_id: null
+      agent_session_id: 5ea8070c-c5d0-463a-8bf8-e3cad4d99b00
+      started_at: '2026-09-28T18:57:45Z'
+      completed_at: '2026-09-28T18:59:28Z'
+      validation_passed: true
+      validation_checked_at: '2026-09-28T18:59:28Z'
+      validation_feedback: null
+      summary: 'Reviewed all 8 items in batch B03 (carrier sagar): kept dispute on
+        six rate/arithmetic-mismatch lines and escalate on two unmatched-reference
+        lines, wrote justifications citing contract clauses and per-item memos, and
+        validated the output with check-review (review_ok: true).'
+      notes: null
+      usage: null
+      harness: claude-code
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    check_1:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-28T18:59:28Z'
+      completed_at: '2026-09-28T18:59:28Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    finalize:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-28T18:59:28Z'
+      completed_at: '2026-09-28T18:59:28Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+    done:
+      status: done
+      agent_id: null
+      agent_session_id: null
+      started_at: '2026-09-28T18:59:28Z'
+      completed_at: '2026-09-28T18:59:28Z'
+      validation_passed: null
+      validation_checked_at: null
+      validation_feedback: null
+      summary: null
+      notes: null
+      usage: null
+      harness: null
+      prior_attempts: []
+      branch_id: B1
+      branches: []
+      join_history: []
+orchestrator_usage: null
+branch_scopes:
+  B1:
+    branch_id: B1
+    variables:
+      review_1: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-review/B1_6_om080jogani_20260928T185744668855Z_B1.6/review-1.json
+      review_2: null
+      review_3: null
+      feedback_1: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-review/B1_6_om080jogani_20260928T185744668855Z_B1.6/feedback-1.txt
+      feedback_2: null
+      feedback_3: null
+      review_ok: 'yes'
+      review_output: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-review/B1_6_om080jogani_20260928T185744668855Z_B1.6/review-final.json
+      batch_id: B03
+      batch_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/batches/B03.json
+      repo_root: /Users/omjogani/Projects/stage2-kit
+      _userid: om080jogani
+      _timestamp: 20260928T185744668855Z
+      _run_descriptor: B1_6
+      _flow_stem: recon-review
+      _run_artefact_dir: factory/graph_runs/recon-review/B1_6_om080jogani_20260928T185744668855Z_B1.6
+      _supervision: afk
+      _supervision_instructions: ''
+    parent_node: null
+    seed:
+      review_1: null
+      review_2: null
+      review_3: null
+      feedback_1: null
+      feedback_2: null
+      feedback_3: null
+      review_ok: null
+      review_output: null
+      batch_id: B03
+      batch_path: /Users/omjogani/Projects/stage2-kit/factory/graph_runs/freight-recon/freight-recon_om080jogani_20260928T183534379651Z/batches/B03.json
+      repo_root: /Users/omjogani/Projects/stage2-kit
+      _userid: om080jogani
+      _timestamp: 20260928T185744668855Z
+      _run_descriptor: B1_6
+      _flow_stem: recon-review
+      _run_artefact_dir: factory/graph_runs/recon-review/B1_6_om080jogani_20260928T185744668855Z_B1.6
+      _supervision: afk
+      _supervision_instructions: ''
+    next_child: 0
+events:
+- t: '2026-09-28T18:57:44Z'
+  kind: run_started
+  by: om080jogani
+- t: '2026-09-28T18:57:45Z'
+  kind: node_entered
+  node: review
+- t: '2026-09-28T18:59:28Z'
+  kind: validation_passed
+  node: review
+  agent_session_id: 5ea8070c-c5d0-463a-8bf8-e3cad4d99b00
+- t: '2026-09-28T18:59:28Z'
+  kind: node_entered
+  node: check_1
+- t: '2026-09-28T18:59:28Z'
+  kind: script_node_ran
+  node: check_1
+  exit_code: 0
+- t: '2026-09-28T18:59:28Z'
+  kind: validation_passed
+  node: check_1
+  agent_session_id: null
+- t: '2026-09-28T18:59:28Z'
+  kind: branch_auto_resolved
+  node: check_1
+  chose: finalize
+- t: '2026-09-28T18:59:28Z'
+  kind: node_entered
+  node: finalize
+- t: '2026-09-28T18:59:28Z'
+  kind: script_node_ran
+  node: finalize
+  exit_code: 0
+- t: '2026-09-28T18:59:28Z'
+  kind: validation_passed
+  node: finalize
+  agent_session_id: null
+- t: '2026-09-28T18:59:28Z'
+  kind: run_completed

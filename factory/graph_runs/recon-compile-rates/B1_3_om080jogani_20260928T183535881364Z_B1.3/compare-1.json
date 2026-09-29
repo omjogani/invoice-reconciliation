@@ -1,0 +1,15 @@
+{
+  "agree": false,
+  "card_a": "/Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-compile-rates/B1_3_om080jogani_20260928T183535881364Z_B1.3/card-a.json",
+  "card_b": "/Users/omjogani/Projects/stage2-kit/factory/graph_runs/recon-compile-rates/B1_3_om080jogani_20260928T183535881364Z_B1.3/card-b.json",
+  "carrier": "sagar",
+  "contract_file": "sagar-roadlines.md",
+  "differences": [
+    "/freight/components/0/bands/0/max_inclusive: false vs true",
+    "/freight/components/0/bands/0/min_inclusive: false vs true",
+    "/freight/components/1/bands/0/max_inclusive: false vs true",
+    "/freight/components/1/bands/0/min_inclusive: false vs true"
+  ],
+  "problems_a": [],
+  "problems_b": []
+}
