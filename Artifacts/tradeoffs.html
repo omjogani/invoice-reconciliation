@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Freight Reconciliation Tradeoffs</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+  :root {
+    --bg: #f4f6f5;
+    --panel: #ffffff;
+    --ink: #1a2422;
+    --muted: #5b6763;
+    --line: #c9d1ce;
+    --code: #2f6f66;
+    --code-soft: #e3efec;
+    --agent: #a86a12;
+    --agent-soft: #f6ecdc;
+    --gate: #6d3f8f;
+    --gate-soft: #efe6f5;
+    --human: #4a5560;
+    --human-soft: #e7eaed;
+    --no: #a33a2c;
+    color-scheme: light;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 15px/1.55 "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    padding: 40px 16px 56px;
+  }
+  main { max-width: 760px; margin: 0 auto; display: grid; gap: 40px; }
+  h1 { margin: 0; font-size: 1.6rem; font-weight: 600; letter-spacing: -0.01em; text-wrap: balance; }
+  h2 { margin: 0; font-size: 1.15rem; font-weight: 600; text-wrap: balance; }
+  h3 { margin: 0; font-size: 0.98rem; font-weight: 600; }
+  p { margin: 0; }
+  .lede { color: var(--muted); max-width: 62ch; }
+  section { display: grid; gap: 14px; }
+  .band {
+    font: 500 0.7rem/1 "IBM Plex Mono", ui-monospace, monospace;
+    text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted);
+  }
+  .muted { color: var(--muted); font-size: 0.9rem; }
+
+  /* Principles */
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; }
+  .card {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 6px;
+    padding: 14px 16px; display: grid; gap: 4px; align-content: start;
+  }
+  .card p { color: var(--muted); font-size: 0.88rem; }
+
+  /* Priority ladder */
+  .ladder { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; counter-reset: rank; }
+  .ladder li {
+    counter-increment: rank;
+    display: grid; grid-template-columns: 32px 1fr; gap: 2px 12px; align-items: start;
+    background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 12px 14px;
+  }
+  .ladder li::before {
+    content: counter(rank);
+    grid-row: span 2;
+    font: 500 0.8rem/1 "IBM Plex Mono", ui-monospace, monospace;
+    color: var(--code); background: var(--code-soft); border-radius: 4px;
+    padding: 6px 0; text-align: center;
+  }
+  .ladder p { color: var(--muted); font-size: 0.88rem; }
+
+  /* Handled cases */
+  .cases { display: grid; gap: 0; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; }
+  .case { display: grid; grid-template-columns: minmax(140px, 0.9fr) 1.6fr; gap: 12px; padding: 11px 16px; border-top: 1px solid var(--line); font-size: 0.9rem; }
+  .case:first-child { border-top: 0; }
+  .case b { font-weight: 500; }
+  .case span { color: var(--muted); }
+  @media (max-width: 520px) { .case { grid-template-columns: 1fr; gap: 2px; } }
+
+  /* Options */
+  .options { display: grid; gap: 10px; }
+  .option {
+    background: var(--panel); border: 1px solid var(--line); border-left: 4px solid var(--c);
+    border-radius: 6px; padding: 14px 16px; display: grid; gap: 10px;
+  }
+  .option header { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+  .tag {
+    font: 500 0.7rem/1 "IBM Plex Mono", ui-monospace, monospace; text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--c); background: var(--soft); border-radius: 4px; padding: 5px 7px;
+  }
+  .option .pc { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-size: 0.88rem; }
+  @media (max-width: 520px) { .option .pc { grid-template-columns: 1fr; } }
+  .option ul { margin: 4px 0 0; padding-left: 18px; color: var(--muted); display: grid; gap: 2px; }
+  .option .verdict { font-size: 0.88rem; border-top: 1px solid var(--line); padding-top: 10px; }
+  .agent-only { --c: var(--agent); --soft: var(--agent-soft); }
+  .code-only  { --c: var(--human); --soft: var(--human-soft); }
+  .hybrid     { --c: var(--code);  --soft: var(--code-soft); box-shadow: 0 0 0 1px var(--code); }
+
+  /* Comparison table */
+  .table-wrap { overflow-x: auto; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; }
+  table { border-collapse: collapse; width: 100%; min-width: 520px; font-size: 0.88rem; }
+  th, td { text-align: left; padding: 9px 14px; border-top: 1px solid var(--line); }
+  thead th { border-top: 0; font: 500 0.7rem "IBM Plex Mono", ui-monospace, monospace; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+  thead th.win { color: var(--code); }
+  td.y { color: var(--code); font-weight: 500; }
+  td.n { color: var(--no); }
+  td.m { color: var(--agent); }
+
+  .cost { background: var(--gate-soft); border: 1px dashed var(--gate); border-radius: 6px; padding: 14px 16px; display: grid; gap: 6px; }
+  .cost h3 { color: var(--gate); }
+  .cost ul { margin: 0; padding-left: 18px; display: grid; gap: 2px; font-size: 0.9rem; }
+  a { color: var(--code); }
+</style>
+</head>
+<body>
+<main>
+  <header style="display:grid; gap:10px">
+    <h1>Freight Reconciliation Tradeoffs</h1>
+    <p class="lede">The system decides which carrier invoice lines get paid, disputed or escalated. Money moves on its output, so every choice below starts from one question: can we trust the number?</p>
+  </header>
+
+  <section>
+    <div class="band">What matters to us</div>
+    <div class="grid">
+      <div class="card"><h3>Correct money</h3><p>Every amount is calculated by code, never written by an AI model.</p></div>
+      <div class="card"><h3>Same answer every run</h3><p>Run it twice on the same data and get the same amounts and decisions.</p></div>
+      <div class="card"><h3>Never guess</h3><p>If the contract doesn't say, the line is escalated to a person, not priced by assumption.</p></div>
+      <div class="card"><h3>Explainable</h3><p>Each decision points to the contract clause behind it, and each exception gets a memo.</p></div>
+      <div class="card"><h3>People stay in control</h3><p>A person approves how each contract is read before it is used to price anything.</p></div>
+      <div class="card"><h3>Grows with volume</h3><p>More invoices or new carriers should not mean rewriting the system.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="band">What we prioritized</div>
+    <p class="muted">When two goals pulled in different directions, the higher one won.</p>
+    <ol class="ladder">
+      <li><h3>Correctness over coverage</h3><p>We would rather escalate a line than pay or dispute it on a guess.</p></li>
+      <li><h3>Repeatable over clever</h3><p>AI reads text; code does the maths, so results don't drift between runs.</p></li>
+      <li><h3>Checked over trusted</h3><p>Every AI output passes a code check before the next step uses it.</p></li>
+      <li><h3>Clear over short</h3><p>Reports and memos explain the reason, even when that makes them longer.</p></li>
+      <li><h3>Speed and cost last</h3><p>Extra checks and a second contract reader cost time; we accept that.</p></li>
+    </ol>
+  </section>
+
+  <section>
+    <div class="band">What we took care of</div>
+    <div class="cases">
+      <div class="case"><b>Different invoice formats</b><span>Text, JSON and CSV invoices are turned into one common format and totals are tied out.</span></div>
+      <div class="case"><b>Gaps in a contract</b><span>A weight the contract doesn't cover is escalated with the possible prices, never picked.</span></div>
+      <div class="case"><b>Duplicate billing</b><span>A shipment billed twice keeps one charge; the extra copy is disputed.</span></div>
+      <div class="case"><b>Credit notes</b><span>Credits are counted against the original charge; a partial credit leaves the rest disputed.</span></div>
+      <div class="case"><b>Unknown references</b><span>A line with no matching booking is escalated; likely matches are shown only as hints.</span></div>
+      <div class="case"><b>Volume discounts</b><span>A missing discount is found from shipment counts and raised on the invoice.</span></div>
+      <div class="case"><b>Dispute deadlines</b><span>Deadlines are shown as dates in memos; they never change a decision.</span></div>
+      <div class="case"><b>Contract changes</b><span>An edited contract no longer matches its approved reading, so the run stops for review.</span></div>
+      <div class="case"><b>AI mistakes</b><span>Quotes must exist in the contract, two readings must agree, and the reviewer can't lower a decision or change an amount.</span></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="band">The options we weighed</div>
+    <div class="options">
+      <article class="option agent-only">
+        <header><span class="tag">Option A</span><h3>AI does everything</h3></header>
+        <p class="muted">An AI agent reads invoices and contracts and works out every amount.</p>
+        <div class="pc">
+          <div><b>Good</b><ul><li>Quick to build</li><li>Handles any document format</li></ul></div>
+          <div><b>Bad</b><ul><li>Numbers can change between runs</li><li>Arithmetic slips are hard to spot</li><li>Hard to audit why a line was disputed</li></ul></div>
+        </div>
+        <p class="verdict"><b>Not chosen.</b> We can't let an AI model write the numbers that decide payments.</p>
+      </article>
+
+      <article class="option code-only">
+        <header><span class="tag">Option B</span><h3>Code does everything</h3></header>
+        <p class="muted">A developer types each contract's rates into config, and code does the rest.</p>
+        <div class="pc">
+          <div><b>Good</b><ul><li>Fully repeatable</li><li>Cheap and fast to run</li></ul></div>
+          <div><b>Bad</b><ul><li>Every contract is translated by hand</li><li>A changed contract goes unnoticed</li><li>No written explanation for exceptions</li></ul></div>
+        </div>
+        <p class="verdict"><b>Not chosen.</b> The hand translation is the risky step, and nothing checks it.</p>
+      </article>
+
+      <article class="option hybrid">
+        <header><span class="tag">Option C · chosen</span><h3>Code calculates, AI reads, gates check</h3></header>
+        <p class="muted">AI turns each contract into a structured rate card and reviews exceptions. Code does all parsing, matching and maths. A code check sits between every step, and a person approves each rate card once.</p>
+        <div class="pc">
+          <div><b>Good</b><ul><li>Numbers are exact and repeatable</li><li>Contract reading is automated but verified</li><li>Contract changes are caught</li><li>Every decision has a reason and a memo</li></ul></div>
+          <div><b>Bad</b><ul><li>More moving parts</li><li>Slower and costs more per run</li><li>A new contract needs a person's approval</li></ul></div>
+        </div>
+        <p class="verdict"><b>Chosen.</b> It keeps the AI where it is strong, reading text, and keeps it away from the money.</p>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="band">Side by side</div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>What we need</th><th>A · AI only</th><th>B · Code only</th><th class="win">C · Hybrid</th></tr></thead>
+        <tbody>
+          <tr><td>Correct amounts</td><td class="n">Risky</td><td class="m">If typed right</td><td class="y">Yes</td></tr>
+          <tr><td>Same result every run</td><td class="n">No</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+          <tr><td>No guessing on gaps</td><td class="n">Hard to enforce</td><td class="m">Depends on the developer</td><td class="y">Enforced by checks</td></tr>
+          <tr><td>Explains each decision</td><td class="m">Yes, unverified</td><td class="n">No</td><td class="y">Yes, checked</td></tr>
+          <tr><td>Catches contract changes</td><td class="n">No</td><td class="n">No</td><td class="y">Yes</td></tr>
+          <tr><td>Adding a carrier</td><td class="y">Easy</td><td class="n">Manual work</td><td class="y">AI reads, person approves</td></tr>
+          <tr><td>Cost and speed</td><td class="m">Medium</td><td class="y">Best</td><td class="m">Slowest</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <div class="cost">
+      <h3>What we gave up</h3>
+      <ul>
+        <li>Each run takes longer, because contracts are read twice and every output is checked.</li>
+        <li>Some lines end up escalated to a person instead of decided automatically.</li>
+        <li>A new or edited contract waits for a person to approve its rate card.</li>
+      </ul>
+      <p class="muted">For a system that decides payments, these costs buy correctness and trust.</p>
+    </div>
+    <p class="muted">See the <a href="architecture.html">architecture diagram</a> for how the pieces fit together.</p>
+  </section>
+</main>
+</body>
+</html>

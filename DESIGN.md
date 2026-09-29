@@ -13,17 +13,38 @@ independent run produced an identical report (see *Evidence*).
 A **hybrid on the flowstate graph**. Code owns every rupee; agents own the
 reading and the writing; a gate sits on every hand-off.
 
+```mermaid
+flowchart TD
+    subgraph P["freight-recon (parent flow)"]
+        ingest --> plan_compile
+        ingest -. "unknown format" .-> parse_fallback --> merge_fallback --> plan_compile
+        plan_compile --> compile_fan[["compile fan-out<br/>one child per contract"]]
+        compile_fan --> rates_check
+        rates_check -. "new or changed card" .-> rates_hold(["rates_hold (human)"]) --> rates_recheck --> reconcile
+        rates_check --> reconcile
+        reconcile --> plan_review --> review_fan[["review fan-out<br/>one child per batch of exceptions"]]
+        review_fan --> review_check --> assemble --> validate_report --> publish --> done([done])
+    end
+
+    subgraph C["recon-compile-rates (child)"]
+        extract_a & extract_b --> compare{{"compare gate"}}
+        compare -. "disagree" .-> revise_a & revise_b --> compare2{{"compare gate"}}
+        compare --> finalize_c[finalize]
+        compare2 --> finalize_c
+    end
+
+    subgraph R["recon-review (child)"]
+        review --> check{{"check gate"}}
+        check -. "rejected, up to 2 retries" .-> retry --> check
+        check --> finalize_r[finalize]
+    end
+
+    compile_fan -.- C
+    review_fan -.- R
 ```
-freight-recon (parent)
-  ingest ─► [parse_fallback ─► merge_fallback]* ─► plan_compile
-    ─► compile fan-out ── recon-compile-rates (one child per contract)
-    │      fork: extract_a ∥ extract_b ─► compare gate ─► [revise_a ∥ revise_b ─► compare gate] ─► finalize
-    ─► rates_check ─► [rates_hold (human) ─► rates_recheck]* ─► reconcile ─► plan_review
-    ─► review fan-out ─── recon-review (one child per batch of exceptions)
-    │      review ─► check gate ─► [retry ─► check]×≤2 ─► finalize
-    ─► review_check ─► assemble ─► validate_report ─► publish ─► done      (or ─► halted)
-  * only when needed
-```
+
+Dotted arrows are paths taken only when needed. Any gate can also send the
+run to `halted`.
 
 | Work | Done by | Why |
 |---|---|---|

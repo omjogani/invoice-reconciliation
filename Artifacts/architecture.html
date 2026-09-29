@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Freight Reconciliation Architecture</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+  :root {
+    --bg: #f4f6f5;
+    --panel: #ffffff;
+    --ink: #1a2422;
+    --muted: #5b6763;
+    --line: #c9d1ce;
+    --code: #2f6f66;
+    --code-soft: #e3efec;
+    --agent: #a86a12;
+    --agent-soft: #f6ecdc;
+    --gate: #6d3f8f;
+    --gate-soft: #efe6f5;
+    --human: #4a5560;
+    --human-soft: #e7eaed;
+    color-scheme: light;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 15px/1.5 "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    padding: 40px 16px 56px;
+  }
+  main { max-width: 760px; margin: 0 auto; display: grid; gap: 28px; }
+  h1 { margin: 0; font-size: 1.6rem; font-weight: 600; letter-spacing: -0.01em; text-wrap: balance; }
+  .legend { display: flex; flex-wrap: wrap; gap: 8px 16px; font-size: 0.8rem; color: var(--muted); }
+  .legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .dot { width: 10px; height: 10px; border-radius: 2px; }
+
+  .flow { display: grid; gap: 0; }
+  .band {
+    font: 500 0.7rem/1 "IBM Plex Mono", ui-monospace, monospace;
+    text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .row { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip {
+    flex: 1 1 150px;
+    background: var(--panel); border: 1px solid var(--line); border-radius: 6px;
+    padding: 10px 12px; font-size: 0.88rem;
+  }
+  .chip small { display: block; color: var(--muted); font: 0.75rem "IBM Plex Mono", ui-monospace, monospace; }
+
+  .arrow { height: 26px; display: flex; justify-content: center; }
+  .arrow::before { content: ""; width: 2px; background: var(--line); }
+  .arrow::after {
+    content: ""; position: relative; top: 20px; left: -6px;
+    border: 5px solid transparent; border-top: 6px solid var(--line); height: 0;
+  }
+
+  .stage {
+    display: grid; grid-template-columns: auto 1fr; gap: 4px 14px; align-items: start;
+    background: var(--panel); border: 1px solid var(--line); border-left: 4px solid var(--c);
+    border-radius: 6px; padding: 14px 16px;
+  }
+  .stage .tag {
+    grid-row: span 2;
+    font: 500 0.7rem/1 "IBM Plex Mono", ui-monospace, monospace; text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--c); background: var(--soft); border-radius: 4px; padding: 5px 7px; margin-top: 2px;
+    min-width: 58px; text-align: center;
+  }
+  .stage h2 { margin: 0; font-size: 1rem; font-weight: 600; }
+  .stage p { margin: 0; color: var(--muted); font-size: 0.88rem; }
+  .code  { --c: var(--code);  --soft: var(--code-soft); }
+  .agent { --c: var(--agent); --soft: var(--agent-soft); }
+
+  .gate {
+    align-self: center; justify-self: center; max-width: 100%;
+    display: flex; align-items: center; gap: 10px;
+    color: var(--gate); background: var(--gate-soft); border: 1px dashed var(--gate);
+    border-radius: 999px; padding: 6px 14px; font-size: 0.82rem;
+  }
+  .gate b { font: 500 0.7rem "IBM Plex Mono", ui-monospace, monospace; text-transform: uppercase; letter-spacing: 0.06em; }
+  .gate .side { color: var(--human); border-left: 1px solid var(--gate); padding-left: 10px; }
+
+  .outputs .chip { border-color: var(--code); }
+  code { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 0.82em; }
+</style>
+</head>
+<body>
+<main>
+  <header style="display:grid; gap:10px">
+    <h1>Freight Reconciliation Architecture</h1>
+    <div class="legend">
+      <span><i class="dot" style="background:var(--code)"></i>Code (deterministic)</span>
+      <span><i class="dot" style="background:var(--agent)"></i>Agent</span>
+      <span><i class="dot" style="background:var(--gate)"></i>Gate (code check)</span>
+      <span><i class="dot" style="background:var(--human)"></i>Human</span>
+    </div>
+  </header>
+
+  <section class="flow" aria-label="Pipeline">
+    <div>
+      <div class="band">Inputs</div>
+      <div class="row">
+        <div class="chip">Carrier invoices<small>text · JSON · CSV</small></div>
+        <div class="chip">Shipments<small>bookings</small></div>
+        <div class="chip">Rate contracts<small>prose</small></div>
+      </div>
+    </div>
+
+    <div class="arrow"></div>
+    <div class="stage code">
+      <span class="tag">Code</span>
+      <h2>Ingest</h2>
+      <p>Parse every invoice into one record format and tie out totals.</p>
+    </div>
+
+    <div class="arrow"></div>
+    <div class="stage agent">
+      <span class="tag">Agent ×2</span>
+      <h2>Compile rate cards</h2>
+      <p>Two agents read each contract independently into a structured rate card.</p>
+    </div>
+    <div class="arrow"></div>
+    <div class="gate"><b>Gate</b> quotes match contract · both cards agree · matches approved card
+      <span class="side">new card → human approval</span></div>
+
+    <div class="arrow"></div>
+    <div class="stage code">
+      <span class="tag">Code</span>
+      <h2>Reconcile</h2>
+      <p>Match lines to shipments, price from the rate card, apply credits, duplicates and discounts, assign accept / dispute / escalate.</p>
+    </div>
+
+    <div class="arrow"></div>
+    <div class="stage agent">
+      <span class="tag">Agent</span>
+      <h2>Review exceptions</h2>
+      <p>Checks disputes and escalations and writes a memo for each.</p>
+    </div>
+    <div class="arrow"></div>
+    <div class="gate"><b>Gate</b> amounts unchanged · dispositions can only be raised</div>
+
+    <div class="arrow"></div>
+    <div class="stage code">
+      <span class="tag">Code</span>
+      <h2>Assemble &amp; validate</h2>
+      <p>Build the report and validate it against the schema.</p>
+    </div>
+
+    <div class="arrow"></div>
+    <div class="outputs">
+      <div class="band">Outputs</div>
+      <div class="row">
+        <div class="chip"><code>reconciliation-report.json</code></div>
+        <div class="chip"><code>memos/</code></div>
+        <div class="chip">Run evidence</div>
+      </div>
+    </div>
+  </section>
+</main>
+</body>
+</html>
